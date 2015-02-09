@@ -1,0 +1,150 @@
+{% extends "base2.html" %}
+
+{% block title %} Editar propuesta {% endblock %}
+{% block scripts %}
+
+<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+<script type="text/javascript">
+bkLib.onDomLoaded(function() {
+	new nicEditor({buttonList : ['bold','italic','underline','left','center','right','justify','ol','ul','link']}).panelInstance('propuesta');
+});
+</script>
+<script>
+$(document).ready(function() {
+
+	$("#nueva-propuesta").validate({
+	    rules: {
+	      titulo: {
+			required: true,
+	      },
+	      sector: {
+	      	requiered: true,
+	      }
+	    },
+	    messages:{
+	      titulo: {
+			required: "Tiene que poner un título",
+	      },
+	      sector: {
+	      	requiered: "Tiene que elegir un sector",
+	    }
+	}
+	});
+	$('#{{propuesta.sector}}').prop("checked", "checked");
+	$('#{{propuesta.barrio}}').attr("selected", "selected");
+
+});
+</script>
+{% endblock %}
+{% block content %}
+<form class="form-horizontal" role="form" id="nueva-propuesta" action="editando.php" method="post" enctype="multipart/form-data">
+
+		<div class="col-xs-10 col-md-offset-1">
+		  <div class="form-group">
+		    <label for="título">Título *</label>
+		    <input type="text" name ="titulo" class="form-control" id="titulo"
+		           placeholder="Título de la propuesta" value="{{propuesta.titulo}}">
+		  </div>
+		</div>
+		
+		<div class="col-xs-10 col-md-offset-1">
+		  <div class="form-group">
+		    <label for="propuesta">Escribe la propuesta *</label>
+		    <textarea class="form-control" name="propuesta" id="propuesta" rows="10">{{propuesta.propuesta}}</textarea> 
+		  </div>
+		</div>
+
+		<div class="col-xs-10 col-md-offset-1">
+		  <div class="form-group">
+		    <label for="sector">Selecciona un sector *</label>
+		    <div style="clear:both"></div>
+		    
+  			<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="urbanismo-y-vivienda" value="urbanismo-y-vivienda">
+			    Urbanismo y vivienda</label>
+		  	<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="ecología-y-medio-ambiente" value="ecología-y-medio-ambiente">
+			    Ecología y medio ambiente</label>
+		  	<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="movilidad" value="movilidad">
+			    Movilidad</label>
+			 <div style="clear:both"></div>
+		  	<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="trabajo-y-empleo" value="trabajo-y-empleo">
+			    Trabajo y empleo</label>
+		  	<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="economía-municipal" value="economía-municipal">
+			    Economía municipal</label>
+		  	<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="cultura" value="cultura">
+			    Cultura</label>
+			 <div style="clear:both"></div>
+		  	<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="servicios-sociales" value="servicios-sociales">
+			    Servicios sociales</label>
+		  	<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="servicios-públicos" value="servicios-públicos">
+			    Servicios públicos</label>
+		  	<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="participación-ciDadana" value="participación-ciudadana">
+			    Participación ciudadana</label>
+		  	<div style="clear:both"></div>
+		  	<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="educación" value="educación">
+			    Educación</label>
+			<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="TIC" value="TIC">
+			    TIC</label>
+		  	<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="deportes" value="deportes">
+			    Deportes</label>
+			<div style="clear:both"></div>
+		  	
+		</div>
+
+		</div>
+
+		<div class="col-xs-10 col-md-offset-1">
+		  <div class="form-group">
+		    <label for="desarrollo">Selecciona un barrio (opcional)</label>
+
+		    <select class="form-control" name="barrio">
+			  <option value="">Selecciona un barrio</option>
+			  <option id="Actur-Rey-Fernando" value="Actur-Rey-Fernando">Actur-Rey Fernando</option>
+			  <option id="Alfocea" value="Alfocea">Alfocea</option>
+			  <option id="Almozara" value="Almozara">Almozara</option>
+			  <option id="Casablanca" value="Casablanca">Casablanca</option>
+			  <option id="Casetas" value="Casetas">Casetas</option>
+			  <option id="Casco-Histórico" value="Casco-Histórico">Casco Histórico</option>
+			  <option id="Cartuja-Baja" value="Cartuja-Baja">Cartuja Baja</option>
+			  <option id="Centro" value="Centro">Centro</option>
+			  <option id="Delicias" value="Delicias">Delicias</option>
+			  <option id="El-Rabal" value="El-Rabal">El Rabal</option>
+			  <option id="Garrapinillos" value="Garrapinillos">Garrapinillos</option>
+			  <option id="Juslibol" value="Juslibol">Juslibol</option>
+			  <option id="Miralbueno" value="Miralbueno">Miralbueno</option>
+			  <option id="Montanana" value="Montanana">Montañana</option>
+			  <option id="Monzalbarba" value="Monzalbarba">Monzalbarba</option>
+			  <option id="Movera" value="Movera">Movera</option>
+			  <option id="Oliver-Valdefierro" value="Oliver-Valdefierro">Oliver-Valdefierro</option>
+			  <option id="San-Gregorio" value="San-Gregorio">San Gregorio</option>
+			  <option id="San-José" value="San-José">San José</option>
+			  <option id="San-Juan-de-Mozarrifar" value="San-Juan-de-Mozarrifar">San Juan de Mozarrifar</option>
+			  <option id="Santa-Isabel" value="Santa-Isabel">Santa Isabel</option>
+			  <option id="Torrero" value="Torrero">Torrero</option>
+			  <option id="Universidad" value="Universidad">Universidad</option>
+			  <option id="Venta-del-Olivar" value="Venta-del-Olivar">Venta del Olivar</option>
+			</select>
+		    
+		  </div>
+		</div>
+		<input type="hidden" name="id" value="{{propuesta.id}}">
+		<div class="col-xs-10 col-md-offset-1">
+		  <button type="submit" id="enviar" class="btn-lg btn-block btn btn-success">Enviar</button>
+		</div>
+
+</form>
+
+
+
+{% endblock %}

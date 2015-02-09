@@ -1,0 +1,147 @@
+{% extends "base2.html" %}
+
+{% block title %} Nueva propuesta {% endblock %}
+{% block scripts %}
+
+<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+<script type="text/javascript">
+bkLib.onDomLoaded(function() {
+	new nicEditor({buttonList : ['bold','italic','underline','left','center','right','justify','ol','ul','link',]}).panelInstance('propuesta');
+});
+</script>
+<script>
+$(document).ready(function() {
+
+	$("#nueva-propuesta").validate({
+	    rules: {
+	      titulo: {
+			required: true,
+	      },
+	      sector: {
+	      	requiered: true,
+	      }
+	    },
+	    messages:{
+	      titulo: {
+			required: "Tiene que poner un título",
+	      },
+	      sector: {
+	      	requiered: "Tiene que elegir un sector",
+	    }
+	}
+	});
+});
+</script>
+{% endblock %}
+{% block content %}
+<form class="form-horizontal" role="form" id="nueva-propuesta" action="nueva.php" method="post" enctype="multipart/form-data">
+
+		<div class="col-xs-10 col-md-offset-1">
+		  <div class="form-group">
+		    <label for="título">Título *</label>
+		    <input type="text" name ="titulo" class="form-control" id="titulo"
+		           placeholder="Título de la propuesta">
+		  </div>
+		</div>
+		
+		<div class="col-xs-10 col-md-offset-1">
+		  <div class="form-group">
+		    <label for="propuesta">Escribe la propuesta *</label>
+		    <textarea class="form-control" name="propuesta" id="propuesta" rows="10"></textarea> 
+		  </div>
+		</div>
+
+		<div class="col-xs-10 col-md-offset-1">
+		  <div class="form-group">
+		    <label for="sector">Selecciona un sector *</label>
+		    <div style="clear:both"></div>
+		    
+  			<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="urbanismo-y-vivienda" value="urbanismo-y-vivienda">
+			    Urbanismo y vivienda</label>
+		  	<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="ecología-y-medio-ambiente" value="ecología-y-medio-ambiente">
+			    Ecología y medio ambiente</label>
+		  	<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="movilidad" value="movilidad">
+			    Movilidad</label>
+			 <div style="clear:both"></div>
+		  	<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="trabajo-y-empleo" value="trabajo-y-empleo">
+			    Trabajo y empleo</label>
+		  	<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="economía-municipal" value="economía-municipal">
+			    Economía municipal</label>
+		  	<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="cultura" value="cultura">
+			    Cultura</label>
+			 <div style="clear:both"></div>
+		  	<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="servicios-sociales" value="servicios-sociales">
+			    Servicios sociales</label>
+		  	<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="servicios-públicos" value="servicios-públicos">
+			    Servicios públicos</label>
+		  	<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="participación-ciDadana" value="participación-ciudadana">
+			    Participación ciudadana</label>
+		  	<div style="clear:both"></div>
+		  	<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="educación" value="educación">
+			    Educación</label>
+			<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="TIC" value="TIC">
+			    TIC</label>
+		  	<label class="radio-inline col-xs-3">
+			    <input type="radio" name="sector" id="deportes" value="deportes">
+			    Deportes</label>
+			<div style="clear:both"></div>
+		  	
+		</div>
+
+		</div>
+
+		<div class="col-xs-10 col-md-offset-1">
+		  <div class="form-group">
+		    <label for="desarrollo">Selecciona un barrio (opcional)</label>
+
+		    <select class="form-control" name="barrio">
+			  <option value="">Selecciona un barrio</option>
+			  <option value="Actur-Rey-Fernando">Actur-Rey Fernando</option>
+			  <option value="Alfocea">Alfocea</option>
+			  <option value="Almozara">Almozara</option>
+			  <option value="Casablanca">Casablanca</option>
+			  <option value="Casetas">Casetas</option>
+			  <option value="Casco-Histórico">Casco Histórico</option>
+			  <option value="Cartuja-Baja">Cartuja Baja</option>
+			  <option value="Centro">Centro</option>
+			  <option value="Delicias">Delicias</option>
+			  <option value="El-Rabal">El Rabal</option>
+			  <option value="Garrapinillos">Garrapinillos</option>
+			  <option value="Juslibol">Juslibol</option>
+			  <option value="Miralbueno">Miralbueno</option>
+			  <option value="Montanana">Montañana</option>
+			  <option value="Monzalbarba">Monzalbarba</option>
+			  <option value="Movera">Movera</option>
+			  <option value="Oliver-Valdefierro">Oliver-Valdefierro</option>
+			  <option value="San-Gregorio">San Gregorio</option>
+			  <option value="San-José">San José</option>
+			  <option value="San-Juan-de-Mozarrifar">San Juan de Mozarrifar</option>
+			  <option value="Santa-Isabel">Santa Isabel</option>
+			  <option value="Torrero">Torrero</option>
+			  <option value="Universidad">Universidad</option>
+			  <option value="Venta-del-Olivar">Venta del Olivar</option>
+			</select>
+		    
+		  </div>
+		</div>
+		
+		<div class="col-xs-10 col-md-offset-1">
+		  <button type="submit" id="enviar" class="btn-lg btn-block btn btn-success">Enviar</button>
+		</div>
+
+</form>
+
+
+
+{% endblock %}

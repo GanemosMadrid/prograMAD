@@ -1,0 +1,486 @@
+{% extends "base2.html" %}
+{% block title %} {{ propuesta.titulo }} {% endblock %}
+{% block scripts %}
+<script>
+$(document).ready(function() {
+	$('.textarea_comentarios').hide();
+	var propuesta_id = {{ id.id|e('js') }};
+	var usuario_id = {{ user.id|e('js') }};
+
+	bloquear_votos();
+	bloquear_enmiendas();
+	bloquear_comentarios();
+	//Likes propuestas
+	$('#prop_favor').on("click", "a.inactivo", function(){
+		$('#prop_favor a').addClass("active");
+		$('#prop_favor a').removeClass("inactivo");
+		$('#prop_contra a').addClass("inactivo");
+		$('#prop_contra a').removeClass("active");
+		$.ajax({
+                url: 'like_propuestas.php',
+                data: {propuesta:propuesta_id, usuario_id:usuario_id, cuenta:1},
+                type: 'POST',
+                dataType: 'json',
+                success: function(data) {
+					$.each(data, function (clave, valor){
+						$('#votos').html(valor.sum_likes);
+					});
+				}
+		});
+	});
+	$('#prop_favor').on("click", "a.active", function(){
+		$('#prop_favor a').addClass("inactivo");
+		$('#prop_favor a').removeClass("active");
+		
+		$.ajax({
+                url: 'like_propuestas_active.php',
+                data: {propuesta:propuesta_id, usuario_id:usuario_id, cuenta:-1},
+                type: 'POST',
+                dataType: 'json',
+                success: function(data) {
+					$.each(data, function (clave, valor){
+						$('#votos').html(valor.sum_likes);
+					});
+				}
+		});
+	});
+	$('#prop_contra').on("click", "a.inactivo", function(){
+		$('#prop_contra a').addClass("active");
+		$('#prop_contra a').removeClass("inactivo");
+		$('#prop_favor a').addClass("inactivo");
+		$('#prop_favor a').removeClass("active");
+
+		
+		$.ajax({
+                url: 'like_propuestas.php',
+                data: {propuesta:propuesta_id, usuario_id:usuario_id, cuenta:-1},
+                type: 'POST',
+                dataType: 'json',
+                success: function(data) {
+					$.each(data, function (clave, valor){
+						$('#votos').html(valor.sum_likes);
+					});
+				}
+		});
+	});
+	$('#prop_contra').on("click", "a.active", function(){
+		$('#prop_contra a').addClass("inactivo");
+		$('#prop_contra a').removeClass("active");
+		$.ajax({
+                url: 'like_propuestas_active.php',
+                data: {propuesta:propuesta_id, usuario_id:usuario_id, cuenta:1},
+                type: 'POST',
+                dataType: 'json',
+                success: function(data) {
+					$.each(data, function (clave, valor){
+						$('#votos').html(valor.sum_likes);
+					});
+				}
+		});
+	});
+
+	//Likes enmiendas
+
+	$('.enm_favor').on("click", "i.inactivo", function(){
+		var sacar_id = $(this).attr('id').split('-');
+		var id = sacar_id[2];
+		$('#enm-fav-'+id).addClass("active");
+		$('#enm-fav-'+id).removeClass("inactivo");
+		$('#enm_con-'+id).addClass("inactivo");
+		$('#enm_con-'+id).removeClass("active");
+		$.ajax({
+                url: 'like_enmiendas.php',
+                data: {enmienda:id, usuario_id:usuario_id, cuenta:1},
+                type: 'POST',
+                dataType: 'json',
+                success: function(data) {
+					$.each(data, function (clave, valor){
+						$('#enm-votos-'+id).html(valor.sum_likes);
+					});
+				}
+		});
+	});
+	$('.enm_favor').on("click", "i.active", function(){
+		var sacar_id = $(this).attr('id').split('-');
+		var id = sacar_id[2];
+		$('#enm-fav-'+id).addClass("inactivo");
+		$('#enm-fav-'+id).removeClass("active");
+		
+		$.ajax({
+                url: 'like_enmiendas_active.php',
+                data: {enmienda:id, usuario_id:usuario_id, cuenta:-1},
+                type: 'POST',
+                dataType: 'json',
+                success: function(data) {
+					$.each(data, function (clave, valor){
+						$('#enm-votos-'+id).html(valor.sum_likes);
+					});
+				}
+		});
+	});
+	$('.enm_contra').on("click", "i.inactivo", function(){
+		var sacar_id = $(this).attr('id').split('-');
+		var id = sacar_id[2];
+		$('#enm-con-'+id).addClass("active");
+		$('#enm-con-'+id).removeClass("inactivo");
+		$('#enm-fav-'+id).addClass("inactivo");
+		$('#enm-fav-'+id).removeClass("active");
+		$.ajax({
+                url: 'like_enmiendas.php',
+                data: {enmienda:id, usuario_id:usuario_id, cuenta:-1},
+                type: 'POST',
+                dataType: 'json',
+                success: function(data) {
+					$.each(data, function (clave, valor){
+						$('#enm-votos-'+id).html(valor.sum_likes);
+					});
+				}
+		});
+	});
+	$('.enm_contra').on("click", "i.active", function(){
+		var sacar_id = $(this).attr('id').split('-');
+		var id = sacar_id[2];
+		$('#enm-con-'+id).addClass("inactivo");
+		$('#enm-con-'+id).removeClass("active");
+		$.ajax({
+                url: 'like_enmiendas_active.php',
+                data: {enmienda:id, usuario_id:usuario_id, cuenta:1},
+                type: 'POST',
+                dataType: 'json',
+                success: function(data) {
+					$.each(data, function (clave, valor){
+						$('#enm-votos-'+id).html(valor.sum_likes);
+					});
+				}
+		});
+	});
+
+	//Likes comentarios
+	$('.com_favor').on("click", "i.inactivo", function(){
+		var sacar_id = $(this).attr('id').split('-');
+		var id = sacar_id[2];
+		$('#com-fav-'+id).addClass("active");
+		$('#com-fav-'+id).removeClass("inactivo");
+		$('#com-con-'+id).addClass("inactivo");
+		$('#com-con-'+id).removeClass("active");
+		$.ajax({
+                url: 'like_comentarios.php',
+                data: {comentario:id, usuario_id:usuario_id, cuenta:1},
+                type: 'POST',
+                dataType: 'json',
+                success: function(data) {
+					$.each(data, function (clave, valor){
+						$('#com-votos-'+id).html(valor.sum_likes);
+					});
+				}
+		});
+	});
+	$('.com_favor').on("click", "i.active", function(){
+		var sacar_id = $(this).attr('id').split('-');
+		var id = sacar_id[2];
+		$('#com-fav-'+id).addClass("inactivo");
+		$('#com-fav-'+id).removeClass("active");
+		
+		$.ajax({
+                url: 'like_comentarios_active.php',
+                data: {comentario:id, usuario_id:usuario_id, cuenta:-1},
+                type: 'POST',
+                dataType: 'json',
+                success: function(data) {
+					$.each(data, function (clave, valor){
+						$('#com-votos-'+id).html(valor.sum_likes);
+					});
+				}
+		});
+	});
+	$('.com_contra').on("click", "i.inactivo", function(){
+		var sacar_id = $(this).attr('id').split('-');
+		var id = sacar_id[2];
+		$('#com-con-'+id).addClass("active");
+		$('#com-con-'+id).removeClass("inactivo");
+		$('#com-fav-'+id).addClass("inactivo");
+		$('#com-fav-'+id).removeClass("active");
+		$.ajax({
+                url: 'like_comentarios.php',
+                data: {comentario:id, usuario_id:usuario_id, cuenta:-1},
+                type: 'POST',
+                dataType: 'json',
+                success: function(data) {
+					$.each(data, function (clave, valor){
+						$('#com-votos-'+id).html(valor.sum_likes);
+					});
+				}
+		});
+	});
+	$('.com_contra').on("click", "i.active", function(){
+		var sacar_id = $(this).attr('id').split('-');
+		var id = sacar_id[2];
+		$('#com-con-'+id).addClass("inactivo");
+		$('#com-con-'+id).removeClass("active");
+		$.ajax({
+                url: 'like_comentarios_active.php',
+                data: {comentario:id, usuario_id:usuario_id, cuenta:1},
+                type: 'POST',
+                dataType: 'json',
+                success: function(data) {
+					$.each(data, function (clave, valor){
+						$('#com-votos-'+id).html(valor.sum_likes);
+					});
+				}
+		});
+	});
+
+
+
+	//enmienda nueva
+	$('#boton_enmienda').click(function(){
+		var texto_enmienda = $('#texto_enmienda').val(); 
+		if (texto_enmienda){
+		$.ajax({
+                url: 'nueva-enmienda.php',
+                data: {propuesta_id:propuesta_id, usuario_id:usuario_id, enmienda: texto_enmienda},
+                type: 'POST',
+                dataType: 'json',
+                success: function(data) {
+					$.each(data, function (clave, valor){
+						$('#enmienda_nueva').html('<div class="row enmienda"><div id ="enm-votos-{{ enmienda.id }}"class="col-xs-1 votos">1</div><div class="col-xs-1"><div class="enm_favor"><i id="enm-fav-{{ enmienda.id }}" class="fa fa-angle-up fa-lg active"></i></div><div class="enm_contra"><i id="enm-con-{{ enmienda.id }}"class="fa fa-angle-down fa-lg inactivo"></i></div></div> <div class="col-xs-10"><div class="enm_autor"> comentario de '+ valor.nombre +' '+ valor.apellidos +'</div><div class="enm_texto">'+ texto_enmienda +'</div></div></div>');
+						$('#texto_enmienda').val('');
+						$('html, body').stop().animate({
+        					scrollTop: $('#enmienda_nueva').offset().top-100
+    					}, 300);
+    					$('.textarea_comentarios').hide();
+					});
+				}
+		});
+		}
+	});
+	//Visualizar formulario comentario nuevo
+	$(".comentarios-enmiendas").click(function(e){
+		e.preventDefault();
+		$('.textarea_comentarios',this).addClass("activo");
+		$('.textarea_comentarios',this).show();
+		$('.enlace_comentar', this).addClass("enlace-activo");
+		$('.enlace_comentar', this).hide();
+	});
+
+	//Comentario nuevo. 
+	$('.boton_comentario').click(function(e){
+		e.preventDefault();
+		var texto_comentario = $(this).siblings('#texto_comentario').val();
+		var enmienda_id = $(this).siblings('.enmienda_id').val();
+		if (texto_comentario){
+			$.ajax({
+	                url: 'nuevo-comentario.php',
+	                data: {propuesta_id:propuesta_id, enmienda_id:enmienda_id, usuario_id:usuario_id, comentario: texto_comentario},
+	                type: 'POST',
+	                dataType: 'json',
+	                success: function(data) {
+						$.each(data, function (clave, valor){
+							$('#comentario-'+enmienda_id).html('<div class="row comentarios"><div class="col-xs-1"></div><div id ="com-votos-{{ comentario.id }}"class="col-xs-1 circular"><span class="centrado">1</span></div><div class="col-xs-1"><div class="com_favor"><i id="com-fav-{{ comentario.id }}" class="fa fa-angle-up fa-lg active"></i></div><div class="com_contra"><i id="com-con-{{ comentario.id }}"class="fa fa-angle-down fa-lg inactivo"></i></div></div><div class="col-xs-9 fondo_comentarios"><div class="com_autor"> comentario de '+ valor.nombre +' '+ valor.apellidos +'</div><div class="com_texto">'+texto_comentario+'</div></div></div>');
+							$('.activo').hide();
+							$('.enlace-activo').show();
+							
+						});
+					}
+			});
+		$(this).siblings('#texto_comentario').val('');
+		window.scrollTo($('#comentario-'+enmienda_id).offset().left, $('#comentario-'+enmienda_id).offset().top);
+							
+		}
+	}); 
+
+
+	
+	//dejar selecionada la opción votada:
+	//Propuestas
+	function bloquear_votos(){
+		$.ajax({
+                url: 'bloqueo_votos.php',
+                data: {propuesta:propuesta_id, usuario_id:usuario_id},
+                type: 'POST',
+                dataType: 'json',
+                success: function(data) {
+					$.each(data, function (clave, valor){
+						$('#'+valor.activo+' a' ).addClass("active");
+						$('#'+valor.activo+' a').removeClass("inactivo");
+					});
+				}
+		});
+    }
+    //Enmiendas
+
+    function bloquear_enmiendas(){
+		$.ajax({
+                url: 'bloqueo_enmiendas.php',
+                data: {usuario_id:usuario_id},
+                type: 'POST',
+                dataType: 'json',
+                success: function(data) {
+					$.each(data, function (clave, valor){
+						$('#'+valor.activo+'-'+valor.id).addClass("active");
+						$('#'+valor.activo+'-'+valor.id).removeClass("inactivo");
+					});
+				}
+		});
+    }
+
+    //comentarios
+
+    function bloquear_comentarios(){
+		$.ajax({
+                url: 'bloqueo_comentarios.php',
+                data: {usuario_id:usuario_id},
+                type: 'POST',
+                dataType: 'json',
+                success: function(data) {
+					$.each(data, function (clave, valor){
+						$('#'+valor.activo+'-'+valor.id).addClass("active");
+						$('#'+valor.activo+'-'+valor.id).removeClass("inactivo");
+					});
+				}
+		});
+    }
+});
+
+
+</script>
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "36929c7c-b370-4b17-b7ba-cebe0f3ced82", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+{% endblock %}
+{% block content %}
+	<div class="propuesta-individual">
+		<div class="row encabezado">
+				<div class="col-xs-1 votos" id="votos">
+					{{ propuesta.sum_likes}}
+				</div>
+				<div class="col-xs-11">
+					<div class="titulo"><a href="propuesta.php?id={{propuesta.id}}/">{{ propuesta.titulo}}</a></div>
+					<div class="autor">Presentada por {{ propuesta.nombre}} {{ propuesta.apellidos}} 
+					</div>
+				</div>
+		</div>
+
+		<div class="row">
+			<h4>Propuesta: </h4> 
+			{{ propuesta.propuesta|raw }}
+		</div>
+	</div>
+	
+	{% if autor %}
+	<div class="row"><a href="editar-propuesta.php?id={{ propuesta.id }}">Editar</a></div>
+	<hr class="hr">
+	
+	{% endif %}
+	{% if user %}
+		{% if user.id != autor.autor_id%}
+	<div class="row" id="votar_propuesta">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-4" id="prop_favor"><a class="btn btn-success btn-lg btn-block inactivo">A FAVOR</a></div>
+		<div class="col-xs-1"></div>
+		<div class="col-xs-4" id="prop_contra"><a class="btn btn-danger btn-lg btn-block inactivo">EN CONTRA</a></div>
+		<div class="col-xs-1"></div>
+	</div>
+	<hr class="hr">
+		{% endif %}
+	<form id="comentar">
+		<div class="row"><strong>¿Qué te ha parecido?</strong></div>
+		<div class="row">
+			<input type="hidden" name="user" value="{{ user.id }}">
+			<input type="hidden" name="propuesta" value="{{ propuesta.id }}">
+			<textarea id="texto_enmienda" name="texto_enmienda" class="form-control" rows="3"></textarea>
+		</div>
+		<div class="row"><a id="boton_enmienda" class="btn btn-success">Comentar</a></div>
+
+	</form>
+	{% endif %}
+	<div class="row">
+		<h5><strong>Comparte la propuesta</strong> </h5>
+		<span class='st_facebook_large' displayText='Facebook'></span>
+		<span class='st_twitter_large' displayText='Tweet'></span>
+		<span class='st_googleplus_large' displayText='Google +'></span>
+		<span class='st_linkedin_large' displayText='LinkedIn'></span>
+		<span class='st_meneame_large' displayText='Meneame'></span>
+		<span class='st_email_large' displayText='Email'></span>
+	</div>
+
+	<hr class="hr">
+	
+
+	<div id="enmienda_nueva"></div>
+	{% if enmiendas %}
+		{% for enmienda in enmiendas %}
+		<div class="row enmienda">
+			<div id ="enm-votos-{{ enmienda.id }}"class="col-xs-1 votos">
+					{{ enmienda.sum_likes}}
+			</div>
+			{% if user %}
+			<div class="col-xs-1">
+				<div class="enm_favor"><i id="enm-fav-{{ enmienda.id }}" class="fa fa-angle-up fa-lg inactivo"></i></div>
+				<div class="enm_contra"><i id="enm-con-{{ enmienda.id }}"class="fa fa-angle-down fa-lg inactivo"></i></div>
+			</div>
+			<div class="col-xs-10">
+			{% else %}
+			<div class="col-xs-11">
+			{% endif%}
+					<div class="enm_autor">
+					{% if propuesta.autor_id == enmienda.autor_id %}
+					<img src="static/images/insignia.png"> Comentario de {{ enmienda.nombre}} {{ enmienda.apellidos}}
+					{% else %}
+					Comentario de {{ enmienda.nombre}} {{ enmienda.apellidos}} 
+					{% endif %}
+					</div>
+
+					<div class="enm_texto">{{ enmienda.enmienda}}</div>
+					
+					
+					{% if user %}
+					<div class="comentarios-enmiendas">
+						<div class="enlace_comentar"><a href="#" >Responder</a></div>
+						<form class="row textarea_comentarios">
+							<input type="hidden" class="enmienda_id" name="enmienda" value="{{ enmienda.id }}">
+							<textarea id="texto_comentario" name="texto_comentario" class="form-control" rows="2"></textarea>
+						<a class="btn btn-success boton_comentario">Responder</a>
+						</form>
+					</div>
+					{% endif %}
+			</div>
+		</div>
+				
+				
+			{% if comentarios %}
+				{% for comentario in comentarios %}
+				{% if comentario.enmienda_id == enmienda.id %}
+				
+				<div class="row comentarios">
+					<div class="col-xs-1"></div>
+					<div id ="com-votos-{{ comentario.id }}"class="col-xs-1 circular">
+						<span class="centrado">{{ comentario.sum_likes}}</span>
+					</div>
+					{% if user %}
+					<div class="col-xs-1">
+						<div class="com_favor"><i id="com-fav-{{ comentario.id }}" class="fa fa-angle-up fa-lg inactivo"></i></div>
+						<div class="com_contra"><i id="com-con-{{ comentario.id }}"class="fa fa-angle-down fa-lg inactivo"></i></div>
+					</div>
+					<div class="col-xs-9 fondo_comentarios">
+					{% else %}
+					<div class="col-xs-10 fondo_comentarios">
+					{% endif %}
+							<div class="com_autor">
+							{% if propuesta.autor_id == comentario.autor_id %}
+							<img src="static/images/insignia.png"> Respuesta {{ comentario.nombre}} {{ comentario.apellidos}}
+							{% else %}
+							Respuesta de {{ comentario.nombre}} {{ comentario.apellidos}}
+							{% endif %}
+							</div>
+							<div class="com_texto">{{ comentario.comentario}}</div>
+					</div>
+				</div>
+				{% endif %}
+				{% endfor %}
+			{% endif %}
+			<div id="comentario-{{enmienda.id}}"></div>
+		{% endfor %}
+	{% endif %}
+	
+{% endblock%}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Programa colaborativo para las municipales de Ganemos Zaragoza" />
+    <meta name="keywords" content="programa colaborativo municipales Ganemos Zaragoza" />
+    <meta name="robots" content="index,follow" />
+    <meta name="geo.region" content="ES" />
+    <link rel="shortcut icon" href="static/images/favicon_GZGZ.png" />
+
+    <!-- Estilos -->
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+  	
+  	
+
+  	<!-- Font Awesome CDN -->
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+		
+	<!-- Google Fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+
+	<!-- Javascript -->
+  	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  	<script src="static/js/jquery.validate.js"></script>
+	<script src="static/js/messages_es.js"></script>
+	<script src="static/js/bootstrap.min.js"></script>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54953216-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+	{% block scripts %}{% endblock %}
+
+</head>
+<body>
+
+<header class="app-header">
+<div id="header-container">
+	<h1 id="logo"><a href="index.php"><img src="static/images/logoGZ.png" class="img-responsive " alt="logo Ganemos Zaragoza"></a></h1>
+
+	<div class="user-nav">
+		{% if user %}
+		<a href="logout.php" class="login pull-right anonymous-citizen"><span>Desconectar</span>
+		<a class="login pull-right anonymous-citizen"><span>{{ user.nombre }} </span></a>
+		{% else %}
+		<a href="login.php" class="login pull-right anonymous-citizen"><span>Entrar</span></a>
+		{% endif %}
+		<a href="index.php" class="login pull-left"><span>Inicio</span></a>
+	</div>
+</div>
+</header>
+
+<div class="container principal">
+	<div class="row">
+		<div class="central col-md-8">
+		{% block content %}{% endblock %}
+		</div>
+		<div class="col-md-1"></div>
+		<div class="barra-der col-md-3">
+		{% include 'sidebar.html' %}
+		</div>
+	</div>
+</div>
+{% include 'footer.html' %}
+
