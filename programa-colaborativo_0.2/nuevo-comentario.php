@@ -10,7 +10,7 @@ if (isset($_POST["propuesta_id"])&& isset($_POST["usuario_id"])){
 
 		try{
 			//Inserto comentario
-			$conn = new PDO('mysql:host=localhost;dbname=dbname', 'user', 'pass');
+			$conn = new PDO('mysql:host='.MYSQL_HOST.';dbname='.MYSQL_DB, MYSQL_USER, MYSQL_PASS);
 			$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 			$consulta = array('enmienda_id'=>$enmienda_id,'usuario_id'=>$usuario_id,'comentario'=>$comentario);
 			$result=$conn->prepare( "INSERT INTO prog_comentarios (autor_id, enmienda_id, comentario, sum_likes) 

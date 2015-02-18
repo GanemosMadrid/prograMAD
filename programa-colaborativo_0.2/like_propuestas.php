@@ -10,7 +10,7 @@ if(isset ($_POST['cuenta'])){
 
 	//compruebo que se ha votado ya a esa propuesta:
 	try{
-	$conn = new PDO('mysql:host=localhost;dbname=dbname', 'user', 'pass');
+	$conn = new PDO('mysql:host='.MYSQL_HOST.';dbname='.MYSQL_DB, MYSQL_USER, MYSQL_PASS);
 	$consulta = "SELECT propuesta_voto FROM prog_likes_propuesta 
 	WHERE propuesta_id = ".$propuesta." AND usuario_id = ".$usuario.";";
 	$result = $conn->prepare($consulta);

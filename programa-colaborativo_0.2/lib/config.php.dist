@@ -1,11 +1,4 @@
 <?php
-//Protegido por seguridad
-
-//Datos de configuración
-$root ="root";
-$passwd_admin ="root";
-
-
 //Configuración Twig - Motor de plantillas
 //Cargador de Twig
 //Realpath nos da la ruta absoluta de ese directorio.
@@ -19,4 +12,8 @@ $loader = new Twig_Loader_Filesystem(realpath(dirname(__FILE__)."/../vistas"));
 
 $twig = new Twig_Environment($loader);
 
+define('MYSQL_HOST', 'localhost');
+define('MYSQL_DB', 'programad');
+define('MYSQL_USER', 'root');
+define('MYSQL_PASS', 'lalala');
 ?>

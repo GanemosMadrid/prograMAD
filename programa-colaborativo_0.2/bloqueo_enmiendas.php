@@ -8,7 +8,7 @@ if(isset ($_POST['usuario_id'])){
 	$usuario=$_POST['usuario_id'];
 
 	try{
-	$conn = new PDO('mysql:host=localhost;dbname=dbname', 'user', 'pass');
+	$conn = new PDO('mysql:host='.MYSQL_HOST.';dbname='.MYSQL_DB, MYSQL_USER, MYSQL_PASS);
 	$consulta = "SELECT * FROM prog_likes_enmiendas
 	WHERE usuario_id=".$usuario.";";
 	$result = $conn->prepare($consulta);

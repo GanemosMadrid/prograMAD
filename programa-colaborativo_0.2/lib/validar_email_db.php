@@ -1,10 +1,12 @@
 <?php
+include_once "config.php";
+
 /* Descomentaríamos la siguiente línea para mostrar errores de php en el fichero: */
 // ini_set('display_errors', '1');
 /* Definimos los parámetros de conexión con la bbdd: */
-$dbinfo = "mysql:dbname=nombre DB;host=localhost";
-$user = "user";
-$pass = "pass";
+$dbinfo = "mysql:dbname=".MYSQL_DB.";host=".MYSQL_HOST;
+$user = MYSQL_USER;
+$pass = MYSQL_PASS;
 //Nos intentamos conectar:
 try {
     /* conectamos con bbdd e inicializamos conexión como UTF8 */

@@ -15,7 +15,7 @@ function alta($nombre, $apellidos, $email, $password, $ip){
 	$hash = $hasher->HashPassword($password);
 
 	try{
-			$conn = new PDO('mysql:host=localhost;dbname=dbname', 'user', 'pass');
+			$conn = new PDO('mysql:host='.MYSQL_HOST.';dbname='.MYSQL_DB, MYSQL_USER, MYSQL_PASS);
 			$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 			$user = array('nombre'=>$nombre,'apellidos'=>$apellidos,'email'=>$email,'pass'=>$hash,'ip'=>$ip);
 			$result=$conn->prepare( "INSERT INTO users(nombre, apellidos, email, password, ip) 
@@ -35,7 +35,7 @@ function login($email, $pass){
 	// Creamos el objeto que nos permitirá gestionar nuestro hash
 	$hasher = new PasswordHash(8, FALSE);
 	try{
-			$conn = new PDO('mysql:host=localhost;dbname=dbname', 'user', 'pass');
+			$conn = new PDO('mysql:host='.MYSQL_HOST.';dbname='.MYSQL_DB, MYSQL_USER, MYSQL_PASS);
 			$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 			$user = array('email'=>$email);
 			$result=$conn->prepare( "SELECT password FROM users WHERE email=:email;");
@@ -77,7 +77,7 @@ $password = RandomString(8,TRUE,TRUE,FALSE);
 $hasher = new PasswordHash(8, FALSE);
 $hash = $hasher->HashPassword($password);
 	try{
-			$conn = new PDO('mysql:host=localhost;dbname=dbname', 'user', 'pass');
+			$conn = new PDO('mysql:host='.MYSQL_HOST.';dbname='.MYSQL_DB, MYSQL_USER, MYSQL_PASS);
 			$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 			$user = array('email'=>$email, 'password'=>$hash);
 			$result=$conn->prepare( "UPDATE users SET password=:password WHERE email=:email;");
@@ -117,7 +117,7 @@ function autentificado(){
 	if (isset($_SESSION["usuario"])){
 		$usuario=$_SESSION["usuario"];
 		try{
-			$conn = new PDO('mysql:host=localhost;dbname=dbname', 'user', 'pass');
+			$conn = new PDO('mysql:host='.MYSQL_HOST.';dbname='.MYSQL_DB, MYSQL_USER, MYSQL_PASS);
 			$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
             $user=array($usuario);
             $consulta= "SELECT * FROM users WHERE email=?;";
@@ -143,7 +143,7 @@ function listar($consulta){
 	
 	$propuesta=array();
 	try{
-		$conn = new PDO('mysql:host=localhost;dbname=dbname', 'user', 'pass');
+		$conn = new PDO('mysql:host='.MYSQL_HOST.';dbname='.MYSQL_DB, MYSQL_USER, MYSQL_PASS);
 		$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 		
 		$resultado = $conn -> query($consulta);  
@@ -162,7 +162,7 @@ function listar($consulta){
 function preparada($prep, $consulta){
 	
 	try{
-		$conn = new PDO('mysql:host=localhost;dbname=dbname', 'user', 'pass');
+		$conn = new PDO('mysql:host='.MYSQL_HOST.';dbname='.MYSQL_DB, MYSQL_USER, MYSQL_PASS);
 		$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 		$result = $conn->prepare($consulta);
 		$result->execute($prep);
@@ -180,7 +180,7 @@ function preparada($prep, $consulta){
 function listarpreparada($prep, $consulta){
 	
 	try{
-		$conn = new PDO('mysql:host=localhost;dbname=dbname', 'user', 'pass');
+		$conn = new PDO('mysql:host='.MYSQL_HOST.';dbname='.MYSQL_DB, MYSQL_USER, MYSQL_PASS);
 		$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 		$result = $conn->prepare($consulta);
 		$result->execute($prep);
@@ -198,7 +198,7 @@ function listarpreparada($prep, $consulta){
 function autor_propuesta($buscaID,$consulta_autor){
 
 	try{
-		$conn = new PDO('mysql:host=localhost;dbname=dbname', 'user', 'pass');
+		$conn = new PDO('mysql:host='.MYSQL_HOST.';dbname='.MYSQL_DB, MYSQL_USER, MYSQL_PASS);
 		$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 		$result = $conn->prepare($consulta_autor);
 		$result->execute($buscaID);
@@ -221,7 +221,7 @@ function userid(){
 		//Busco el usuario
 		try{
 			$usuario=$_SESSION["usuario"];
-			$conn = new PDO('mysql:host=localhost;dbname=dbname', 'user', 'pass');
+			$conn = new PDO('mysql:host='.MYSQL_HOST.';dbname='.MYSQL_DB, MYSQL_USER, MYSQL_PASS);
 			$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
             $user=array($usuario);
             $consulta= "SELECT id FROM users WHERE email=?;";
@@ -247,7 +247,7 @@ function nueva_propuesta($titulo, $propuesta, $sector, $barrio ){
 
 	$autor = userid();
 	try{
-			$conn = new PDO('mysql:host=localhost;dbname=dbname', 'user', 'pass');
+			$conn = new PDO('mysql:host='.MYSQL_HOST.';dbname='.MYSQL_DB, MYSQL_USER, MYSQL_PASS);
 			$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 			$cadena = array('autor'=>$autor, 'titulo'=>$titulo, 'propuesta'=>$propuesta,'sector'=>$sector,'barrio'=>$barrio);
 			$result=$conn->prepare( "INSERT INTO prog_propuestas(autor_id, titulo, propuesta, sum_likes, positivos, negativos, comentarios, sector, barrio) 
@@ -261,7 +261,7 @@ function nueva_propuesta($titulo, $propuesta, $sector, $barrio ){
 
 	//consigo el id de la propuesta
 	try{
-			$conn = new PDO('mysql:host=localhost;dbname=dbname', 'user', 'pass');
+			$conn = new PDO('mysql:host='.MYSQL_HOST.';dbname='.MYSQL_DB, MYSQL_USER, MYSQL_PASS);
 			$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 			$cadena = array('autor'=>userid(), 'titulo'=>$titulo, 'propuesta'=>$propuesta);
 			$result=$conn->prepare( "SELECT id FROM prog_propuestas WHERE propuesta = :propuesta and autor_id =:autor and titulo= :titulo;");
@@ -283,7 +283,7 @@ function nueva_propuesta($titulo, $propuesta, $sector, $barrio ){
 function editar_propuesta($titulo, $propuesta, $sector, $barrio, $id){
 
 	try{
-			$conn = new PDO('mysql:host=localhost;dbname=dbname', 'user', 'pass');
+			$conn = new PDO('mysql:host='.MYSQL_HOST.';dbname='.MYSQL_DB, MYSQL_USER, MYSQL_PASS);
 			$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 			$cadena = array('titulo'=>$titulo, 'propuesta'=>$propuesta,'id'=>$id, 'sector'=>$sector,'barrio'=>$barrio);
 			$result=$conn->prepare( "UPDATE prog_propuestas SET titulo =:titulo, propuesta=:propuesta, sector=:sector, barrio=:barrio 
