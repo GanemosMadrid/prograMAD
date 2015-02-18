@@ -1,0 +1,158 @@
+{% extends "base2.html" %}
+
+{% block title %} Entrar {% endblock %}
+{% block scripts %}
+<script>
+$(document).ready(function() {
+
+    $("#login_form").validate({
+        rules: {
+          email_login: {
+            required: true,
+            email: true,
+          },
+          pass_login: {
+            required: true,
+          },
+        messages:{
+          email_login: {
+            required: "Tienes que escribir un email",
+          }, 
+          pass_login: {
+            required: "Escribe la contraseña",
+          }
+        },  
+        }
+    });
+    $("#signup_form").validate({
+        rules: {
+          email_signup: {
+            email:true,
+            required:true,
+            remote: "lib/validar_email_db.php",
+          },
+          pass_signup: "required",
+          nombre: "required",
+          apellidos: "required",
+        },
+        messages:{
+          email_signup: {
+            remote: "Este email ya está registrado",
+          },
+          nombre: {
+            required: "Escribe tu nombre",
+          },
+          apellidos: {
+            required: "Escribe tus apellidos",
+          }, 
+          pass_signup: {
+            required: "Escribe una contraseña",
+          }
+        },
+    });
+});
+</script>
+{% endblock %}
+
+{% block content %}    
+    <div class="form-wrap">
+        <div class="row">
+            <div id="login">
+                <div class="form-header">
+                    <i class="fa fa-user"></i>
+                    <h2>Entrar</h2>
+                    {% if error %}
+                    <p class="no_login">Usuario o contraseña incorrecta. Inténtalo otra vez.</p>
+                    {% endif%}
+                </div>
+                <form id="login_form"  method="post" action="entrar.php">
+                <div class="form-main">
+                    <div class="form-group">
+                        <input type="text" name="email_login" id="email_login" class="form-control" placeholder="Email">
+                        <input type="password" name="pass_login" id="pass_login" class="form-control" placeholder="Contraseña">
+                    </div>
+                    <button id="button_login" type="submit" class="btn btn-block signin">Entrar</button>
+                </form>
+                </div>
+                <div class="form-footer">
+                    <div class="row">
+                        <div class="col-xs-7">
+                            <i class="fa fa-unlock-alt"></i>
+                            <a href="" id="forgot_from_1">Recordar la contraseña</a>
+                        </div>
+                        <div class="col-xs-5">
+                            <i class="fa fa-check"></i>
+                            <a href="" id="signup_from_1">Regístrate</a>
+                        </div>
+                    </div>
+                </div>      
+            </div>
+
+            <div id="signup">
+                <div class="form-header">
+                    <i class="fa fa-user"></i>
+                    <h2>Alta</h2>
+                </div>
+                <form id="signup_form" method="post" action="alta.php">
+                <div class="form-main">
+                    <div class="form-group">
+                        <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre">
+                        <input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="Apellidos">
+                        <input type="text" name="email_signup" id="email_signup" class="form-control" placeholder="Email">
+                        <input type="password" name="pass_signup" id="pass_signup" class="form-control" placeholder="Contraseña">
+                    </div>
+                    <button id="button_signup" type="submit" class="btn btn-block signin">Registrarse</button>
+                </form>
+                </div>
+                <div class="form-footer">
+                    <p>De conformidad con lo dispuesto en la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal, te informamos de que los datos personales que nos proporciones así como aquellos que nos facilites en un futuro serán incorporados a un fichero automatizado de datos de carácter personal responsabilidad de Ganemos Zaragoza, con la finalidad de gestionar las comunicaciones que podamos realizar contigo.
+
+                    <p>Para ejercitar los derechos de acceso, rectificación, oposición y cancelación reconocidos por la legislación vigente, el interesado deberá realizar una comunicación a info@ganemoszaragoza.com, indicando como asunto “Protección de datos”.
+
+                    <p>Asumimos que al registrarte estás conforme con estas advertencias legales.
+                </div>      
+            </div>
+
+            <div id="forgot">
+                <div class="form-header">
+                    <i class="fa fa-user"></i>
+                    <h2>Recuperar contraseña</h2>
+                </div>
+                <div class="form-main">
+                <form id="form_forgot" method="post" action="forgot.php">
+                    <div class="form-group">
+                        <input type="text" name="email_forgot"id="email_forgot" class="form-control" placeholder="Email">
+                    </div>
+                    <button id="button_forgot" type="submit" class="btn btn-block signin">Recuperar contraseña</button>
+                </form>
+                </div>  
+            </div>
+        </div>
+    </div> 
+
+    <script>
+
+        $('#signup').hide();
+        $('#forgot').hide();
+        $('#login_from_1').click(function (e) {
+            e.preventDefault();
+            $('#signup').hide();
+            $('#forgot').hide();
+            $('#login').show();
+        });
+        $('#signup_from_1').click(function (e) {
+            e.preventDefault();
+            $('#login').hide();
+            $('#forgot').hide();
+            $('#signup').show();
+            
+        });
+        $('#forgot_from_1').click(function (e) {
+            e.preventDefault();
+            $('#signup').hide();
+            $('#login').hide();
+            $('#forgot').show();
+        })
+
+    </script>                         
+{% endblock %}
