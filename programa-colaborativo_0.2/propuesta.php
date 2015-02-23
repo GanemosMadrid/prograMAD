@@ -6,16 +6,15 @@ if(isset ($_GET['id'])){
 	
 	$id =$_GET['id'];
 	$buscaID=array('id'=>$id);
-	$propuesta = "SELECT  p.id, p.autor_id,p.titulo, p.propuesta, p.sum_likes,p.barrio, p.sector,
+	$propuesta = "SELECT  p.id, p.autor_id,p.titulo, p.propuesta, p.sum_likes, p.barrio, p.sector,
 	(p.positivos /(p.positivos+p.negativos)) porcentaje, p.comentarios,
-	u.nombre, u.apellidos, u.grupo, u.id as user_id
-		FROM prog_propuestas as p, users as u
-		WHERE p.id=:id and p.autor_id=u.id ";
+	u.nombre, u.apellidos, u.id as user_id
+		FROM prog_propuestas p INNER JOIN users u ON p.autor_id=u.id
+		WHERE p.id=:id";
 	
-	$enmiendas = 'SELECT u.nombre, u.apellidos, e.id, e.enmienda, e.sum_likes, e.autor_id, u.grupo
-		FROM prog_enmiendas AS e, users AS u
+	$enmiendas = 'SELECT u.nombre, u.apellidos, e.id, e.enmienda, e.sum_likes, e.autor_id
+		FROM prog_enmiendas e INNER JOIN users u ON p.autor_id=u.id
 		WHERE e.propuesta_id =:id
-		AND e.autor_id = u.id 
 		ORDER BY e.sum_likes DESC, e.propuesta_id ASC';
 
 	$id_enmiendas = listarpreparada($buscaID,'SELECT e.id
@@ -23,10 +22,8 @@ if(isset ($_GET['id'])){
 		WHERE e.propuesta_id =:id');
 
 
-	$comentarios = 'SELECT c.enmienda_id, u.nombre, u.apellidos, c.id, c.comentario, c.sum_likes, c.autor_id, u.grupo
-FROM prog_enmiendas AS e, users AS u, prog_comentarios AS c
-WHERE c.enmienda_id = e.id
-AND c.autor_id = u.id';
+	$comentarios = 'SELECT c.enmienda_id, u.nombre, u.apellidos, c.id, c.comentario, c.sum_likes, c.autor_id
+		FROM prog_enmiendas e INNER JOIN users u ON p.autor_id=u.id INNER JOIN prog_comentarios c ON u.id = c.autor_id';
 	
 	$id_propuesta =$_GET['id'];
 	$ID_prop=array('id'=>$id_propuesta);
