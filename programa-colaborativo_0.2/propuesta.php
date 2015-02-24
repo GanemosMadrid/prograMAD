@@ -13,7 +13,7 @@ if(isset ($_GET['id'])){
 		WHERE p.id=:id";
 	
 	$enmiendas = 'SELECT u.nombre, u.apellidos, e.id, e.enmienda, e.sum_likes, e.autor_id
-		FROM prog_enmiendas e INNER JOIN users u ON p.autor_id=u.id
+		FROM prog_enmiendas e INNER JOIN users u ON e.autor_id=u.id
 		WHERE e.propuesta_id =:id
 		ORDER BY e.sum_likes DESC, e.propuesta_id ASC';
 
@@ -41,7 +41,7 @@ if(isset ($_GET['id'])){
 			
 		}	
 }
-$datos = array('autor'=>$autor,'id'=>$buscaID,'user'=>autentificado(),'propuesta' => preparada($buscaID,$propuesta), 'enmiendas'=>listarpreparada($buscaID,$enmiendas), 'comentarios'=>listarpreparada($id_enmienda, $comentarios));
+$datos = array('autor'=>$autor,'id'=>$buscaID,'user'=>autentificado(),'propuesta' => preparada($buscaID,$propuesta), 'enmiendas'=>listarpreparada($buscaID,$enmiendas), 'comentarios'=>listarpreparada($id_enmiendas, $comentarios));
 
 echo $template->render($datos);
 ?>
