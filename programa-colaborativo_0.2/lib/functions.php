@@ -1,5 +1,5 @@
 <?php
-include_once "configurar.php";
+include_once "config.php";
 include_once "PasswordHash.php";
 
 //La coloco aquí para asegurar que se ejecuta siempre una única vez.
