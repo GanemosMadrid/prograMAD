@@ -182,6 +182,11 @@ ALTER TABLE `users` ADD `id_rol` INT NOT NULL AFTER `id`;
 ALTER TABLE `roles`
  ADD PRIMARY KEY (`id`);
  
+INSERT INTO `roles` (`id`, `descripcion`) VALUES
+(1, 'Ciudadana'),
+(2, 'Programa'),
+(3, 'Administradora');
+ 
 ALTER TABLE `prog_enmiendas`
  ADD CONSTRAINT `fk_enmiendas`
    FOREIGN KEY (`propuesta_id`)
