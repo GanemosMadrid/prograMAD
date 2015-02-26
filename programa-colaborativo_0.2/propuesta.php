@@ -20,10 +20,11 @@ if(isset ($_GET['id'])){
 	$id_enmiendas = listarpreparada($buscaID,'SELECT e.id
 		FROM prog_enmiendas AS e
 		WHERE e.propuesta_id =:id');
-
-
+						
 	$comentarios = 'SELECT c.enmienda_id, u.nombre, u.apellidos, c.id, c.comentario, c.sum_likes, c.autor_id
-		FROM prog_enmiendas e INNER JOIN users u ON p.autor_id=u.id INNER JOIN prog_comentarios c ON u.id = c.autor_id';
+					FROM prog_enmiendas AS e, users AS u, prog_comentarios AS c
+					WHERE c.enmienda_id = e.id
+					AND c.autor_id = u.id';
 	
 	$id_propuesta =$_GET['id'];
 	$ID_prop=array('id'=>$id_propuesta);
@@ -38,7 +39,7 @@ if(isset ($_GET['id'])){
 			$usuario=array('usuario_id'=>$usuario_id);
 		}else{
 			$usuario=array('usuario_id'=>$usuario_id);
-			
+			$autor=array();
 		}	
 }
 $datos = array('autor'=>$autor,'id'=>$buscaID,'user'=>autentificado(),'propuesta' => preparada($buscaID,$propuesta), 'enmiendas'=>listarpreparada($buscaID,$enmiendas), 'comentarios'=>listarpreparada($id_enmiendas, $comentarios));

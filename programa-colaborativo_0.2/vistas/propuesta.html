@@ -356,11 +356,16 @@ $(document).ready(function() {
 					{{ propuesta.sum_likes}}
 				</div>
 				<div class="col-xs-11">
-					<div class="titulo"><a href="http://programa.ganemoszaragoza.com/propuesta.php?id={{propuesta.id}}">{{ propuesta.titulo}}</a></div>
+					<div class="titulo"><a href="propuesta.php?id={{propuesta.id}}">{{ propuesta.titulo}}</a></div>
 					{% if propuesta.grupo > 0 %}
 					<div class="autor"><img src="static/images/grupo{{ propuesta.grupo}}.png" alt="Grupo {{ propuesta.apellidos}}" title="Grupo {{ propuesta.apellidos}}"> Propuesta del Grupo {{ propuesta.apellidos}}
 					{% else %}
 					<div class="autor">Presentada por {{ propuesta.nombre}} {{ propuesta.apellidos}} 
+					{% endif %}
+					{% if user %}
+						{% if user.idRol == 3 %}
+							<a href="borrar-propuesta.php?id={{ propuesta.id }}&propuestaId={{propuesta.id}}">BORRAR</a>
+						{% endif %}
 					{% endif %}
 					</div>
 				</div>
@@ -443,6 +448,11 @@ $(document).ready(function() {
 						{% else %}
 						Comentario de {{ enmienda.nombre}} {{ enmienda.apellidos}} 
 						{% endif %}
+						{% if user %}
+							{% if user.idRol == 3 %}
+								<a href="borrar-enmienda.php?id={{ enmienda.id }}&propuestaId={{propuesta.id}}">BORRAR</a>
+							{% endif %}
+						{% endif %}
 					{% endif %}
 					</div>
 
@@ -490,6 +500,11 @@ $(document).ready(function() {
 								{% else %}
 								Respuesta de {{ comentario.nombre}} {{ comentario.apellidos}}
 								{% endif %}
+								{% if user %}
+									{% if user.idRol == 3 %}
+										<a href="borrar-comentario.php?id={{ comentario.id }}&propuestaId={{propuesta.id}}">BORRAR</a>
+									{% endif %}
+								{% endif %}
 							{% endif %}
 							</div>
 							<div class="com_texto">{{ comentario.comentario|nl2br}}</div>
@@ -501,5 +516,4 @@ $(document).ready(function() {
 			<div id="comentario-{{enmienda.id}}"></div>
 		{% endfor %}
 	{% endif %}
-	
 {% endblock%}

@@ -34,20 +34,23 @@ function login($email, $pass){
 
 	// Creamos el objeto que nos permitirá gestionar nuestro hash
 	$hasher = new PasswordHash(8, FALSE);
+	$hashedPass = $hasher->HashPassword($pass);
 	try{
 			$conn = new PDO('mysql:host='.MYSQL_HOST.';dbname='.MYSQL_DB, MYSQL_USER, MYSQL_PASS);
 			$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 			$user = array('email'=>$email);
-			$result=$conn->prepare( "SELECT password FROM users WHERE email=:email;");
+			//$result=$conn->prepare( "SELECT password FROM users WHERE email=:email;");
+			$result=$conn->prepare( "SELECT password, id_rol FROM users WHERE email=:email;");
 			$result->execute($user);
 			foreach ($result as $cont) {
 				$password = $cont['password'];
-				$user_id =$cont['id'];
-			}	
+				$idRol =$cont['id_rol'];
+			}
 			//comprueba que usuario y contraseña coinciden y crea sesión de usuario.
 			if ($hasher->CheckPassword($pass, $password)) {
 				if (!isset($_SESSION["usuario"])){
 	    			$_SESSION["usuario"] = $email;
+					$_SESSION["id_rol"] = $idRol;
 				}
 				if (isset ($_SESSION['error'])){
 					unset($_SESSION['error']);
@@ -108,6 +111,7 @@ $hash = $hasher->HashPassword($password);
 //logout
 function logout() {
 		unset($_SESSION['usuario']);
+		unset($_SESSION['id_rol']);
 		header( 'Location: index.php' );
 }
 
@@ -120,19 +124,22 @@ function autentificado(){
 			$conn = new PDO('mysql:host='.MYSQL_HOST.';dbname='.MYSQL_DB, MYSQL_USER, MYSQL_PASS);
 			$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
             $user=array($usuario);
-            $consulta= "SELECT * FROM users WHERE email=?;";
+            $consulta= "SELECT u.id, u.nombre, u.apellidos, u.id_rol, r.descripcion FROM users u 
+						INNER JOIN roles r ON u.id_rol = r.id WHERE email=?;";
             $result= $conn->prepare($consulta);
             $result->execute($user);
 			foreach($result as $res){
 				$nombre = $res['nombre'];
 				$apellidos = $res['apellidos'];
 				$id = $res['id'];
+				$idRol = $res['id_rol'];
+				$rol = $res['descripcion'];
 			}
 		}catch(PDOException $e ){
 			echo $e -> getMessage();
 		}	
 			
-		return array("nombre"=>$nombre, "apellidos"=>$apellidos, "id"=>$id);
+		return array("nombre"=>$nombre, "apellidos"=>$apellidos, "id"=>$id, "idRol"=>$idRol, "rol"=>$rol);
 	}
 }
 

@@ -168,6 +168,33 @@ ALTER TABLE `prog_propuestas`
 --
 ALTER TABLE `users`
  ADD PRIMARY KEY (`id`);
+ 
+ALTER TABLE `users`
+ ADD UNIQUE KEY `CORREO_UNICO` (`email`);
+ 
+CREATE TABLE IF NOT EXISTS `roles` (
+  `id` int(11) NOT NULL,
+  `descripcion` varchar(80) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ 
+ALTER TABLE `users` ADD `id_rol` INT NOT NULL AFTER `id`;
+ 
+ALTER TABLE `roles`
+ ADD PRIMARY KEY (`id`);
+ 
+ALTER TABLE `prog_enmiendas`
+ ADD CONSTRAINT `fk_enmiendas`
+   FOREIGN KEY (`propuesta_id`)
+   REFERENCES `prog_propuestas` (`id`)
+   ON DELETE CASCADE 
+   ON UPDATE RESTRICT;
+   
+ALTER TABLE `prog_comentarios`
+ ADD CONSTRAINT `fk_comentarios`
+   FOREIGN KEY (`enmienda_id`)
+   REFERENCES `prog_enmiendas` (`id`)
+   ON DELETE CASCADE 
+   ON UPDATE RESTRICT;
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
