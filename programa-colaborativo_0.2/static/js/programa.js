@@ -1,9 +1,9 @@
 var listobjetivos={
 "objetivos":[
     {"id":"madrid-democratico", 
-    	"titulo":"Apuesta por una ciudad habitable",
-    	"descripcion": "Ganemos Madrid defiende una ciudad habitable, equilibrada territorial y medioambientalmente, en la que cada barrio sea vivible, sostenible",
-    	 "apuesta":"ciudad-habitable"}, 
+    	"titulo":"Desarrollar un planeamiento de Madrid democrático, participativo y no especulativo.",
+    	"descripcion": "",
+        "apuesta":"ciudad-habitable"}, 
     {"id":"eliminar-desigualdad",	
      "titulo":"Eliminar la desigualdad y promover la cooperación entre los ámbitos territoriales",
      "apuesta":"ciudad-habitable",
@@ -30,7 +30,7 @@ var listobjetivos={
      "descripcion":""},
 
     {"id":"control-transparencia",	
-     "titulo":"",
+     "titulo":"Implementar mecanismos de control, rendición de cuentas y transparencia de la gestión pública.",
      "apuesta":"democracia-transparencia",
      "descripcion":""},
 

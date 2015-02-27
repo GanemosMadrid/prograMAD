@@ -1,0 +1,57 @@
+div.objetivo{
+	margin: 1em 0em;
+	
+	padding: 1em 0.5em;
+	color:#444;
+	font-size: 1.2em;
+	font-family: "Open Sans";
+	font-weight:300;
+}
+
+#objetivos-ciudad-habitable div.objetivo{
+	background-color: rgba(0,120,255,0.1);
+}
+
+#objetivos-democracia-transparencia div.objetivo{
+	background-color: rgba(0,140,70,0.1);
+}
+
+#objetivos-derechos-sociales div.objetivo{
+	background-color: rgba(255,191,0,0.1);
+}
+
+#objetivos-modelo-sostenible div.objetivo{
+	background-color: rgba(150,150,150,0.1);
+}
+div.titulo-apuesta {
+	height:12em;
+	line-height: 9em;
+vertical-align: middle;
+margin: 1em 0em;
+padding: 1em 0.5em;
+}
+div.titulo-apuesta h3{
+font-size: 1.3em;
+text-align: center;
+vertical-align: middle;
+display: inline-block;
+
+}
+div.titulo-apuesta h3 a{
+color: #fff;
+	}
+#col-ciudad-habitable div.titulo-apuesta{
+	background-color: rgb(0,120,255);
+}
+
+#col-democracia-transparencia div.titulo-apuesta{
+	background-color: rgb(0,140,70);
+}
+
+#col-derechos-sociales div.titulo-apuesta{
+	background-color: rgb(255,191,0);
+}
+
+#col-modelo-sostenible div.titulo-apuesta{
+	background-color: rgb(150,150,150);
+}
