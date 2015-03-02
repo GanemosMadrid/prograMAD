@@ -1,3 +1,11 @@
+/* home page */
+#intro-text{
+	margin-top:3em;
+	font-size:1.8em;
+	font-family: 'Roboto Slab', serif;
+
+}
+
 div.objetivo{
 	margin: 1em 0em;
 	
@@ -54,4 +62,44 @@ color: #fff;
 
 #col-modelo-sostenible div.titulo-apuesta{
 	background-color: rgb(150,150,150);
+}
+
+#lista-objetivos h3{
+font-size: 1.3em
+}
+#lista-objetivos .apuesta {
+	margin-left:1em;
+	color:#666;
+}
+/****enviar propuesta **/
+
+#enlaces-sidebar div.objetivo{
+	margin: 0.1em 0em;	
+	padding: 0.4em 0.5em;
+	color:#279A9A;
+	font-size: 1.2em;
+	font-family: "Open Sans";
+	font-weight:300;
+}
+#enlaces-sidebar a{
+
+}
+.barra-der{
+	background-color: #ddd;
+	border: none;
+	padding:1em;
+}
+header.app-header, div.footer, nav, nav a {
+background-color:#279A9A;
+transition: background-color 0.6s;
+
+}
+nav a:hover{
+	background-color:#279AEE;
+
+}
+.principal h1{
+	color : #279AEE;
+	font-family: 'Roboto Slab', serif;
+
 }
