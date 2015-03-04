@@ -103,3 +103,32 @@ nav a:hover{
 	font-family: 'Roboto Slab', serif;
 
 }
+
+#lista-objetivos label{
+	padding: 0.4em 1em;
+	transition: background 0.3s;
+}
+#lista-objetivos label.active, #lista-objetivos label.active:hover{
+	background-color:#279A9A;
+	color:white;
+}
+#lista-objetivos label:hover{
+	background-color:#9f9;
+	
+}
+
+#lista-objetivos input{
+/*display: none; */
+}
+#step-elije{
+	overflow: auto;
+}
+#step-escribe{
+	display: none;
+	overflow:auto
+}
+#step-escribe input[type="text"]{
+border: solid #999 1px;
+
+}
+}
