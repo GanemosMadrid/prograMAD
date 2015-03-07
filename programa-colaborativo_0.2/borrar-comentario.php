@@ -1,7 +1,7 @@
 <?php
 include_once "lib/functions.php";
 
-if (isset($_SESSION["id_rol"]) && $_SESSION["id_rol"] == 3){
+if (isset($_SESSION["id_rol"]) && $_SESSION["id_rol"] == 2){
 	$id = $_GET["id"];
 	
 	try{

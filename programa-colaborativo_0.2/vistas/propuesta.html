@@ -362,10 +362,8 @@ $(document).ready(function() {
 					{% else %}
 					<div class="autor">Presentada por {{ propuesta.nombre}} {{ propuesta.apellidos}} 
 					{% endif %}
-					{% if user %}
-						{% if user.idRol == 3 %}
-							<a href="borrar-propuesta.php?id={{ propuesta.id }}&propuestaId={{propuesta.id}}">BORRAR</a>
-						{% endif %}
+					{% if user and user.idRol == 2 %}
+						<a href="borrar-propuesta.php?id={{ propuesta.id }}&propuestaId={{propuesta.id}}">BORRAR</a>
 					{% endif %}
 					</div>
 				</div>
@@ -377,7 +375,7 @@ $(document).ready(function() {
 		</div>
 	</div>
 	
-	{% if autor %}
+	{% if autor or user.idRol == 2 %}
 	<div class="row"><a href="editar-propuesta.php?id={{ propuesta.id }}">Editar propuesta</a></div>
 	<hr class="hr">
 	
@@ -448,10 +446,8 @@ $(document).ready(function() {
 						{% else %}
 						Comentario de {{ enmienda.nombre}} {{ enmienda.apellidos}} 
 						{% endif %}
-						{% if user %}
-							{% if user.idRol == 3 %}
-								<a href="borrar-enmienda.php?id={{ enmienda.id }}&propuestaId={{propuesta.id}}">BORRAR</a>
-							{% endif %}
+						{% if user and user.idRol == 2 %}
+							<a href="borrar-enmienda.php?id={{ enmienda.id }}&propuestaId={{propuesta.id}}">BORRAR</a>
 						{% endif %}
 					{% endif %}
 					</div>
@@ -500,10 +496,8 @@ $(document).ready(function() {
 								{% else %}
 								Respuesta de {{ comentario.nombre}} {{ comentario.apellidos}}
 								{% endif %}
-								{% if user %}
-									{% if user.idRol == 3 %}
-										<a href="borrar-comentario.php?id={{ comentario.id }}&propuestaId={{propuesta.id}}">BORRAR</a>
-									{% endif %}
+								{% if user and user.idRol == 2 %}
+									<a href="borrar-comentario.php?id={{ comentario.id }}&propuestaId={{propuesta.id}}">BORRAR</a>
 								{% endif %}
 							{% endif %}
 							</div>

@@ -17,7 +17,7 @@ include_once "lib/functions.php";
 		$usuario = (integer)userid();
 
 		//Compruebo que el autor de la propuesta sea el usuario logueado y sólo él pueda editar.
-		if ($autor==$usuario){
+		if ($autor==$usuario || $_SESSION['id_rol'] == 2){
 
 			$datos = array('autor'=>$autor,'user'=>autentificado(),'propuesta' => preparada($buscaID,$consulta_propuestas));
 			echo $template->render($datos);
