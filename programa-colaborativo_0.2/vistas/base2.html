@@ -26,7 +26,7 @@
 	<!-- Google Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
-
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700' rel='stylesheet' type='text/css'>
 	<!-- Javascript -->
   	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   	<script src="static/js/jquery.validate.js"></script>
@@ -48,20 +48,34 @@
 </head>
 <body>
 
-<header class="app-header">
-<div id="header-container">
-	<h1 id="logo"><a href="index.php"><img src="static/images/logoGZ.png" class="img-responsive " alt="logo Ganemos Zaragoza"></a></h1>
+<header class="app-header-ahora">
+					<div class="user-nav">
+					{% if user %}
+					<a href="logout.php" class="login anonymous-citizen"><span>Desconectar</span>
+					<a class="login pull-right anonymous-citizen"><span>{{ user.nombre }} </span></a>
+					{% else %}
+					<a href="login.php" class="login  anonymous-citizen"><span>Entrar</span></a>
+					{% endif %}					
+				</div>
+	<div class="container" id="header-container-ahora">
 
-	<div class="user-nav">
-		{% if user %}
-		<a href="logout.php" class="login pull-right anonymous-citizen"><span>Desconectar</span>
-		<a class="login pull-right anonymous-citizen"><span>{{ user.nombre }} </span></a>
-		{% else %}
-		<a href="login.php" class="login pull-right anonymous-citizen"><span>Entrar</span></a>
-		{% endif %}
-		<a href="index.php" class="login pull-left"><span>Inicio</span></a>
-	</div>
-</div>
+		<div class="row">
+			<div class="col-sm-2">
+				<a href="index.php"><img src="static/images/logo_ahora.png" style="height:60px; margin-top:-15px" class="img-responsive " alt="logo Ahora Madrid"></a>
+			</div>
+			<div class="col-sm-10">
+				<div>
+					<nav style="text-align:right">
+					    <ul>
+						    <li><a href="todas.php">Ver todas</a></li>
+						    <li><a href="#sectores">Sectores</a></li>
+						    <!-- <li><a href="#barrios">Barrios</a></li> -->
+					    </ul>
+					</nav>
+				</div>
+			</div> <!-- col -->
+		</div>  <!-- row -->
+	</div> <!-- container -->
 </header>
 
 <div class="container principal">

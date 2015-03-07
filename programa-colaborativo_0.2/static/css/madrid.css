@@ -1,134 +1,183 @@
 /* home page */
-#intro-text{
-	margin-top:3em;
-	font-size:1.8em;
-	font-family: 'Roboto Slab', serif;
-
+#intro-text {
+  margin-top: 3em;
+  font-size: 1.8em;
+  font-family: 'Roboto Slab', serif;
 }
-
-div.objetivo{
-	margin: 1em 0em;
-	
-	padding: 1em 0.5em;
-	color:#444;
-	font-size: 1.2em;
-	font-family: "Open Sans";
-	font-weight:300;
+div.objetivo {
+  margin: 1em 0em;
+  padding: 1em 0.5em;
+  color: #444;
+  font-size: 1.2em;
+  font-family: "Open Sans";
+  font-weight: 300;
 }
-
-#objetivos-ciudad-habitable div.objetivo{
-	background-color: rgba(0,120,255,0.1);
+header.app-header-ahora {
+  width: 100%;
+  background-color: #00a48c;
 }
-
-#objetivos-democracia-transparencia div.objetivo{
-	background-color: rgba(0,140,70,0.1);
+header.app-header-ahora div.user-nav {
+  display: block;
+  text-align: right;
 }
-
-#objetivos-derechos-sociales div.objetivo{
-	background-color: rgba(255,191,0,0.1);
+header.app-header-ahora div.user-nav a {
+  display: inline-block;
+  margin: 0 0em;
+  padding: 0em 1em;
+  color: white;
+  font-weight: bold;
 }
-
-#objetivos-modelo-sostenible div.objetivo{
-	background-color: rgba(150,150,150,0.1);
+header.app-header-ahora nav ul {
+  padding: 0px;
+  margin: 10px 0px;
+}
+.carousel-control.left,
+.carousel-control.right {
+  background: transparent;
+}
+.carousel-control.left span,
+.carousel-control.right span {
+  display: none;
+}
+#objetivos-ciudad-habitable div.objetivo {
+  background-color: rgba(0, 120, 255, 0.1);
+}
+#objetivos-democracia-transparencia div.objetivo {
+  background-color: rgba(0, 140, 70, 0.1);
+}
+#objetivos-derechos-sociales div.objetivo {
+  background-color: rgba(255, 191, 0, 0.1);
+}
+#objetivos-modelo-sostenible div.objetivo {
+  background-color: rgba(150, 150, 150, 0.1);
 }
 div.titulo-apuesta {
-	height:12em;
-	line-height: 9em;
-vertical-align: middle;
-margin: 1em 0em;
-padding: 1em 0.5em;
+  height: 12em;
+  line-height: 9em;
+  vertical-align: middle;
+  margin: 1em 0em;
+  padding: 1em 0.5em;
 }
-div.titulo-apuesta h3{
-font-size: 1.3em;
-text-align: center;
-vertical-align: middle;
-display: inline-block;
-
+div.titulo-apuesta h3 {
+  font-size: 1.3em;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
 }
-div.titulo-apuesta h3 a{
-color: #fff;
-	}
-#col-ciudad-habitable div.titulo-apuesta{
-	background-color: rgb(0,120,255);
+div.titulo-apuesta h3 a {
+  color: #fff;
 }
-
-#col-democracia-transparencia div.titulo-apuesta{
-	background-color: rgb(0,140,70);
+#col-ciudad-habitable div.titulo-apuesta {
+  background-color: #0078ff;
 }
-
-#col-derechos-sociales div.titulo-apuesta{
-	background-color: rgb(255,191,0);
+#col-democracia-transparencia div.titulo-apuesta {
+  background-color: #008c46;
 }
-
-#col-modelo-sostenible div.titulo-apuesta{
-	background-color: rgb(150,150,150);
+#col-derechos-sociales div.titulo-apuesta {
+  background-color: #ffbf00;
 }
-
-#lista-objetivos h3{
-font-size: 1.3em
+#col-modelo-sostenible div.titulo-apuesta {
+  background-color: #969696;
+}
+#lista-objetivos h3 {
+  font-size: 1.3em;
 }
 #lista-objetivos .apuesta {
-	margin-left:1em;
-	color:#666;
+  margin-left: 1em;
+  color: #666;
 }
 /****enviar propuesta **/
-
-#enlaces-sidebar div.objetivo{
-	margin: 0.1em 0em;	
-	padding: 0.4em 0.5em;
-	color:#279A9A;
-	font-size: 1.2em;
-	font-family: "Open Sans";
-	font-weight:300;
+#enlaces-sidebar div.objetivo {
+  margin: 0.1em 0em;
+  padding: 0.4em 0.5em;
+  color: #279A9A;
+  font-size: 1.2em;
+  font-family: "Open Sans";
+  font-weight: 300;
 }
-#enlaces-sidebar a{
-
+.barra-der {
+  background-color: #ddd;
+  border: none;
+  padding: 1em;
 }
-.barra-der{
-	background-color: #ddd;
-	border: none;
-	padding:1em;
+#nuevapropuesta h2,
+#nuevapropuesta h3 {
+  background-color: gold;
+  padding: 0.5em;
 }
-header.app-header, div.footer, nav, nav a {
-background-color:#279A9A;
-transition: background-color 0.6s;
-
+header.app-header,
+div.footer,
+nav,
+nav a {
+  background-color: transparent;
+  transition: background-color 0.6s;
 }
-nav a:hover{
-	background-color:#279AEE;
-
+div.navbar-default {
+  background-color: #00a48c;
 }
-.principal h1{
-	color : #279AEE;
-	font-family: 'Roboto Slab', serif;
-
+nav a:hover {
+  background-color: #279AEE;
 }
-
-#lista-objetivos label{
-	padding: 0.4em 1em;
-	transition: background 0.3s;
+.principal h1 {
+  color: #00a48c;
+  font-family: 'ubuntu', sans-serif;
 }
-#lista-objetivos label.active, #lista-objetivos label.active:hover{
-	background-color:#279A9A;
-	color:white;
+h2.madrid {
+  font-family: 'ubuntu', sans-serif;
+  font-size: 4em;
+  text-align: center;
 }
-#lista-objetivos label:hover{
-	background-color:#9f9;
-	
+.listado {
+  border-bottom: 1px solid #00a48c;
 }
-
-#lista-objetivos input{
-/*display: none; */
+.listado .votos {
+  background: #00a48c url('../images/programa-icon.png');
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  color: #222;
+  text-align: left;
 }
-#step-elije{
-	overflow: auto;
+.listado span.sector {
+  color: #00a48c;
 }
-#step-escribe{
-	display: none;
-	overflow:auto
+#info-distrito {
+  border-radius: 5px;
+  border: dotted 1px #888;
+  background: #444;
+  color: white;
+  padding: 2em;
+  margin-bottom: 1em;
 }
-#step-escribe input[type="text"]{
-border: solid #999 1px;
-
+#info-distrito #nombre-distrito {
+  text-transform: uppercase;
+  font-size: 2em;
 }
+#info-distrito select {
+  background: #444;
+  color: white;
+}
+#lista-objetivos label {
+  padding: 0.4em 1em;
+  transition: background 0.3s;
+}
+#lista-objetivos label.active,
+#lista-objetivos label.active:hover {
+  background-color: #279A9A;
+  color: white;
+}
+#lista-objetivos label:hover {
+  background-color: #9f9;
+}
+#lista-objetivos input {
+  /*display: none; */
+}
+#step-elije {
+  overflow: auto;
+}
+#step-escribe {
+  display: none;
+  overflow: auto;
+}
+#step-escribe input[type="text"] {
+  border: solid #999 1px;
 }

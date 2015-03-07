@@ -62,7 +62,6 @@ header.app-header .user-nav .user {
 header.app-header .user-nav .login {
   padding: 6px 12px;
   display: inline-block;
-  margin-top: 15px;
 }
 header.app-header .user-nav .login i {
   display: none;
@@ -493,31 +492,28 @@ nav  {
     display: block;
     width: 100%;
     overflow: hidden;
-    background: #e35d64;
 }
 
 nav ul {
-    margin: 60px 0px 0px;
-    padding: .7em;
-    float: left;
+
     list-style: none;
-    
+    margin-right: 5em;
+    margin-top:0.5em;
 }
 
 nav li {
-    float:left;
+    display : inline;
 }
 
 nav a {
-    float:left;
     padding: .8em 1.5em;
     text-decoration: none;
     color: #FFF;
     font: 1.1em/1;
     letter-spacing: 1px;
     text-transform: uppercase;
-    background: #e35d64; 
-    font-weight: bold;          
+    font-weight: bold;   
+    color:#333;       
  }
  
 nav a:hover, nav a:focus {
