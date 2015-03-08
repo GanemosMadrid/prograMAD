@@ -360,7 +360,10 @@ $(document).ready(function() {
 					{% if propuesta.grupo > 0 %}
 					<div class="autor"><img src="static/images/grupo{{ propuesta.grupo}}.png" alt="Grupo {{ propuesta.apellidos}}" title="Grupo {{ propuesta.apellidos}}"> Propuesta del Grupo {{ propuesta.apellidos}}
 					{% else %}
-					<div class="autor">Presentada por {{ propuesta.nombre}} {{ propuesta.apellidos}} 
+					<div class="autor">
+						{% if propuesta.id_rol == 2 %}<strong>{% endif %}
+						Presentada por {{ propuesta.nombre}} {{ propuesta.apellidos}}
+						{% if propuesta.id_rol == 2 %}</strong>{% endif %}
 					{% endif %}
 					{% if user and user.idRol == 2 %}
 						<a href="borrar-propuesta.php?id={{ propuesta.id }}&propuestaId={{propuesta.id}}">BORRAR</a>

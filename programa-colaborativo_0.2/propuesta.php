@@ -8,11 +8,11 @@ if(isset ($_GET['id'])){
 	$buscaID=array('id'=>$id);
 	$propuesta = "SELECT  p.id, p.autor_id,p.titulo, p.propuesta, p.sum_likes, p.barrio, p.sector,
 	(p.positivos /(p.positivos+p.negativos)) porcentaje, p.comentarios,
-	u.nombre, u.apellidos, u.id as user_id
+	u.nombre, u.apellidos, u.id as user_id, u.id_rol
 		FROM prog_propuestas p INNER JOIN users u ON p.autor_id=u.id
 		WHERE p.id=:id";
 	
-	$enmiendas = 'SELECT u.nombre, u.apellidos, e.id, e.enmienda, e.sum_likes, e.autor_id
+	$enmiendas = 'SELECT u.nombre, u.apellidos, e.id, e.enmienda, e.sum_likes, e.autor_id, u.id_rol
 		FROM prog_enmiendas e INNER JOIN users u ON e.autor_id=u.id
 		WHERE e.propuesta_id =:id
 		ORDER BY e.sum_likes DESC, e.propuesta_id ASC';
@@ -21,7 +21,7 @@ if(isset ($_GET['id'])){
 		FROM prog_enmiendas AS e
 		WHERE e.propuesta_id =:id');
 						
-	$comentarios = 'SELECT c.enmienda_id, u.nombre, u.apellidos, c.id, c.comentario, c.sum_likes, c.autor_id
+	$comentarios = 'SELECT c.enmienda_id, u.nombre, u.apellidos, c.id, c.comentario, c.sum_likes, c.autor_id, u.id_rol
 					FROM prog_enmiendas AS e, users AS u, prog_comentarios AS c
 					WHERE c.enmienda_id = e.id
 					AND c.autor_id = u.id';
