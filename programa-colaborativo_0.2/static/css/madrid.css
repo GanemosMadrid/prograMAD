@@ -1,4 +1,11 @@
 /* home page */
+@font-face {
+  font-family: 'all_things_pinkmedium';
+  src: url('../fonts/All Things Pink-webfont.eot');
+  src: url('../fonts/All Things Pink-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/All Things Pink-webfont.woff2') format('woff2'), url('../fonts/All Things Pink-webfont.woff') format('woff'), url('../fonts/All Things Pink-webfont.ttf') format('truetype'), url('../fonts/All Things Pink-webfont.svg#all_things_pinkmedium') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 #intro-text {
   margin-top: 3em;
   font-size: 1.8em;
@@ -16,9 +23,14 @@ header.app-header-ahora {
   width: 100%;
   background-color: #00a48c;
 }
+header.app-header-ahora #header-container-ahora #logo-img {
+  height: 60px;
+  padding: 4px 0px;
+}
 header.app-header-ahora div.user-nav {
   display: block;
   text-align: right;
+  margin-right: 2em;
 }
 header.app-header-ahora div.user-nav a {
   display: inline-block;
@@ -30,6 +42,18 @@ header.app-header-ahora div.user-nav a {
 header.app-header-ahora nav ul {
   padding: 0px;
   margin: 10px 0px;
+}
+.block-custom-blocks-socialbuttonsheader div {
+  float: right;
+  margin-left: 0px;
+}
+#social-buttons img {
+  width: 24px;
+  margin-top: 2px;
+}
+#social-buttons a {
+  font-family: all_things_pinkmedium;
+  font-size: 1.2em;
 }
 .carousel-control.left,
 .carousel-control.right {
@@ -63,9 +87,13 @@ div.titulo-apuesta h3 {
   text-align: center;
   vertical-align: middle;
   display: inline-block;
+  text-shadow: #444 1px 1px 3px;
 }
 div.titulo-apuesta h3 a {
   color: #fff;
+}
+div.objetivo {
+  text-shadow: #eee 1px 0px 1px;
 }
 #col-ciudad-habitable div.titulo-apuesta {
   background-color: #0078ff;
@@ -79,13 +107,6 @@ div.titulo-apuesta h3 a {
 #col-modelo-sostenible div.titulo-apuesta {
   background-color: #969696;
 }
-#lista-objetivos h3 {
-  font-size: 1.3em;
-}
-#lista-objetivos .apuesta {
-  margin-left: 1em;
-  color: #666;
-}
 /****enviar propuesta **/
 #enlaces-sidebar div.objetivo {
   margin: 0.1em 0em;
@@ -96,17 +117,27 @@ div.titulo-apuesta h3 a {
   font-weight: 300;
 }
 .barra-der {
-  background-color: #ddd;
+  background-color: transparent;
   border: none;
   padding: 1em;
+  border: 1px dashed #999;
+  border-radius: 10px;
+  margin-left: 4em;
+  margin-top: 10em;
 }
 #nuevapropuesta h2,
 #nuevapropuesta h3 {
-  background-color: gold;
+  /*background-color: gold;*/
   padding: 0.5em;
+  font-family: ubuntu, helvetica, sans-serif;
+  font-size: 1.3em;
+  text-transform: uppercase;
+}
+#nuevapropuesta h4 {
+  font-weight: lighter;
+  font-family: helvetica, sans-serif;
 }
 header.app-header,
-div.footer,
 nav,
 nav a {
   background-color: transparent;
@@ -127,11 +158,17 @@ h2.madrid {
   font-size: 4em;
   text-align: center;
 }
+#programa {
+  padding-top: 6em;
+}
+#programa h2 {
+  margin-bottom: 0.5em;
+}
 .listado {
   border-bottom: 1px solid #00a48c;
 }
 .listado .votos {
-  background: #00a48c url('../images/programa-icon.png');
+  background: #00a48c url('../images/programa-icono2.png');
   background-repeat: no-repeat;
   background-position: right bottom;
   color: #222;
@@ -140,44 +177,128 @@ h2.madrid {
 .listado span.sector {
   color: #00a48c;
 }
-#info-distrito {
+div.votos {
+  background: #00a48c;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  color: #fff;
+  text-align: left;
+}
+#distritos {
+  background-color: #555;
+  padding: 4em 0;
+}
+#distritos h2 {
+  color: white;
+  margin-bottom: 1.5em;
+  text-shadow: black 1px 1px 2px;
+}
+#distritos #info-distrito {
   border-radius: 5px;
   border: dotted 1px #888;
-  background: #444;
+  /*background: #555;*/
   color: white;
   padding: 2em;
   margin-bottom: 1em;
 }
-#info-distrito #nombre-distrito {
+#distritos #info-distrito #nombre-distrito {
   text-transform: uppercase;
   font-size: 2em;
 }
-#info-distrito select {
-  background: #444;
+#distritos #info-distrito select {
+  background: #555;
   color: white;
 }
-#lista-objetivos label {
+#distritos .info-ayuda {
+  color: white;
+}
+#lista-objetivos .apuesta {
+  border: 1px dotted #888;
+  border-radius: 10px;
+  padding-bottom: 2em;
+  padding-left: 1em;
+  margin-bottom: 1em;
+}
+#lista-objetivos label.objetivo:hover {
+  background-color: #4cae4c;
+  color: white;
+}
+#lista-objetivos label.objetivo {
+  margin-left: 1em;
+  color: #666;
   padding: 0.4em 1em;
-  transition: background 0.3s;
+  transition: all 0.1s;
 }
-#lista-objetivos label.active,
-#lista-objetivos label.active:hover {
-  background-color: #279A9A;
+#lista-objetivos label.objetivo.active,
+#lista-objetivos label.objetivo.active:hover {
+  background-color: #4cae4c;
   color: white;
 }
-#lista-objetivos label:hover {
-  background-color: #9f9;
+#step-elige {
+  overflow: none;
+  display: none;
 }
-#lista-objetivos input {
-  /*display: none; */
-}
-#step-elije {
-  overflow: auto;
+#step-distritos {
+  display: none;
 }
 #step-escribe {
-  display: none;
   overflow: auto;
 }
 #step-escribe input[type="text"] {
   border: solid #999 1px;
+}
+#step-distritos #distritos-inner {
+  margin-top: 2em;
+}
+#step-distritos #distritos-inner div#canvas {
+  display: none;
+}
+#step-distritos #distritos-inner .info-ayuda {
+  margin: 0px;
+}
+#step-distritos #envio {
+  margin-top: 3em;
+}
+.mini-texto-ayuda {
+  font-size: 0.9em;
+}
+.footer {
+  background-color: #00a58d;
+  border-top: 5px solid #062033;
+  color: #fff;
+  padding: 70px 0;
+  font-size: 1.3em;
+}
+.footer img {
+  max-width: 100%;
+  height: auto;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+.footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.footer a,
+.footer a:focus,
+.footer a:hover {
+  text-decoration: none;
+  outline: 0;
+}
+.footer a {
+  color: #fff;
+  -webkit-transition: all 0.3s ease-in 0s;
+  -moz-transition: all 0.3s ease-in 0s;
+  -ms-transition: all 0.3s ease-in 0s;
+  -o-transition: all 0.3s ease-in 0s;
+  transition: all 0.3s ease-in 0s;
+}
+.footer .footer-single li {
+  line-height: 32px;
+  font-size: 1.4em;
+}
+.footer h6 {
+  font-family: 'all_things_pinkmedium', sans-serif;
+  font-size: 1.6em;
 }

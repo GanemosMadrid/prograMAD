@@ -32,6 +32,8 @@
   	<script src="static/js/jquery.validate.js"></script>
 	<script src="static/js/bootstrap.min.js"></script>
 	<script src="static/js/programa.js"></script>
+	<script src="static/js/raphael.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/distritos.js"></script>
 	<script src="static/js/main.js"></script>
 
 	<script>
@@ -48,22 +50,9 @@
 
 </head>
 <body>
-
 {% include 'header.html' %}
 
-<div class="container principal">
-	<div class="row">
-		<div class="central col-md-8">
 		{% block content %}{% endblock %}
-		</div>
-		<div class="col-md-1"></div>
-		<div class="barra-der col-md-3">
-		{% include 'sidebar.html' %}
-		</div>
-	</div>
-	<div class="row"> 
-		{% block content2 %}{% endblock %}
-	</div>
-</div>
+		
 {% include 'footer.html' %}
 

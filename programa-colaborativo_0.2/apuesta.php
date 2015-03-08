@@ -1,9 +1,9 @@
 <?php
 include_once "lib/functions.php";
 
-if(isset ($_GET['sector'])){
+if(isset ($_GET['apuesta'])){
 
-$tag= $_GET['sector'];
+$tag= $_GET['apuesta'];
 $etiqueta = str_replace ( '-' ,'-', $tag);
 
 $template = $twig->loadTemplate('propuestas.html');

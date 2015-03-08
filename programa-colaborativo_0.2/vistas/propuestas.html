@@ -10,21 +10,19 @@
 {% block scripts %}
 <script>
 $(document).ready(function() {
-	$(".sector").each(function() {
+	/*$(".sector").each(function() {
 		var sector = $(this).text();
 		sector = sector.replace(/-/g, ' ');
 		$(this).html('<strong>'+sector+'</strong>');
-	});
+	});*/
 
-	$(".barrio").each(function() {
-		var barrio = $(this).text();
-		if (barrio=="montanana"){
-			barrio=barrio.replace("montanana","montañana");
-		}else{
-			barrio = barrio.replace(/-/g, ' ');
-		}
-		$(this).html('<strong>'+barrio+'</strong>');
-	});
+	obj="{{tag}}"
+	infoObjetivo=getObjetivo(obj);
+	if(infoObjetivo!=null){
+		$('.objetivo-descripcion').empty().html(infoObjetivo.descripcion)
+		$('.objetivo-titulo').empty().html(infoObjetivo.titulo)
+	}
+	
 });
 
 </script>
@@ -32,22 +30,12 @@ $(document).ready(function() {
 {% block content %}
 	<div class="row">
 		<div class="col-xs-12">
-			<h2>Propuestas de programa: {{tag}}</h2>
+			<h2 > <small><i>objetivo:</i></small> <br/><span class="objetivo-titulo"> </span></h2>
+			<p class="objetivo-descripcion"> </p>
+
 		</div>
 	</div>
-	{% if user %}
-	<div class="row">
-		<div class="col-xs-12">
-			<a class="btn btn-success btn-lg btn-block" href="nueva-propuesta.php">SUBIR UNA NUEVA PROPUESTA</a>
-		</div>
-	</div>	
-	{% else %}
-	<div class="row">
-		<div class="col-xs-12">
-			<a href="login.php">Tienes que estar identificado para hacer una propuesta, votarla o comentarla.</a>
-		</div>
-	</div>
-	{% endif %}
+	
 
 	<div class="row">
 		<ul class="nav nav-tabs" role="tablist" id="tabsIndex">
@@ -167,6 +155,22 @@ $(document).ready(function() {
 		<div class="">No hay propuestas todavía. <a href="nueva-propuesta.php">Envíanos la tuya</a>.</div> 
 	{% endif %}
 	</div>
+
+	{% if user %}
+	<div class="row">
+		<div class="col-xs-12">
+			<h4 class="text-center"> ¿Echas en falta alguna medida en este objetivo? </h4>
+			<a class="btn btn-success btn-lg btn-block" href="nueva-propuesta.php">SUBIR UNA NUEVA MEDIDA</a>
+		</div>
+	</div>	
+	{% else %}
+	<div class="row">
+		<div class="col-xs-12">
+			<a href="login.php"> Tienes que estar identificado para hacer una propuesta. ¡Registrate y participa!</a>
+		</div>
+	</div>
+	{% endif %}
+
 	</div>
 
 	<script>

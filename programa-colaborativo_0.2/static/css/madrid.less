@@ -1,7 +1,18 @@
 /* home page */
 @verde: #00a48c;
+@verdeOk: #4cae4c;
 
-
+@font-face {
+    font-family: 'all_things_pinkmedium';
+    src: url('../fonts/All Things Pink-webfont.eot');
+    src: url('../fonts/All Things Pink-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/All Things Pink-webfont.woff2') format('woff2'),
+         url('../fonts/All Things Pink-webfont.woff') format('woff'),
+         url('../fonts/All Things Pink-webfont.ttf') format('truetype'),
+         url('../fonts/All Things Pink-webfont.svg#all_things_pinkmedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
 #intro-text{
 	margin-top:3em;
@@ -24,11 +35,15 @@ header.app-header-ahora{
 	width: 100%;
 	background-color:@verde;
 	#header-container-ahora{
-		
+		#logo-img{
+			 height:60px; 
+			 padding: 4px 0px;
+		}
 	}
 	div.user-nav{
 		display: block;
 		text-align: right;
+		margin-right: 2em;
 		a{
 			display: inline-block;;
 			margin: 0 0em;
@@ -43,7 +58,21 @@ header.app-header-ahora{
 	}
 
 }
+.block-custom-blocks-socialbuttonsheader div {
+float: right;
+margin-left: 0px;
 
+}
+#social-buttons {
+	img {
+		width:24px;
+		margin-top:2px;
+	}
+	a{
+		font-family:all_things_pinkmedium;
+		font-size: 1.2em;
+	}
+}
 .carousel-control.left,.carousel-control.right {
 	background: transparent;
 	span{
@@ -69,19 +98,23 @@ header.app-header-ahora{
 div.titulo-apuesta {
 	height:12em;
 	line-height: 9em;
-vertical-align: middle;
-margin: 1em 0em;
-padding: 1em 0.5em;
-}
-div.titulo-apuesta h3{
-font-size: 1.3em;
-text-align: center;
-vertical-align: middle;
-display: inline-block;
+	vertical-align: middle;
+	margin: 1em 0em;
+	padding: 1em 0.5em;
+	h3{
+		font-size: 1.3em;
+		text-align: center;
+		vertical-align: middle;
+		display: inline-block;
+		text-shadow: #444 1px 1px 3px;
+		a{
+			color: #fff;
+		}
+	}
 
 }
-div.titulo-apuesta h3 a{
-color: #fff;
+	div.objetivo{
+		text-shadow: #eee 1px 0px 1px;
 	}
 #col-ciudad-habitable div.titulo-apuesta{
 	background-color: rgb(0,120,255);
@@ -99,13 +132,8 @@ color: #fff;
 	background-color: rgb(150,150,150);
 }
 
-#lista-objetivos h3{
-font-size: 1.3em
-}
-#lista-objetivos .apuesta {
-	margin-left:1em;
-	color:#666;
-}
+
+
 /****enviar propuesta **/
 
 #enlaces-sidebar div.objetivo{
@@ -120,18 +148,30 @@ font-size: 1.3em
 
 }
 .barra-der{
-	background-color: #ddd;
+	background-color: transparent;
 	border: none;
-	padding:1em;
+	padding: 1em;
+	border: 1px dashed #999;
+	border-radius: 10px;
+	margin-left: 4em;
+	margin-top: 10em;
 }
 
 #nuevapropuesta{
 	 h2,h3{
-		background-color: gold;
+		/*background-color: gold;*/
 		padding:0.5em;
+		font-family: ubuntu, helvetica, sans-serif;
+
+		font-size: 1.3em;
+	text-transform: uppercase;
+	}
+	h4{
+		font-weight: lighter;
+		font-family: helvetica, sans-serif;
 	}
 }
-header.app-header, div.footer, nav, nav a{
+header.app-header, nav, nav a{
 	background-color:transparent;
 	transition: background-color 0.6s;
 }
@@ -155,15 +195,20 @@ h2.madrid{
 	font-size:4em;
 	text-align: center;
 }
-
+#programa{
+	padding-top:6em;
+	h2{
+		margin-bottom: 0.5em;
+	}
+}
 
 .listado{
 	border-bottom: 1px solid @verde;
 	.votos{
-		background: @verde url('../images/programa-icon.png') ;
+		background: @verde url('../images/programa-icono2.png') ;
 		background-repeat: no-repeat;
 		background-position:  right bottom;
-		
+
 		color:#222;
 		text-align: left;
 
@@ -172,48 +217,150 @@ h2.madrid{
 		color: @verde;
 	}
 }
-#info-distrito{
-	border-radius: 5px;
-	border: dotted 1px #888;
-	background: #444;
-	color:white;
-	padding:2em;
-	margin-bottom: 1em;
-	#nombre-distrito{
-		text-transform: uppercase;
-		font-size: 2em;
+div.votos{
+	background: @verde ;
+	background-repeat: no-repeat;
+	background-position:  right bottom;
+	color:#fff;
+	text-align: left;
+}
+
+.propuesta-individual{
+
+}
+
+#distritos{
+	background-color:#555;
+	padding: 4em 0;
+
+	h2{
+		color:white;
+		margin-bottom: 1.5em;
+		text-shadow: black 1px 1px 2px;
+	}
+	#info-distrito{
+		border-radius: 5px;
+		border: dotted 1px #888;
+		/*background: #555;*/
+		color:white;
+		padding:2em;
+		margin-bottom: 1em;
+		#nombre-distrito{
+			text-transform: uppercase;
+			font-size: 2em;
+
+		}
+		select {
+			background:#555;
+			color:white;
+		}
+	}
+	.info-ayuda{
+		color: white;
+	}
+}
+
+#lista-objetivos{ 
+	.apuesta{
+		border: 1px dotted #888;
+		border-radius: 10px;
+		padding-bottom: 2em;
+		padding-left: 1em;
+		margin-bottom: 1em;
+	}
+	label.objetivo:hover{
+		background-color:@verdeOk;
+		color:white;	
 
 	}
-	select {
-	background:#444;
-	color:white;
+
+	label.objetivo {
+		margin-left:1em;
+		color:#666;
+		padding: 0.4em 1em;
+		transition: all 0.1s;
 	}
-}
-#lista-objetivos label{
-	padding: 0.4em 1em;
-	transition: background 0.3s;
-}
-#lista-objetivos label.active, #lista-objetivos label.active:hover{
-	background-color:#279A9A;
-	color:white;
-}
-#lista-objetivos label:hover{
-	background-color:#9f9;
-	
+	label.objetivo.active, label.objetivo.active:hover{
+		background-color:@verdeOk;
+		color:white;
+	}
+
 }
 
 
-#lista-objetivos input{
-/*display: none; */
+
+#step-elige{
+	overflow: none;
+	display: none;
 }
-#step-elije{
-	overflow: auto;
+#step-distritos{
+	display: none;
 }
 #step-escribe{
-	display: none;
+	
 	overflow:auto
 }
 #step-escribe input[type="text"]{
 border: solid #999 1px;
+
+}
+
+#step-distritos{
+	#distritos-inner{
+		margin-top:2em;
+		div#canvas{
+			display: none;
+		}
+		.info-ayuda{
+			margin: 0px;
+
+		}
+	}
+	#envio{
+		margin-top:3em;
+	}
+}
+
+.mini-texto-ayuda{
+	font-size: 0.9em;
+}
+
+.footer{
+	background-color: #00a58d;
+	border-top: 5px solid #062033;
+	color: #fff;
+	padding: 70px 0;
+	font-size: 1.3em;
+	img {
+	max-width: 100%;
+	height: auto;
+	padding-top: 16px;
+	padding-bottom: 16px;
+	}
+	ul{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	a, a:focus, a:hover {
+	text-decoration: none;
+	outline: 0;
+	}
+	a {
+	color: #fff;
+	-webkit-transition: all .3s ease-in 0s;
+	-moz-transition: all .3s ease-in 0s;
+	-ms-transition: all .3s ease-in 0s;
+	-o-transition: all .3s ease-in 0s;
+	transition: all .3s ease-in 0s;
+	}
+	.footer-single li {
+		line-height: 32px;
+		font-size: 1.4em
+	}
+	h6{
+		font-family: 'all_things_pinkmedium', sans-serif;
+font-size: 1.6em;
+	}
 
 }

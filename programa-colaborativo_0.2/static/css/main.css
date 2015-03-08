@@ -267,7 +267,7 @@ input[type="password"] {
 }
 /* generales */
 .principal{
-margin-top:80px;
+margin-top:50px;
 }
 .principal:after{
   height:150px;
@@ -339,22 +339,8 @@ html {
   min-height: 100%;
 }
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 50px;
-  background-color: #C60C30;
-  
 }
 
-.footer a{
-  color:#FFF;
-}
 .text-muted{
   text-align: center;
   padding-top:10px;

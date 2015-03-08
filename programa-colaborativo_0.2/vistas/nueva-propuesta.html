@@ -1,4 +1,4 @@
-{% extends "base2.html" %}
+{% extends "base_envia.html" %}
 
 {% block title %} Nueva propuesta {% endblock %}
 {% block scripts %}
@@ -12,12 +12,13 @@ bkLib.onDomLoaded(function() {
 <script>
 $(document).ready(function() {
 	optionIsSelected=false;
+	
 	$("#nuevapropuesta").validate({
 	    rules: {
 	      titulo: {
 			required: true,
 	      },
-	      sector: {
+	      propuesta: {
 	      	required: true,
 	      }
 	    },
@@ -25,90 +26,166 @@ $(document).ready(function() {
 	      titulo: {
 			required: "Tiene que poner un título",
 	      },
-	      sector: {
+	      propuesta: {
 	      	required: "Tiene que elegir un sector",
 	    }
 	}
 	});
 
-
+//genera los objetivos bajo cada propuesta;
     $.each(listobjetivos.objetivos, function(index,jsonObject){
 
-	        $('#lista-objetivos-'+jsonObject.apuesta).append('<label class="apuesta"><input type="radio" name="sector" class="'+
+	        $('#lista-objetivos-'+jsonObject.apuesta).append('<label class="objetivo"><input type="radio" name="sector" class="'+
 			'apuesta-' + jsonObject.apuesta +' " id="' + jsonObject.id+'" value="'+jsonObject.id+'"> ' + jsonObject.titulo+ ' </label>');
    
 	});
 	
 	$("#lista-objetivos input:radio").change(function () {
 			$('#form-seleccion-objetivos').find('label').removeClass('active');	
-			$('#step-escribe').show();
-			$('.nicEdit-panelContain').parent().width('100%');
+			$('#step-distritos').show();
+			/*$('.nicEdit-panelContain').parent().width('100%');
 			$('.nicEdit-panelContain').parent().next().width('98%');
 			$('.nicEdit-main').width('100%');
 
-			$('.nicEdit-main').css('min-height','10em');
+			$('.nicEdit-main').css('min-height','10em');*/
 			if($(this).is(':checked')){
 				$(this).parent().addClass('active');
 			}
 			if(!optionIsSelected)	//first time scroll to the form element		 
-				$("html, body").animate({ scrollTop: $('#step-escribe').offset().top-100},1000);
+				$("html, body").animate({ scrollTop: $('#step-distritos').offset().top-100},1000);
 			optionIsSelected=true;
+
+			
 		});
+
+	$('a#continue1').on('click',function(event){	//first time scroll to the form element		
+		event.preventDefault()
+		if( $("#nuevapropuesta").valid()==true){
+			$('#step-elige').fadeIn("fast", function(){ 
+					$("html, body").animate({ scrollTop: $('#step-elige').offset().top-100},1000);
+				}); 
+		}
+			
+	});
+
+	$( "#step-distritos" ).on('change','select',function() {
+	  if($(this).val()!="none"){
+	  	$('div#canvas').fadeIn();
+	  }else{
+	  	$('div#canvas').fadeOut();
+	  }
+	});
 
 });
 </script>
 {% endblock %}
 {% block content %}
-<form class="form-horizontal" role="form" id="nuevapropuesta" action="nueva.php" method="post" enctype="multipart/form-data">
-	<h2 > LOS PROBLEMAS Y SOLUCIONES PARA MADRID SON MUCHOS Y COMPLEJOS: 
-		    		COMIENZA ELIGIENDO UNA CATEGORÍA DONDE COLOCAR TU PROPUESTA: </h2>	
-	<div id="step-elije">
-		<div class="col-xs-10 col-md-offset-1" id="lista-objetivos">
-		  	<div class="form-group" id="form-seleccion-objetivos"  >
-		    	
-		    	<div class="row"> 		    		
-		    		<div class="col-md-6" id="lista-objetivos-ciudad-habitable">
-		    			<h3> Apuesta por una ciudad Habitable </h3>
-		    		</div>
-		    		<div class="col-md-6" id="lista-objetivos-democracia-transparencia">
-		    			<h3> Apuesta por una reestructuración del ayuntamiento hacia una mayor democracia, descentralización, transparencia y participación </h3>
-		    		</div>
-		    	</div>
-		    	<div class="row"> 		
-		    		<div class="col-md-6" id="lista-objetivos-derechos-sociales">
-		    			<h3> Apuesta por la protección y defensa de los derechos sociales </h3>
-		    		</div>
-		    		<div class="col-md-6" id="lista-objetivos-modelo-sostenible">
-		    			<h3> Apuesta por un nuevo modelo económico sostenible social y medioambientalmente</h3>
-		    		</div>
-		    	</div>
+<div class="container principal">
+	<form class="form-horizontal" role="form" id="nuevapropuesta" action="nueva.php" method="post" enctype="multipart/form-data">
+		<div class="row">
+			<div class="central col-md-8">			
+				<div id="step-escribe">
+					<h1 > LOS PROBLEMAS Y SOLUCIONES PARA MADRID SON MUCHOS Y COMPLEJOS... TODAS LAS PROPUESTAS SON BIENVENIDAS </h1>
+					<h4><p> Te harán falta <strong> sólo 3 sencillos pasos</strong> para enviar una propuesta </p> 
+						<p>No olvides que ya hay muchas medidas incluidas en la plataforma, <a href="index.php#sectores"> empieza por echar un ojo a lo que ya hay </a> antes de enviar algo nuevo </p>
+					</h4>	
+					    		<h3>1. Comienza escribiendo tu nueva medida de una forma clara y concisa: </h3>	
+					<div class="col-xs-10 col-md-offset-1">
+					  <div class="form-group">
+					    <label for="titulo">Título *</label>
+					    <input type="text" name ="titulo" class="form-control" id="titulo"
+					           placeholder="Título de la propuesta">
+					  </div>
+					</div>
+					
+					<div class="col-xs-10 col-md-offset-1">
+					  <div class="form-group">
+					    <label for="propuesta">Escribe la propuesta *</label>
+					    <textarea class="form-control" name="propuesta" id="propuesta" rows="10"></textarea> 
+					  </div>
+					  <a href="#" id="continue1" class="btn-lg btn-block btn btn-success"> continuemos...</a>
+					</div>
+				</div>			
+			</div>
+			<div class="col-md-4 hidden-sm">
+				<div class="barra-der">
+					{% include 'sidebar.html' %}
+				</div>
+			</div>
+		</div> <!-- row-->
+
+		<div class="row">
+			<div id="step-elige">
+				<div class="col-xs-12" id="lista-objetivos">
+					<h3> 2. AHORA ELIGE <strong>UN OBJETIVO </strong>  DONDE ENCUADRAR TU PROPUESTA: </h3>
+					<div class="form-group" id="form-seleccion-objetivos"  >
+
+						<div class="row"> 		    		
+							<div class="col-md-6" >
+								<div class="apuesta" id="lista-objetivos-ciudad-habitable">
+									<h3> Apuesta por una ciudad Habitable </h3>
+								</div>
+							</div>
+							<div class="col-md-6" >
+								<div class="apuesta" id="lista-objetivos-democracia-transparencia">
+									<h3> Apuesta por una reestructuración del ayuntamiento hacia una mayor democracia, descentralización, transparencia y participación </h3>
+								</div>
+							</div>
+						</div>
+						<div class="row"> 		
+							<div class="col-md-6" >
+								<div class="apuesta" id="lista-objetivos-derechos-sociales">
+									<h3> Apuesta por la protección y defensa de los derechos sociales </h3>
+								</div>
+							</div>
+							<div class="col-md-6" >
+								<div class="apuesta" id="lista-objetivos-modelo-sostenible">
+									<h3> Apuesta por un nuevo modelo económico sostenible social y medioambientalmente</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div id="step-escribe">
-		<h2 > Ahora escribe tu propuesta de una forma clara, y concisa. </h2>	
-		<div class="col-xs-10 col-md-offset-1">
-		  <div class="form-group">
-		    <label for="titulo">Título *</label>
-		    <input type="text" name ="titulo" class="form-control" id="titulo"
-		           placeholder="Título de la propuesta">
-		  </div>
-		</div>
-		
-		<div class="col-xs-10 col-md-offset-1">
-		  <div class="form-group">
-		    <label for="propuesta">Escribe la propuesta *</label>
-		    <textarea class="form-control" name="propuesta" id="propuesta" rows="10"></textarea> 
-		  </div>
-		</div>
-	
+		<div id="step-distritos">
+			<h3> 3. ¿Tu medida está centrada en un distrito? </h3>
+			<div class="row" id="distritos-inner">				
+				<div class="col-md-6">
+					<div id="info-distrito">
+						<div id="nombre-distrito">
+							<div class="form-group">
+								<select value="none" id="distritoSelect" name="barrio" class="form-control">
+									<option value="none">No, mi medida es para toda la ciudad </option>
+								</select>
+							</div> 
+						</div> 
+						<div id="datos-distrito"> </div>
+					</div>
+					
+					<div class="info-ayuda">
+						¿Está conectada tu propuesta a un distrito en concreto? Márcalo, este paso es opcional
+					</div>
 
-	
-		<div class="col-xs-10 col-md-offset-1">
-		  <button type="submit" id="enviar" class="btn-lg btn-block btn btn-success">Enviar</button>
-		</div>
-	</div>
+					<div id="envio">
+						<h3>4. ¡Ya has terminado! Ahora pulsa enviar para mandarnos tu propuesta.</h3>
+						
+						<button type="submit" id="enviar" class="btn-lg btn-block btn btn-success">Enviar</button>
+						<span class="mini-texto-ayuda"> *Nota: una vez pulses enviar no podrás volver a editar tu propuesta</span>
+					</div>
+					
+				</div>
+				<div class="col-md-6 hidden-sm">
+					<div id="canvas">
+						<div id="paper"></div>
+					</div>
+				</div>
+			</div>
+			
+				
+			
 </form>
+</div> <!--container principal
 
 
 

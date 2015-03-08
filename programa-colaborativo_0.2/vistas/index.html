@@ -43,13 +43,15 @@
 		$(this).html('<strong>'+barrio+'</strong>');
 	});
 
-
-	
-
-
-
-        
-
+	$( "#distritos-inner" ).on('change','select',function() {
+			if($(this).val()!='none'){
+				$('a#ir_propuestas_barrios').attr('href','barrio.php?barrio='+$(this).val());
+				$('a#ir_propuestas_barrios').removeClass('disabled')
+			}
+			else{
+				$('a#ir_propuestas_barrios').addClass('disabled')
+			}
+	});
 });
 
 </script>
@@ -67,33 +69,33 @@
 
 
 {% block content %}
-	<div class="row">
+<div class="container principal">
+	<!-- <div class="row">
 		<div class="col-xs-12">
 			<h1 class="center">PLATAFORMA DE PROGRAMA COLABORATIVO</h1>
 		</div>
-	</div>
+	</div> -->
 	<div class="row">
 		<div class="col-xs-12">
-			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-				  <!-- Indicators -->
+			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="8000">
+				  <!-- Indicators 
 				  <ol class="carousel-indicators">
 				    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 				    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-				  </ol>
+				  </ol>-->
 
 				  <!-- Wrapper for slides -->
 				  <div class="carousel-inner" role="listbox">
-				    <div class="item active">
-				      <img src="static/images/diagrama-01.png" alt="explicacion">
-				      <div class="carousel-caption">
-				        Ganemos Madrid lo peta
-				      </div>
+				  	<div class="item active">
+				      <img src="static/images/slides-01.png" alt="intro">				      
 				    </div>
 				    <div class="item">
-				      <img src="static/images/diagrama-02.png" alt="">
-				      <div class="carousel-caption">
-				        Larga vida al partido instrumental
-				      </div>
+				      <img src="static/images/slides-02.png" alt="explicacion">
+				      
+				    </div>
+				    <div class="item">
+				      <img src="static/images/slides-03.png" alt="">
+				      
 				    </div>
 
 				  </div>
@@ -118,11 +120,10 @@
 			No obstante cuando votemos seleccionaremos las cosas más importantes donde centrarse.
 		</div>
 	</div>	
-
 	
 	<div class="row" >
 		<div class="col-md-4 col-md-offset-1 col-sm-6" >
-			<a class="btn btn-warning btn-lg btn-block" href="#programa" style="margin-top: 2em;">EXPLORA LAS PROPUESTAS</a>
+			<a class="btn btn-success btn-lg btn-block" href="#programa" style="margin-top: 2em;">EXPLORA LAS PROPUESTAS</a>
 		</div>
 		<div class="col-md-4 col-md-offset-1 col-sm-6">
 			<a class="btn btn-success btn-lg btn-block" href="nueva-propuesta.php" style="margin-top: 2em;">SUBIR UNA NUEVA PROPUESTA</a>
@@ -254,75 +255,80 @@
 	</div>
 	</div>
 
+	<div id="programa">
+		<div class ="row">
+		 	<div class="col-xs-12"  > 
+				<a name="sectores"></a><h2 class="madrid">Explora el programa por objetivos</h2>
+			El programa se estructura en 4 grandes apuestas por la ciudad. Cada apuesta a su vez se compone de objetivos y dentro de estos objetivos se encuadran las medidas. En esta plataforma vamos a enviar medidas
+			</div>
+		</div>
+		<div class="row">
+			    <div class="col-xs-12 col-sm-3"  id="col-ciudad-habitable"> 
+			    	<div id="columna-0">
+	                	<div class="titulo-apuesta "> <h3> <a href="apuesta.php?apuesta=ciudad-habitable">Apuesta por una ciudad Habitable </a>  </h3> </div>
+	                	<div id="objetivos-ciudad-habitable"> 
 
-	<div class ="row">
-	 	<div class="col-xs-12"  id="programa"> 
-			<a name="sectores"></a><h2 class="madrid">Explora el programa por objetivos</h2>
-		El programa se estructura en 4 grandes apuestas por la ciudad. Cada apuesta a su vez se compone de objetivos y dentro de estos objetivos se encuadran las medidas. En esta plataforma vamos a enviar medidas
+	                	</div>
+	            	</div>
+	            </div>
+	            <div class="col-xs-12 col-sm-3"  id="col-democracia-transparencia"> 
+			    	<div id="columna-1">
+	                	<div class="titulo-apuesta "> <h3> <a href="apuesta.php?apuesta=democracia-transparencia"> Apuesta por una reestructuración del ayuntamiento hacia una mayor democracia, descentralización, transparencia y participación</a>  </h3> </div>
+	                	<div id="objetivos-democracia-transparencia"> 
+
+	                	</div>
+	            	</div>
+	            </div>
+	            <div class="col-xs-12 col-sm-3"  id="col-derechos-sociales"> 
+			    	<div id="columna-2">
+	                	<div class="titulo-apuesta "> <h3> <a href="apuesta.php?apuesta=derechos-sociales"> Apuesta por la protección y defensa de los derechos sociales</a>  </h3> </div>
+	                	<div id="objetivos-derechos-sociales"> 
+
+	                	</div>
+	            	</div>
+	            </div>
+	            <div class="col-xs-12 col-sm-3"  id="col-modelo-sostenible"> 
+			    	<div id="columna-3">
+	                	<div class="titulo-apuesta"> <h3> <a href="apuesta.php?apuesta=modelo-sostenible"> Apuesta por un nuevo modelo económico sostenible social
+	y medioambientalmente</a>  </h3> </div>
+	                	<div id="objetivos-modelo-sostenible"> 
+
+	                	</div>
+	            	</div>
+	            </div>   
 		</div>
 	</div>
-	<div class="row">
-		    <div class="col-xs-12 col-sm-3"  id="col-ciudad-habitable"> 
-		    	<div id="columna-0">
-                	<div class="titulo-apuesta "> <h3> <a href="apuesta">Apuesta por una ciudad Habitable </a>  </h3> </div>
-                	<div id="objetivos-ciudad-habitable"> 
-
-                	</div>
-            	</div>
-            </div>
-            <div class="col-xs-12 col-sm-3"  id="col-democracia-transparencia"> 
-		    	<div id="columna-1">
-                	<div class="titulo-apuesta "> <h3> <a href="apuesta"> Apuesta por una reestructuración del ayuntamiento hacia una mayor democracia, descentralización, transparencia y participación</a>  </h3> </div>
-                	<div id="objetivos-democracia-transparencia"> 
-
-                	</div>
-            	</div>
-            </div>
-            <div class="col-xs-12 col-sm-3"  id="col-derechos-sociales"> 
-		    	<div id="columna-2">
-                	<div class="titulo-apuesta "> <h3> <a href="apuesta"> Apuesta por la protección y defensa de los derechos sociales</a>  </h3> </div>
-                	<div id="objetivos-derechos-sociales"> 
-
-                	</div>
-            	</div>
-            </div>
-            <div class="col-xs-12 col-sm-3"  id="col-modelo-sostenible"> 
-		    	<div id="columna-3">
-                	<div class="titulo-apuesta"> <h3> <a href="apuesta"> Apuesta por un nuevo modelo económico sostenible social
-y medioambientalmente</a>  </h3> </div>
-                	<div id="objetivos-modelo-sostenible"> 
-
-                	</div>
-            	</div>
-            </div>   
+</div> <!-- container -->
+<div id="distritos">
+	<div class="container">
+		<div class="row">
+			<h2 class="madrid">Explora el programa por distritos</h2>
+		</div>
+		<div class="row" id="distritos-inner">
+			<div class="col-sm-6">
+				<div id="canvas">
+	            	<div id="paper"></div>
+	        	</div>
+	        </div>
+	        <div class="col-sm-4">
+	        	<div id="info-distrito">
+	        		<div id="nombre-distrito">
+	        			<div class="form-group">
+						      <select value="none" id="distritoSelect" class="form-control">
+						        <option value="none">Click para seleccionar distrito</option>
+						      </select>
+						  </div> 
+						</div> 
+	        		<div id="datos-distrito"> </div>
+	        	</div>
+	        	<a class="btn btn-default btn-lg btn-success disabled" href="#" id="ir_propuestas_barrios" role="button">¡Explora las propuestas de este distrito!</a>
+	        	<div class="info-ayuda">
+	        		Nota: Sólo algunas de las propuestas incluidas están asociadas a un distrito en concreto, un gran número hacen referencia a toda la ciudad.
+	        	</div>
+	        </div>
+		</div>
 	</div>
-	<div class="row">
-		<h2 class="madrid">Explora el programa por barrios</h2>
-	</div>
-	<div class="row" id="distritos">
-		<div class="col-sm-6">
-			<div id="canvas">
-            	<div id="paper"></div>
-        	</div>
-        </div>
-        <div class="col-sm-4">
-        	<div id="info-distrito">
-        		<div id="nombre-distrito">
-        			<div class="form-group">
-					      <select value="none" id="disabledSelect" class="form-control">
-					        <option>Click para seleccionar distrito</option>
-					      </select>
-					  </div> 
-					</div> 
-        		<div id="datos-distrito"> </div>
-        	</div>
-        	<a class="btn btn-default btn-lg btn-success" href="#" role="button">¡Explora las propuestas de este distrito!</a>
-        	<div class="info-ayuda">
-        		Nota: No todas las propuestas incluidas están asociadas a un distrito en concreto.
-        	</div>
-        </div>
-	</div>
-
+</div>
 	
 
 

@@ -1,0 +1,41 @@
+<header class="app-header-ahora">
+					<div class="user-nav">	
+						<div style="float:right">	
+						{% if user %}
+						| <a href="logout.php" class="login anonymous-citizen"><span>Desconectar</span>
+						<a class="login pull-right anonymous-citizen"><span>{{ user.nombre }} </span></a>
+						{% else %}
+						| <a href="login.php" class="login  anonymous-citizen"><span>Entrar</span></a>
+						{% endif %}				
+						</div>						
+							<div class="block-custom-blocks-socialbuttonsheader">
+								<div id="social-buttons">
+									<div class="social-buttons-facebook"><a href="https://www.facebook.com/pages/Ahora-Madrid/1589610151285730"><i class="fa fa-facebook-square"></i> facebook</a></div>
+									<div class="social-buttons-twitter"><a href="https://twitter.com/AhoraMadrid"><i class="fa fa-twitter"></i> Twitter</a></div>									
+									<div class="social-buttons-youtube"><a href="https://www.youtube.com/channel/UClT7hSbslPBr_RWAnkykLew"><i class="fa fa-youtube"></i> youtube</a></div>								
+								</div>
+							</div>
+						
+					
+				</div>
+	<div class="container" id="header-container-ahora">
+
+		<div class="row">
+			<div class="col-sm-2">
+				<a href="index.php"><img src="static/images/AHORAMADRID_R.png" class="img-responsive" id="logo-img" alt="logo Ahora Madrid"></a>
+			</div>
+			<div class="col-sm-10">
+				<div>
+					<nav style="text-align:left">
+					    <ul>
+						    <li><a href="todas.php">Todas las medidas</a></li>
+						    <li><a href="index.php#sectores">Medidas según objetivos</a></li>
+						    <li><a href="index.php#distritos">Medidas por distritos</a></li>
+						    <!-- <li><a href="#barrios">Barrios</a></li> -->
+					    </ul>
+					</nav>
+				</div>
+			</div> <!-- col -->
+		</div>  <!-- row -->
+	</div> <!-- container -->
+</header>
