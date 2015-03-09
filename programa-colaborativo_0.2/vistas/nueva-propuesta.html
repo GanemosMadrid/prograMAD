@@ -115,7 +115,7 @@ $('#footer').hide();
 	
 
 	$( "#step-distritos" ).on('change','select',function() {
-	  if($(this).val()!="none"){
+	  if($(this).val()!=""){
 	  	$('div#canvas').fadeIn();
 	  }else{
 	  	$('div#canvas').fadeOut();
@@ -173,7 +173,7 @@ $('#footer').hide();
 				<div class="col-xs-12" id="lista-objetivos">
 					<h3 class="titulo1"> 2. AHORA ELIGE <strong>UN OBJETIVO </strong>  DONDE ENCUADRAR TU PROPUESTA: </h3>
 					<div class="form-group" id="form-seleccion-objetivos"  >
-
+					<input type="radio" name="sector" class=" " id="empty_radio" value="" checked style="display:none">
 						<div class="row"> 		    		
 							<div class="col-md-6" >
 								<div class="apuesta" id="lista-objetivos-ciudad-habitable">
@@ -209,8 +209,8 @@ $('#footer').hide();
 					<div id="info-distrito">
 						<div id="nombre-distrito">
 							<div class="form-group">
-								<select value="none" id="distritoSelect" name="barrio" class="form-control">
-									<option value="none">No, mi medida es para toda la ciudad </option>
+								<select value="" id="distritoSelect" name="barrio" class="form-control">
+									<option value="">No, mi medida es para toda la ciudad </option>
 								</select>
 							</div> 
 						</div> 
