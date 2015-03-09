@@ -10,8 +10,22 @@ bkLib.onDomLoaded(function() {
 });
 </script>
 <script>
+function getUrlVars() {
+		mstring = String( document.location.href ).replace( "#", "" );
+	var vars = {};
+	var parts = mstring.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+	    vars[key] = value;
+	});
+	return vars;
+}
 $(document).ready(function() {
+$('#footer').hide();
 	optionIsSelected=false;
+
+
+	distrito = getUrlVars()["distrito"];
+	objetivo = getUrlVars()["objetivo"];
+
 	
 	$("#nuevapropuesta").validate({
 	    rules: {
@@ -39,6 +53,46 @@ $(document).ready(function() {
 			'apuesta-' + jsonObject.apuesta +' " id="' + jsonObject.id+'" value="'+jsonObject.id+'"> ' + jsonObject.titulo+ ' </label>');
    
 	});
+		
+	$('a#continue1').on('click',function(event){	//first time scroll to the form element		
+		event.preventDefault()
+
+		if( $("#nuevapropuesta").valid()==true){
+			if( typeof distrito != 'undefined'){ // vienen de una página de distrito a añadir algo
+				$('#step-distritos').show();
+				$('#step-elige-previous').show();
+				$('#step-distritos h3.titulo1').empty().text('Vas a añadir tu propuesta a este distrito:')
+				$("#distritoSelect").val(distrito);
+                $("#distritoSelect").trigger('change');
+				if(!optionIsSelected)	
+					$("html, body").animate({ scrollTop: $('#step-distritos').offset().top-100},1000);
+					optionIsSelected=true;
+			}
+			else if(typeof objetivo != 'undefined'){
+				$('input#'+objetivo).prop('checked', true); 
+				optionIsSelected=true;
+				$('input#'+objetivo).trigger('change');
+				$('#step-elige h3.titulo1').empty().html('Hemos seleccionado por tí el objetivo según la página de donde vienes <strong> Cámbialo si tu medida se encuadra mejor en otro lado</strong>')					
+				$('#step-elige').fadeIn("fast", function(){ 
+					$("html, body").animate({ scrollTop: $('#step-elige').offset().top-100},1000);
+				}); 
+				
+			}
+			else{
+				$('#step-elige').fadeIn("fast", function(){ 
+					$("html, body").animate({ scrollTop: $('#step-elige').offset().top-100},1000);
+				}); 
+			}
+			$('#footer').show();
+		}			
+	});
+
+	$('a#show-step-elige').on('click',function(event){
+		$('#step-elige-previous').hide();
+		$('#step-elige').fadeIn("fast", function(){ 
+					$("html, body").animate({ scrollTop: $('#step-elige').offset().top-100},1000);
+				});
+	});
 	
 	$("#lista-objetivos input:radio").change(function () {
 			$('#form-seleccion-objetivos').find('label').removeClass('active');	
@@ -58,15 +112,7 @@ $(document).ready(function() {
 			
 		});
 
-	$('a#continue1').on('click',function(event){	//first time scroll to the form element		
-		event.preventDefault()
-		if( $("#nuevapropuesta").valid()==true){
-			$('#step-elige').fadeIn("fast", function(){ 
-					$("html, body").animate({ scrollTop: $('#step-elige').offset().top-100},1000);
-				}); 
-		}
-			
-	});
+	
 
 	$( "#step-distritos" ).on('change','select',function() {
 	  if($(this).val()!="none"){
@@ -85,9 +131,9 @@ $(document).ready(function() {
 		<div class="row">
 			<div class="central col-md-8">			
 				<div id="step-escribe">
-					<h1 > LOS PROBLEMAS Y SOLUCIONES PARA MADRID SON MUCHOS Y COMPLEJOS... TODAS LAS PROPUESTAS SON BIENVENIDAS </h1>
-					<h4><p> Te harán falta <strong> sólo 3 sencillos pasos</strong> para enviar una propuesta </p> 
-						<p>No olvides que ya hay muchas medidas incluidas en la plataforma, <a href="index.php#sectores"> empieza por echar un ojo a lo que ya hay </a> antes de enviar algo nuevo </p>
+					<h1 > LOS PROBLEMAS Y SOLUCIONES PARA MADRID SON MUCHOS Y COMPLEJOS... <br/>¿QUÉ PROPONES? </h1>
+					<h4><p> Te harán falta <strong> sólo 3 sencillos pasos</strong> para enviar una propuesta (¡o incluso menos!) </p> <p> Tendrás que introducir tu nueva medida y después asignarla bajo una categoría o un distrito de la ciudad </p>
+						<p> <small>No olvides que ya hay muchas medidas incluidas en la plataforma, <a href="index.php#sectores"> empieza por echar un ojo a lo que ya hay </a> antes de enviar algo nuevo </small></p>
 					</h4>	
 					    		<h3>1. Comienza escribiendo tu nueva medida de una forma clara y concisa: </h3>	
 					<div class="col-xs-10 col-md-offset-1">
@@ -113,11 +159,19 @@ $(document).ready(function() {
 				</div>
 			</div>
 		</div> <!-- row-->
+		<div class="row">
+			<div id="step-elige-previous">
+				<div class="col-xs-12" >
+					<small> 2. El paso 2 nos lo hemos saltado porque parece que tu propuesta se centra en un distrito. <br/>
+					Si nos hemos equivocado y tu propuesta es para toda la ciudad <a href="#" id="show-step-elige">pulsa aquí y podrás elegir la categoría:</a> </small>
+				</div>
+			</div>
+		</div>
 
 		<div class="row">
 			<div id="step-elige">
 				<div class="col-xs-12" id="lista-objetivos">
-					<h3> 2. AHORA ELIGE <strong>UN OBJETIVO </strong>  DONDE ENCUADRAR TU PROPUESTA: </h3>
+					<h3 class="titulo1"> 2. AHORA ELIGE <strong>UN OBJETIVO </strong>  DONDE ENCUADRAR TU PROPUESTA: </h3>
 					<div class="form-group" id="form-seleccion-objetivos"  >
 
 						<div class="row"> 		    		
@@ -149,7 +203,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 		<div id="step-distritos">
-			<h3> 3. ¿Tu medida está centrada en un distrito? </h3>
+			<h3 class="titulo1"> 3. ¿Tu medida está centrada en un distrito? </h3>
 			<div class="row" id="distritos-inner">				
 				<div class="col-md-6">
 					<div id="info-distrito">
@@ -164,7 +218,7 @@ $(document).ready(function() {
 					</div>
 					
 					<div class="info-ayuda">
-						¿Está conectada tu propuesta a un distrito en concreto? Márcalo, este paso es opcional
+						¿Está conectada tu propuesta a un distrito en concreto? Márcalo.
 					</div>
 
 					<div id="envio">
@@ -181,11 +235,12 @@ $(document).ready(function() {
 					</div>
 				</div>
 			</div>
-			
+		</div>
 				
 			
 </form>
-</div> <!--container principal
+</div> <!--container principal-->
+
 
 
 

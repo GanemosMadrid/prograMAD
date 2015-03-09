@@ -1,0 +1,96 @@
+{% extends "base2.html" %}
+
+{% block title %}
+	{% if tag %}
+		Propuestas de {{tag}} 
+	{%else%}
+		Propuestas de programa
+	{% endif %}
+	{% endblock %} 
+{% block scripts %}
+<script src="static/js/raphael.js" type="text/javascript" charset="utf-8"></script>
+<script src="static/js/scale.raphael.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/distritos.js"></script>
+<script>
+$(document).ready(function() {
+	/*$(".sector").each(function() {
+		var sector = $(this).text();
+		sector = sector.replace(/-/g, ' ');
+		$(this).html('<strong>'+sector+'</strong>');
+	});*/
+	R.scaleAll(0.7);
+	obj="{{tag}}"
+	infoObjetivo=distritos[obj];
+	if(infoObjetivo!=null){
+		$('.objetivo-descripcion').empty().html(infoObjetivo.descripcion)
+		$('.objetivo-titulo').empty().html(infoObjetivo)
+	}
+	
+});
+
+</script>
+
+{% endblock %}
+{% block content %}
+	<div class="row">
+		<div class="col-xs-12">
+			<h2 > <small><i>Distrito:</i></small> <br/><span class="objetivo-titulo"> </span></h2>
+			<p class="objetivo-descripcion"> </p>
+
+		</div>
+	</div>
+	
+	{% include 'listados.html' %}
+	
+
+	{% if user %}
+	<div class="row">
+		<div class="col-xs-12">
+			<h4 class="text-center"> ¿Echas en falta alguna medida en este distrito de la ciudad? </h4>
+			<a class="btn btn-success btn-lg btn-block" href="nueva-propuesta.php?distrito={{tag}}">SUBIR UNA NUEVA MEDIDA A ESTE DISTRITO</a>
+		</div>
+	</div>	
+	{% else %}
+	<div class="row">
+		<div class="col-xs-12">
+			<a href="login.php"> Tienes que estar identificado para hacer una propuesta. ¡Registrate y participa!</a>
+		</div>
+	</div>
+	{% endif %}
+
+	</div>
+	<div class="row" style="margin-top:10em;">
+			<h4 class="madrid">Explora las medidas en otros distritos</h4>
+	</div>
+	<div class="row" id="distritos-inner">
+		<div class="col-sm-6">
+			<div id="canvas">
+            	<div id="paper"></div>
+        	</div>
+        </div>
+        <div class="col-sm-4">
+        	<div id="info-distrito">
+        		<div id="nombre-distrito">
+        			<div class="form-group">
+					      <select value="none" id="distritoSelect" class="form-control">
+					        <option value="none">Click para seleccionar distrito</option>
+					      </select>
+					  </div> 
+					</div> 
+        		<div id="datos-distrito"> </div>
+        	</div>
+        	<a class="btn btn-default btn-lg btn-success disabled" href="#" id="ir_propuestas_barrios" role="button">¡Explora las propuestas de este distrito!</a>
+        	<div class="info-ayuda">
+        		Nota: Sólo algunas de las propuestas incluidas están asociadas a un distrito en concreto, un gran número hacen referencia a toda la ciudad.
+        	</div>
+        </div>
+	</div>
+
+	<script>
+	
+	$('#myTab a').click(function (e) {
+	  	e.preventDefault();
+	  	$(this).tab('show');
+	})
+	</script>
+{% endblock%}

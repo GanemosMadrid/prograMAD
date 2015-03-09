@@ -134,139 +134,22 @@
 		<h2>Se está debatiendo</h2>
 
 
-
-	<div class="row">
-		<ul class="nav nav-tabs" role="tablist" id="tabsIndex">
-  			<li class="active"><a href="#valoradas" role="tab" data-toggle="tab">Más valoradas</a></li>
-  			<li><a href="#consensuadas" role="tab" data-toggle="tab">Más consenso</a></li>
-  			<li><a href="#debatidas" role="tab" data-toggle="tab">Más debatidas</a></li>
-  			<li><a href="#recientes" role="tab" data-toggle="tab">Más recientes</a></li>
-  
-		</ul>
-	</div>
-	<div class="tab-content">
-	<div class="tab-pane active" id="valoradas">
-	{% if propuestas %}
-		{% for propuesta in propuestas %}
-
-		<div class="row listado">
-			<div class="col-xs-1 votos">
-				{{ propuesta.sum_likes}}
-			</div>
-			<div class="col-xs-11">
-				<div class="titulo"><a href="propuesta.php?id={{propuesta.id}}">{{ propuesta.titulo}}</a></div>
-				<div class="metadata">autor: <strong>{{ propuesta.nombre}} {{ propuesta.apellidos}} </strong> | <strong>{{ propuesta.comentarios}}</strong> comentarios | {% set suma = (propuesta.positivos / (propuesta.negativos + propuesta.positivos))*100 %} <strong>{{ suma | number_format(2) }} %</strong> de votos positivos de un total de {{ propuesta.negativos + propuesta.positivos }} votos.
-				</div>
-				<div class="metadata">
-				sector: <a href="sector.php?sector={{propuesta.sector}}"><span class="sector"><strong>{{propuesta.sector}}</strong></span></a>
-				{% if propuesta.barrio%}
-					| Barrio: <a href="barrio.php?barrio={{propuesta.barrio}}"><span class="barrio"><strong>{{ propuesta.barrio }}</strong></span>
-				{% endif %}
-				</div>
-			</div>
-		</div>
-			
-		{% endfor %}
 	
-	{% else %}
-		<div class="">No hay propuestas todavía. <a href="nueva-propuesta.php">Envíanos la tuya</a></div>
-	{% endif %}
-	</div>
-
-	<div class="tab-pane" id="debatidas">
-	{% if debatidas %}
-		{% for debatida in debatidas %}
-
-		<div class="row listado">
-			<div class="col-xs-1 votos">
-				{{ debatida.sum_likes}}
-			</div>
-			<div class="col-xs-11">
-				<div class="titulo"><a href="propuesta.php?id={{debatida.id}}">{{ debatida.titulo}}</a></div>
-				<div class="metadata">autor: <strong>{{ debatida.nombre}} {{ debatida.apellidos}}</strong> | <strong>{{ debatida.comentarios}}</strong> comentarios | {% set suma = (debatida.positivos / (debatida.negativos + debatida.positivos))*100 %} <strong>{{ suma | number_format(2) }} % </strong>de votos positivos de un total de {{ debatida.negativos + debatida.positivos }} votos. </div>
-				<div class="metadata">
-				sector: <a href="sector.php?sector={{debatida.sector}}"><span class="sector"><strong>{{debatida.sector}}</strong></span></a>
-				{% if debatida.barrio%}
-					| Barrio: <a href="barrio.php?barrio={{debatida.barrio}}"><span class="barrio"><strong>{{ debatida.barrio }}</strong></span>
-				{% endif %}
-				</div>
-			</div>
-		</div>
-			
-		{% endfor %}
+	{% include 'listados.html' %}
+	</div> <!-- bug en listados parece que falta este div? -->
 	
-	{% else %}
-		<div class="">No hay propuestas todavía. <a href="nueva-propuesta.php">Envíanos la tuya</a></div>
-	{% endif %}
-	</div>
-
-	<div class="tab-pane" id="recientes">
-	{% if recientes %}
-		{% for reciente in recientes %}
-
-		<div class="row listado">
-			<div class="col-xs-1 votos">
-				{{ reciente.sum_likes}}
-			</div>
-			<div class="col-xs-11">
-				<div class="titulo"><a href="propuesta.php?id={{reciente.id}}">{{ reciente.titulo}}</a></div>
-				<div class="metadata">autor: <strong>{{ reciente.nombre}} {{ reciente.apellidos}} </strong>| <strong>{{ reciente.comentarios}}</strong> comentarios | {% set suma = (reciente.positivos / (reciente.negativos + reciente.positivos))*100 %} <strong>{{ suma | number_format(2) }} % </strong>de votos positivos de un total de {{ reciente.negativos + reciente.positivos }} votos. </div>
-				<div class="metadata">
-				sector: <a href="sector.php?sector={{reciente.sector}}"><span class="sector"><strong>{{reciente.sector}}</strong></span></a>
-				{% if reciente.barrio%}
-					| Barrio: <a href="barrio.php?barrio={{reciente.barrio}}"><span class="barrio"><strong>{{ reciente.barrio }}</strong></span>
-				{% endif %}
-				</div>
-			</div>
-		</div>
-			
-		{% endfor %}
-	
-	{% else %}
-		<div class="">No hay propuestas todavía. <a href="nueva-propuesta.php">Envíanos la tuya</a>.</div> 
-	{% endif %}
-	</div>
-
-	<div class="tab-pane" id="consensuadas">
-	{% if consensuadas %}
-		{% for consenso in consensuadas %}
-
-		<div class="row listado">
-			<div class="col-xs-1 votos">
-				{{ consenso.sum_likes}}
-			</div>
-			<div class="col-xs-11">
-				<div class="titulo"><a href="propuesta.php?id={{consenso.id}}">{{ consenso.titulo}}</a></div>
-				<div class="metadata">autor: <strong>{{ consenso.nombre}} {{ consenso.apellidos}} </strong>| <strong>{{ consenso.comentarios}}</strong> comentarios | {% set suma = (consenso.positivos / (consenso.negativos + consenso.positivos))*100 %} <strong>{{ suma | number_format(2) }} % </strong>de votos positivos de un total de {{ consenso.negativos + consenso.positivos }} votos. </div>
-				<div class="metadata">
-				sector: <a href="sector.php?sector={{consenso.sector}}"><span class="sector"><strong>{{consenso.sector}}</strong></span></a>
-				{% if consenso.barrio%}
-					| Barrio: <a href="barrio.php?barrio={{consenso.barrio}}"><span class="barrio"><strong>{{ consenso.barrio }}</strong></span>
-				{% endif %}
-				</div>
-			</div>
-		</div>
-			
-		{% endfor %}
-	
-	{% else %}
-		<div class="">No hay propuestas todavía. <a href="nueva-propuesta.php">Envíanos la tuya</a>.</div> 
-	{% endif %}
-	</div>
-	</div>
-
 	<div id="programa">
 		<div class ="row">
 		 	<div class="col-xs-12"  > 
 				<a name="sectores"></a><h2 class="madrid">Explora el programa por objetivos</h2>
-			El programa se estructura en 4 grandes apuestas por la ciudad. Cada apuesta a su vez se compone de objetivos y dentro de estos objetivos se encuadran las medidas. En esta plataforma vamos a enviar medidas
+			<h4>El programa se estructura en 4 grandes apuestas por la ciudad. Cada apuesta a su vez se compone de objetivos y dentro de estos objetivos se encuadran las medidas. En esta plataforma vamos a enviar medidas</h4>
 			</div>
 		</div>
 		<div class="row">
 			    <div class="col-xs-12 col-sm-3"  id="col-ciudad-habitable"> 
 			    	<div id="columna-0">
 	                	<div class="titulo-apuesta "> <h3> <a href="apuesta.php?apuesta=ciudad-habitable">Apuesta por una ciudad Habitable </a>  </h3> </div>
-	                	<div id="objetivos-ciudad-habitable"> 
+	                	<div class="objetivos-container" id="objetivos-ciudad-habitable"> 
 
 	                	</div>
 	            	</div>
@@ -274,7 +157,7 @@
 	            <div class="col-xs-12 col-sm-3"  id="col-democracia-transparencia"> 
 			    	<div id="columna-1">
 	                	<div class="titulo-apuesta "> <h3> <a href="apuesta.php?apuesta=democracia-transparencia"> Apuesta por una reestructuración del ayuntamiento hacia una mayor democracia, descentralización, transparencia y participación</a>  </h3> </div>
-	                	<div id="objetivos-democracia-transparencia"> 
+	                	<div class="objetivos-container" id="objetivos-democracia-transparencia"> 
 
 	                	</div>
 	            	</div>
@@ -282,7 +165,7 @@
 	            <div class="col-xs-12 col-sm-3"  id="col-derechos-sociales"> 
 			    	<div id="columna-2">
 	                	<div class="titulo-apuesta "> <h3> <a href="apuesta.php?apuesta=derechos-sociales"> Apuesta por la protección y defensa de los derechos sociales</a>  </h3> </div>
-	                	<div id="objetivos-derechos-sociales"> 
+	                	<div class="objetivos-container" id="objetivos-derechos-sociales"> 
 
 	                	</div>
 	            	</div>
@@ -291,7 +174,7 @@
 			    	<div id="columna-3">
 	                	<div class="titulo-apuesta"> <h3> <a href="apuesta.php?apuesta=modelo-sostenible"> Apuesta por un nuevo modelo económico sostenible social
 	y medioambientalmente</a>  </h3> </div>
-	                	<div id="objetivos-modelo-sostenible"> 
+	                	<div class="objetivos-container" id="objetivos-modelo-sostenible"> 
 
 	                	</div>
 	            	</div>

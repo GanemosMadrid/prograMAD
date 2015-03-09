@@ -1,5 +1,6 @@
 /* home page */
 @verde: #00a48c;
+@verdesuave: fadeout(@verde, 90%);
 @verdeOk: #4cae4c;
 
 @font-face {
@@ -21,15 +22,7 @@
 
 }
 
-div.objetivo{
-	margin: 1em 0em;
-	
-	padding: 1em 0.5em;
-	color:#444;
-	font-size: 1.2em;
-	font-family: "Open Sans";
-	font-weight:300;
-}
+
 
 header.app-header-ahora{
 	width: 100%;
@@ -55,6 +48,18 @@ header.app-header-ahora{
 	nav ul{
 		padding:0px;
 		margin:10px 0px;
+		a{
+			font-family: ubuntu, sans;
+			color:#333;
+		}
+		a:hover{
+			background-color: transparent;
+			color:white;
+		}
+		a:active{
+			background-color: #333;
+			color: white;
+		}
 	}
 
 }
@@ -73,14 +78,25 @@ margin-left: 0px;
 		font-size: 1.2em;
 	}
 }
-.carousel-control.left,.carousel-control.right {
+.carousel-control.left, .carousel-control.right {
 	background: transparent;
+
 	span{
-		display: none;
+		
 	}
+	
+		opacity:0.8;
+		color:#888;
+
+}
+.carousel-control .glyphicon-chevron-left{
+	left:5%;
 }
 
-#objetivos-ciudad-habitable div.objetivo{
+.carousel-control .glyphicon-chevron-right{
+	right:5%;
+}
+/*#objetivos-ciudad-habitable div.objetivo{
 	background-color: rgba(0,120,255,0.1);
 }
 
@@ -94,44 +110,126 @@ margin-left: 0px;
 
 #objetivos-modelo-sostenible div.objetivo{
 	background-color: rgba(150,150,150,0.1);
-}
-div.titulo-apuesta {
-	height:12em;
-	line-height: 9em;
-	vertical-align: middle;
-	margin: 1em 0em;
-	padding: 1em 0.5em;
-	h3{
-		font-size: 1.3em;
-		text-align: center;
+} */
+
+#programa{
+	div.titulo-apuesta {
+		height:15em;
+		line-height: 9em;
 		vertical-align: middle;
-		display: inline-block;
-		text-shadow: #444 1px 1px 3px;
+		margin: 1em 0em;
+		padding: 1em 1em;
+
+		h3{
+			font-size: 1.3em;
+			text-align: center;
+			vertical-align: middle;
+			display: inline-block;
+			font-family: 'ubuntu';
+			text-transform: uppercase;
+			//text-shadow: #444 1px 1px 1px;
+			a{
+				color: #444;
+			}
+			a:hover{
+				text-decoration: none;
+				background-color: white;
+			}
+		}
+	}
+	div.objetivos-container{
+		a:hover{
+			text-decoration: none;
+		}
 		a{
-			color: #fff;
+			display: block;
+			position: relative;
+			
+			
+		}
+
+	}
+	div.objetivo{
+		margin: 1em 0em;		
+		padding: 1em 0.5em;
+		color:#444;
+		font-size: 1.0em;
+		font-family: "Open Sans";
+		font-weight:600;
+		text-shadow: #eee 1px 0px 1px;
+		text-align: center;
+		background-color: #fff;
+		height:10em;
+		background-image: url('../images/fondo_obj.png');
+		background-size: 25px 25px;
+		background-repeat: no-repeat;
+		background-position:  right bottom;
+		background-position-x:95%;
+		background-position-y:90%; 
+		
+	}
+
+
+	@col1: rgba(78,205,196,1);
+	@col2: rgba(237,201,81,1);
+	@col3: rgba(233,127,2,1);
+	@col4: rgba(235,104,65,1);
+	#col-ciudad-habitable {
+		div.titulo-apuesta {
+			border: 2px @col1 dotted;
+			background-color: fadeout(@col1, 10%)
+		}
+		div.objetivo{
+			border: 2px @col1 dotted;
+			background-color: fadeout(@col1, 90%)
+		}
+		div.objetivo:hover, div.objetivo:active	{
+			background-color: fade(@col1, 100%)
 		}
 	}
 
-}
-	div.objetivo{
-		text-shadow: #eee 1px 0px 1px;
+	#col-democracia-transparencia{ 
+		div.titulo-apuesta{
+			border: 2px @col2 dotted;
+			background-color: fadeout(@col2, 10%)
+		}
+		div.objetivo{
+			border: 2px @col2 dotted;
+			background-color: fadeout(@col2, 90%)
+		}
+		div.objetivo:hover, div.objetivo:active	{
+			background-color: fade(@col2, 100%)
+		}
 	}
-#col-ciudad-habitable div.titulo-apuesta{
-	background-color: rgb(0,120,255);
-}
 
-#col-democracia-transparencia div.titulo-apuesta{
-	background-color: rgb(0,140,70);
-}
+	#col-derechos-sociales{ 
+		div.titulo-apuesta{
+			border: 2px @col3 dotted;
+			background-color: fadeout(@col3, 10%)
+		}
+		div.objetivo{
+			border: 2px @col3 dotted;
+			background-color: fadeout(@col3, 90%)
+		}
+		div.objetivo:hover, div.objetivo:active	{
+			background-color: fade(@col3, 100%)
+		}
+	}
 
-#col-derechos-sociales div.titulo-apuesta{
-	background-color: rgb(255,191,0);
+	#col-modelo-sostenible{ 
+		div.titulo-apuesta{
+			border: 2px @col4 dotted;
+			background-color: fadeout(@col4, 10%)
+		}
+		div.objetivo{
+			border: 2px @col4 dotted;
+			background-color: fadeout(@col4, 90%)
+		}
+		div.objetivo:hover, div.objetivo:active	{
+			background-color: fade(@col4, 100%)
+		}
+	}
 }
-
-#col-modelo-sostenible div.titulo-apuesta{
-	background-color: rgb(150,150,150);
-}
-
 
 
 /****enviar propuesta **/
@@ -144,9 +242,11 @@ div.titulo-apuesta {
 	font-family: "Open Sans";
 	font-weight:300;
 }
+
 #enlaces-sidebar a{
 
 }
+
 .barra-der{
 	background-color: transparent;
 	border: none;
@@ -154,7 +254,16 @@ div.titulo-apuesta {
 	border: 1px dashed #999;
 	border-radius: 10px;
 	margin-left: 4em;
-	margin-top: 10em;
+	margin-top: 10em;	
+		h4{
+			font-family: 'ubuntu' sans;
+			font-size: 1.3em
+		}
+	
+}
+#step-elige-previous{
+	display: none;
+	margin-top:2em;
 }
 
 #nuevapropuesta{
@@ -201,29 +310,51 @@ h2.madrid{
 		margin-bottom: 0.5em;
 	}
 }
-
+div.votos{
+		background: #ECF9F8;
+		color:#444;
+}
 .listado{
 	border-bottom: 1px solid @verde;
 	.votos{
-		background: @verde url('../images/programa-icono2.png') ;
-		background-repeat: no-repeat;
-		background-position:  right bottom;
-
+		background: #ECF9F8;
+		
+		margin-top: 10px;
 		color:#222;
 		text-align: left;
 
+	}
+	.titulo a{
+		font-family: ubuntu;
 	}
 	span.sector{
 		color: @verde;
 	}
 }
-div.votos{
-	background: @verde ;
-	background-repeat: no-repeat;
-	background-position:  right bottom;
-	color:#fff;
-	text-align: left;
+.tipoautor-1{
+	
+		
+		background-image: url('../images/mini-logo-ahora.png') ;
+		background-size: 30px 30px;
+		background-repeat: no-repeat;
+		background-position:  right bottom;
+		background-position-x:99%;
+		background-position-y:90%; 
+		.titulo a{
+			color:@verde;
+			
+			font-family: ubuntu;
+		}
+	.votos{
+		background: @verde ;
+		color:white;
+	}
 }
+
+.tipoautor-2{
+
+}
+
 
 .propuesta-individual{
 
@@ -312,7 +443,7 @@ border: solid #999 1px;
 			display: none;
 		}
 		.info-ayuda{
-			margin: 0px;
+			margin: -10px;
 
 		}
 	}

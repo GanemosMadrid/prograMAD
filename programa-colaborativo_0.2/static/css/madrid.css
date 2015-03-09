@@ -11,14 +11,6 @@
   font-size: 1.8em;
   font-family: 'Roboto Slab', serif;
 }
-div.objetivo {
-  margin: 1em 0em;
-  padding: 1em 0.5em;
-  color: #444;
-  font-size: 1.2em;
-  font-family: "Open Sans";
-  font-weight: 300;
-}
 header.app-header-ahora {
   width: 100%;
   background-color: #00a48c;
@@ -43,6 +35,18 @@ header.app-header-ahora nav ul {
   padding: 0px;
   margin: 10px 0px;
 }
+header.app-header-ahora nav ul a {
+  font-family: ubuntu, sans;
+  color: #333;
+}
+header.app-header-ahora nav ul a:hover {
+  background-color: transparent;
+  color: white;
+}
+header.app-header-ahora nav ul a:active {
+  background-color: #333;
+  color: white;
+}
 .block-custom-blocks-socialbuttonsheader div {
   float: right;
   margin-left: 0px;
@@ -58,54 +62,124 @@ header.app-header-ahora nav ul {
 .carousel-control.left,
 .carousel-control.right {
   background: transparent;
+  opacity: 0.8;
+  color: #888;
 }
-.carousel-control.left span,
-.carousel-control.right span {
-  display: none;
+.carousel-control .glyphicon-chevron-left {
+  left: 5%;
 }
-#objetivos-ciudad-habitable div.objetivo {
-  background-color: rgba(0, 120, 255, 0.1);
+.carousel-control .glyphicon-chevron-right {
+  right: 5%;
 }
-#objetivos-democracia-transparencia div.objetivo {
-  background-color: rgba(0, 140, 70, 0.1);
+/*#objetivos-ciudad-habitable div.objetivo{
+	background-color: rgba(0,120,255,0.1);
 }
-#objetivos-derechos-sociales div.objetivo {
-  background-color: rgba(255, 191, 0, 0.1);
+
+#objetivos-democracia-transparencia div.objetivo{
+	background-color: rgba(0,140,70,0.1);
 }
-#objetivos-modelo-sostenible div.objetivo {
-  background-color: rgba(150, 150, 150, 0.1);
+
+#objetivos-derechos-sociales div.objetivo{
+	background-color: rgba(255,191,0,0.1);
 }
-div.titulo-apuesta {
-  height: 12em;
+
+#objetivos-modelo-sostenible div.objetivo{
+	background-color: rgba(150,150,150,0.1);
+} */
+#programa div.titulo-apuesta {
+  height: 15em;
   line-height: 9em;
   vertical-align: middle;
   margin: 1em 0em;
-  padding: 1em 0.5em;
+  padding: 1em 1em;
 }
-div.titulo-apuesta h3 {
+#programa div.titulo-apuesta h3 {
   font-size: 1.3em;
   text-align: center;
   vertical-align: middle;
   display: inline-block;
-  text-shadow: #444 1px 1px 3px;
+  font-family: 'ubuntu';
+  text-transform: uppercase;
 }
-div.titulo-apuesta h3 a {
-  color: #fff;
+#programa div.titulo-apuesta h3 a {
+  color: #444;
 }
-div.objetivo {
+#programa div.titulo-apuesta h3 a:hover {
+  text-decoration: none;
+  background-color: white;
+}
+#programa div.objetivos-container a:hover {
+  text-decoration: none;
+}
+#programa div.objetivos-container a {
+  display: block;
+  position: relative;
+}
+#programa div.objetivo {
+  margin: 1em 0em;
+  padding: 1em 0.5em;
+  color: #444;
+  font-size: 1.0em;
+  font-family: "Open Sans";
+  font-weight: 600;
   text-shadow: #eee 1px 0px 1px;
+  text-align: center;
+  background-color: #fff;
+  height: 10em;
+  background-image: url('../images/fondo_obj.png');
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-position-x: 95%;
+  background-position-y: 90%;
 }
-#col-ciudad-habitable div.titulo-apuesta {
-  background-color: #0078ff;
+#programa #col-ciudad-habitable div.titulo-apuesta {
+  border: 2px #4ecdc4 dotted;
+  background-color: rgba(78, 205, 196, 0.9);
 }
-#col-democracia-transparencia div.titulo-apuesta {
-  background-color: #008c46;
+#programa #col-ciudad-habitable div.objetivo {
+  border: 2px #4ecdc4 dotted;
+  background-color: rgba(78, 205, 196, 0.1);
 }
-#col-derechos-sociales div.titulo-apuesta {
-  background-color: #ffbf00;
+#programa #col-ciudad-habitable div.objetivo:hover,
+#programa #col-ciudad-habitable div.objetivo:active {
+  background-color: #4ecdc4;
 }
-#col-modelo-sostenible div.titulo-apuesta {
-  background-color: #969696;
+#programa #col-democracia-transparencia div.titulo-apuesta {
+  border: 2px #edc951 dotted;
+  background-color: rgba(237, 201, 81, 0.9);
+}
+#programa #col-democracia-transparencia div.objetivo {
+  border: 2px #edc951 dotted;
+  background-color: rgba(237, 201, 81, 0.1);
+}
+#programa #col-democracia-transparencia div.objetivo:hover,
+#programa #col-democracia-transparencia div.objetivo:active {
+  background-color: #edc951;
+}
+#programa #col-derechos-sociales div.titulo-apuesta {
+  border: 2px #e97f02 dotted;
+  background-color: rgba(233, 127, 2, 0.9);
+}
+#programa #col-derechos-sociales div.objetivo {
+  border: 2px #e97f02 dotted;
+  background-color: rgba(233, 127, 2, 0.1);
+}
+#programa #col-derechos-sociales div.objetivo:hover,
+#programa #col-derechos-sociales div.objetivo:active {
+  background-color: #e97f02;
+}
+#programa #col-modelo-sostenible div.titulo-apuesta {
+  border: 2px #eb6841 dotted;
+  background-color: rgba(235, 104, 65, 0.9);
+}
+#programa #col-modelo-sostenible div.objetivo {
+  border: 2px #eb6841 dotted;
+  background-color: rgba(235, 104, 65, 0.1);
+}
+#programa #col-modelo-sostenible div.objetivo:hover,
+#programa #col-modelo-sostenible div.objetivo:active {
+  background-color: #eb6841;
 }
 /****enviar propuesta **/
 #enlaces-sidebar div.objetivo {
@@ -124,6 +198,14 @@ div.objetivo {
   border-radius: 10px;
   margin-left: 4em;
   margin-top: 10em;
+}
+.barra-der h4 {
+  font-family: 'ubuntu' sans;
+  font-size: 1.3em;
+}
+#step-elige-previous {
+  display: none;
+  margin-top: 2em;
 }
 #nuevapropuesta h2,
 #nuevapropuesta h3 {
@@ -164,25 +246,40 @@ h2.madrid {
 #programa h2 {
   margin-bottom: 0.5em;
 }
+div.votos {
+  background: #ECF9F8;
+  color: #444;
+}
 .listado {
   border-bottom: 1px solid #00a48c;
 }
 .listado .votos {
-  background: #00a48c url('../images/programa-icono2.png');
-  background-repeat: no-repeat;
-  background-position: right bottom;
+  background: #ECF9F8;
+  margin-top: 10px;
   color: #222;
   text-align: left;
+}
+.listado .titulo a {
+  font-family: ubuntu;
 }
 .listado span.sector {
   color: #00a48c;
 }
-div.votos {
-  background: #00a48c;
+.tipoautor-1 {
+  background-image: url('../images/mini-logo-ahora.png');
+  background-size: 30px 30px;
   background-repeat: no-repeat;
   background-position: right bottom;
-  color: #fff;
-  text-align: left;
+  background-position-x: 99%;
+  background-position-y: 90%;
+}
+.tipoautor-1 .titulo a {
+  color: #00a48c;
+  font-family: ubuntu;
+}
+.tipoautor-1 .votos {
+  background: #00a48c;
+  color: white;
 }
 #distritos {
   background-color: #555;
@@ -254,7 +351,7 @@ div.votos {
   display: none;
 }
 #step-distritos #distritos-inner .info-ayuda {
-  margin: 0px;
+  margin: -10px;
 }
 #step-distritos #envio {
   margin-top: 3em;

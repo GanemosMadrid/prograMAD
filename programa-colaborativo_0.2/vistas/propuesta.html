@@ -350,7 +350,7 @@ $(document).ready(function() {
 <script type="text/javascript">stLight.options({publisher: "36929c7c-b370-4b17-b7ba-cebe0f3ced82", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 {% endblock %}
 {% block content %}
-	<div class="propuesta-individual">
+	<div class="propuesta-individual tipoautor-{{  propuesta.id_rol }}">
 		<div class="row encabezado">
 				<div class="col-xs-1 votos" id="votos">
 					{{ propuesta.sum_likes}}

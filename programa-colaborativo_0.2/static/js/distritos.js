@@ -1,6 +1,6 @@
 $(document).ready(function() {
 aus={}
-var R = Raphael("paper", 455, 540);
+R = ScaleRaphael("paper", 455, 540);
         var attr = {
             "fill": "#00a48c",
             "stroke": "#fff",
