@@ -1,10 +1,12 @@
 //document.ready
 $(function(){
 
-	$.each(listobjetivos.objetivos, function(index,jsonObject){	    
-	        $('#objetivos-'+jsonObject.apuesta).append('<a href="sector.php?sector='+jsonObject.id+'"><div class="objetivo"> ' +jsonObject.titulo+'</div></a>');	   
-	});
 
+	/*$.each(listobjetivos.objetivos, function(index,jsonObject){	    
+	        $('#objetivos-'+jsonObject.apuesta).append('<a href="sector.php?sector='+jsonObject.id+'"><div class="objetivo"> ' +jsonObject.titulo+'</div></a>');	   
+	});*/
+
+//genera apuestas bajo el contenidor #areas-container
 	$.each(apuestas, function(id,area){	 
 	var counter=0;   
 	        $('#areas-container').append('<div class="col-xs-12 col-sm-3"  id="col-'+id+'"> \
@@ -17,7 +19,7 @@ $(function(){
 	        	//<a href="sector.php?sector='+jsonObject.id+'"><div class="objetivo"> ' +jsonObject.titulo+'</div></a>');	   
 	        counter++;
 	});
-
+//genera objetivos bajo cada apuestas
     $.each(listobjetivos.objetivos, function(index,jsonObject){	    
 	        $('#objetivos-'+jsonObject.apuesta).append('<a href="sector.php?sector='+jsonObject.id+'"><div class="objetivo"> ' +jsonObject.titulo+'</div></a>');	   
 	});
@@ -45,5 +47,4 @@ function getObjetivo(mid){
 	        if(jsonObject.id == mid) var1=jsonObject;
 	});
 	return var1;
-
 }
