@@ -269,7 +269,7 @@ div.votos {
 .listado span.sector {
   color: #00a48c;
 }
-.tipoautor-1 {
+.tipoautor-2 {
   background-image: url('../images/mini-logo-ahora.png');
   background-size: 30px 30px;
   background-repeat: no-repeat;
@@ -277,11 +277,11 @@ div.votos {
   background-position-x: 99%;
   background-position-y: 90%;
 }
-.tipoautor-1 .titulo a {
+.tipoautor-2 .titulo a {
   color: #00a48c;
   font-family: ubuntu;
 }
-.tipoautor-1 .votos {
+.tipoautor-2 .votos {
   background: #00a48c;
   color: white;
 }
