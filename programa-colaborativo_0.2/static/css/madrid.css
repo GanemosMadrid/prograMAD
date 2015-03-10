@@ -403,3 +403,6 @@ div.votos {
   font-family: 'all_things_pinkmedium', sans-serif;
   font-size: 1.6em;
 }
+.form-footer a {
+  color: white;
+}
