@@ -33,15 +33,6 @@
 		$(this).html('<strong>'+sector+'</strong>');
 	});
 
-	$(".barrio").each(function() {
-		var barrio = $(this).text();
-		if (barrio=="montanana"){
-			barrio=barrio.replace("montanana","montañana");
-		}else{
-			barrio = barrio.replace(/-/g, ' ');
-		}
-		$(this).html('<strong>'+barrio+'</strong>');
-	});
 
 	$( "#distritos-inner" ).on('change','select',function() {
 			if($(this).val()!='none'){
@@ -115,7 +106,7 @@
 
 	<div class="row" >
 		<div class="col-md-10 col-md-offset-1 " id="intro-text" >
-			Bienvenido/as a la plataforma colaborativa del programa de Ahora Madrid. Aquí podréis comentar, añadir y votar propuestas: necesitamos vuestras ideas para componer el programa que Madrid necesita. Las propuestas que encajen con el espíritu de Ahora Madrid se incluirán en el programa definitivo, que todavía estamos redactando con asociaciones, expertos/as y técnico/as. <p class="text-right"> ¡Muchas gracias por participar! </p>
+			<p class="text-left">Bienvenido/as a la plataforma colaborativa del programa de Ahora Madrid. <br/>Aquí podréis comentar, añadir y votar propuestas: necesitamos vuestras ideas para componer el programa que Madrid necesita. Las propuestas que encajen con el espíritu de Ahora Madrid se incluirán en el programa definitivo, que todavía estamos redactando con asociaciones, expertos/as y técnico/as. ¡Muchas gracias por participar! </p>
 		</div>
 	</div>	
 	

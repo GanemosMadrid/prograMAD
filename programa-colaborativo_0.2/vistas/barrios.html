@@ -25,6 +25,22 @@ $(document).ready(function() {
 		$('.objetivo-descripcion').empty().html(infoObjetivo.descripcion)
 		$('.objetivo-titulo').empty().html(infoObjetivo)
 	}
+
+	if (typeof distritos != 'undefined') {
+		$.each(distritos, function(index,jsonObject){	    
+		        $('#distritoSelect').append('<option value="'+index+'">'+ jsonObject+ '</option>');	   
+		});
+	}
+	
+	$( "#distritos-inner" ).on('change','select',function() {
+			if($(this).val()!='none'){
+				$('a#ir_propuestas_barrios').attr('href','barrio.php?barrio='+$(this).val());
+				$('a#ir_propuestas_barrios').removeClass('disabled')
+			}
+			else{
+				$('a#ir_propuestas_barrios').addClass('disabled')
+			}
+	});
 	
 });
 

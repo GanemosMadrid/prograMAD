@@ -513,9 +513,23 @@ $(document).ready(function() {
 			<div id="comentario-{{enmienda.id}}"></div>
 		{% endfor %}
 	{% endif %}
-	<div class="row" style="margin-top:10em;">
-		<h4> Consulta otras medidas en la misma categoría de objetivos </h4>
+{% endblock%}
+
+{% block content2 %}
+	
+	
+	
+	
+	<div class="col-xs-6" style="margin-top:4em;">
+		
+			<h4> Consulta otras medidas en la misma categoría de objetivos </h4>
+		
+		{% include 'listados.html' %}
+		</div> 
 	</div>
-	{% include 'listados.html' %}
-	</div> 
+
+	<div class="col-xs-4 col-xs-offset-2" style="margin-top:10em;">
+		<h4 class="text-center"> ¿Echas en falta alguna medida en el programa? </h4>
+		<a class="btn btn-success btn-lg btn-block" href="nueva-propuesta.php">SUBIR UNA NUEVA MEDIDA</a>
+	</div>
 {% endblock%}
