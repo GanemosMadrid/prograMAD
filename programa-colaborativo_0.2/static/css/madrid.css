@@ -8,8 +8,13 @@
 }
 #intro-text {
   margin-top: 3em;
-  font-size: 1.8em;
+  font-size: 1.6em;
   font-family: 'Roboto Slab', serif;
+  text-align: left;
+}
+hr.hr {
+  background-color: #00a48c;
+  height: 3px;
 }
 header.app-header-ahora {
   width: 100%;
@@ -37,7 +42,7 @@ header.app-header-ahora nav ul {
 }
 header.app-header-ahora nav ul a {
   font-family: ubuntu, sans;
-  color: #333;
+  color: #444;
 }
 header.app-header-ahora nav ul a:hover {
   background-color: transparent;
@@ -87,14 +92,13 @@ header.app-header-ahora nav ul a:active {
 	background-color: rgba(150,150,150,0.1);
 } */
 #programa div.titulo-apuesta {
-  height: 15em;
   line-height: 9em;
   vertical-align: middle;
   margin: 1em 0em;
-  padding: 1em 1em;
+  padding: 2em 1.5em;
 }
 #programa div.titulo-apuesta h3 {
-  font-size: 1.3em;
+  font-size: 1.5em;
   text-align: center;
   vertical-align: middle;
   display: inline-block;
@@ -117,7 +121,7 @@ header.app-header-ahora nav ul a:active {
 }
 #programa div.objetivo {
   margin: 1em 0em;
-  padding: 1em 0.5em;
+  padding: 2em 0.5em;
   color: #444;
   font-size: 1.0em;
   font-family: "Open Sans";
@@ -125,7 +129,7 @@ header.app-header-ahora nav ul a:active {
   text-shadow: #eee 1px 0px 1px;
   text-align: center;
   background-color: #fff;
-  height: 10em;
+  height: 8em;
   background-image: url('../images/fondo_obj.png');
   background-size: 25px 25px;
   background-repeat: no-repeat;
@@ -133,52 +137,52 @@ header.app-header-ahora nav ul a:active {
   background-position-x: 95%;
   background-position-y: 90%;
 }
-#programa #col-ciudad-habitable div.titulo-apuesta {
+#programa #col-ciudad-sostenible div.titulo-apuesta {
   border: 2px #4ecdc4 dotted;
   background-color: rgba(78, 205, 196, 0.9);
 }
-#programa #col-ciudad-habitable div.objetivo {
+#programa #col-ciudad-sostenible div.objetivo {
   border: 2px #4ecdc4 dotted;
   background-color: rgba(78, 205, 196, 0.1);
 }
-#programa #col-ciudad-habitable div.objetivo:hover,
-#programa #col-ciudad-habitable div.objetivo:active {
+#programa #col-ciudad-sostenible div.objetivo:hover,
+#programa #col-ciudad-sostenible div.objetivo:active {
   background-color: #4ecdc4;
 }
-#programa #col-democracia-transparencia div.titulo-apuesta {
+#programa #col-gobierno-democratico div.titulo-apuesta {
   border: 2px #edc951 dotted;
   background-color: rgba(237, 201, 81, 0.9);
 }
-#programa #col-democracia-transparencia div.objetivo {
+#programa #col-gobierno-democratico div.objetivo {
   border: 2px #edc951 dotted;
   background-color: rgba(237, 201, 81, 0.1);
 }
-#programa #col-democracia-transparencia div.objetivo:hover,
-#programa #col-democracia-transparencia div.objetivo:active {
+#programa #col-gobierno-democratico div.objetivo:hover,
+#programa #col-gobierno-democratico div.objetivo:active {
   background-color: #edc951;
 }
-#programa #col-derechos-sociales div.titulo-apuesta {
+#programa #col-derechos-equidad div.titulo-apuesta {
   border: 2px #e97f02 dotted;
   background-color: rgba(233, 127, 2, 0.9);
 }
-#programa #col-derechos-sociales div.objetivo {
+#programa #col-derechos-equidad div.objetivo {
   border: 2px #e97f02 dotted;
   background-color: rgba(233, 127, 2, 0.1);
 }
-#programa #col-derechos-sociales div.objetivo:hover,
-#programa #col-derechos-sociales div.objetivo:active {
+#programa #col-derechos-equidad div.objetivo:hover,
+#programa #col-derechos-equidad div.objetivo:active {
   background-color: #e97f02;
 }
-#programa #col-modelo-sostenible div.titulo-apuesta {
+#programa #col-economia-empleo div.titulo-apuesta {
   border: 2px #eb6841 dotted;
   background-color: rgba(235, 104, 65, 0.9);
 }
-#programa #col-modelo-sostenible div.objetivo {
+#programa #col-economia-empleo div.objetivo {
   border: 2px #eb6841 dotted;
   background-color: rgba(235, 104, 65, 0.1);
 }
-#programa #col-modelo-sostenible div.objetivo:hover,
-#programa #col-modelo-sostenible div.objetivo:active {
+#programa #col-economia-empleo div.objetivo:hover,
+#programa #col-economia-empleo div.objetivo:active {
   background-color: #eb6841;
 }
 /****enviar propuesta **/

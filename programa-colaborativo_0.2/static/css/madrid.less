@@ -17,11 +17,16 @@
 
 #intro-text{
 	margin-top:3em;
-	font-size:1.8em;
+	font-size:1.6em;
 	font-family: 'Roboto Slab', serif;
+	text-align: left
 
 }
 
+hr.hr{
+  background-color: @verde;
+  height: 3px;
+}
 
 
 header.app-header-ahora{
@@ -50,7 +55,7 @@ header.app-header-ahora{
 		margin:10px 0px;
 		a{
 			font-family: ubuntu, sans;
-			color:#333;
+			color:#444;
 		}
 		a:hover{
 			background-color: transparent;
@@ -114,14 +119,14 @@ margin-left: 0px;
 
 #programa{
 	div.titulo-apuesta {
-		height:15em;
+		//height:10em;
 		line-height: 9em;
 		vertical-align: middle;
 		margin: 1em 0em;
-		padding: 1em 1em;
+		padding: 2em 1.5em;
 
 		h3{
-			font-size: 1.3em;
+			font-size: 1.5em;
 			text-align: center;
 			vertical-align: middle;
 			display: inline-block;
@@ -151,7 +156,7 @@ margin-left: 0px;
 	}
 	div.objetivo{
 		margin: 1em 0em;		
-		padding: 1em 0.5em;
+		padding: 2em 0.5em;
 		color:#444;
 		font-size: 1.0em;
 		font-family: "Open Sans";
@@ -159,7 +164,7 @@ margin-left: 0px;
 		text-shadow: #eee 1px 0px 1px;
 		text-align: center;
 		background-color: #fff;
-		height:10em;
+		height:8em;
 		background-image: url('../images/fondo_obj.png');
 		background-size: 25px 25px;
 		background-repeat: no-repeat;
@@ -174,7 +179,7 @@ margin-left: 0px;
 	@col2: rgba(237,201,81,1);
 	@col3: rgba(233,127,2,1);
 	@col4: rgba(235,104,65,1);
-	#col-ciudad-habitable {
+	#col-ciudad-sostenible {
 		div.titulo-apuesta {
 			border: 2px @col1 dotted;
 			background-color: fadeout(@col1, 10%)
@@ -188,7 +193,7 @@ margin-left: 0px;
 		}
 	}
 
-	#col-democracia-transparencia{ 
+	#col-gobierno-democratico{ 
 		div.titulo-apuesta{
 			border: 2px @col2 dotted;
 			background-color: fadeout(@col2, 10%)
@@ -202,7 +207,7 @@ margin-left: 0px;
 		}
 	}
 
-	#col-derechos-sociales{ 
+	#col-derechos-equidad{ 
 		div.titulo-apuesta{
 			border: 2px @col3 dotted;
 			background-color: fadeout(@col3, 10%)
@@ -216,7 +221,7 @@ margin-left: 0px;
 		}
 	}
 
-	#col-modelo-sostenible{ 
+	#col-economia-empleo{ 
 		div.titulo-apuesta{
 			border: 2px @col4 dotted;
 			background-color: fadeout(@col4, 10%)

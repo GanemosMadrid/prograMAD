@@ -20,7 +20,9 @@ if(isset ($_GET['id'])){
 	$id_enmiendas = listarpreparada($buscaID,'SELECT e.id
 		FROM prog_enmiendas AS e
 		WHERE e.propuesta_id =:id');
-						
+	
+	
+
 	$comentarios = 'SELECT c.enmienda_id, u.nombre, u.apellidos, c.id, c.comentario, c.sum_likes, c.autor_id, u.id_rol
 					FROM prog_enmiendas AS e, users AS u, prog_comentarios AS c
 					WHERE c.enmienda_id = e.id
@@ -32,7 +34,7 @@ if(isset ($_GET['id'])){
 		WHERE p.id=:id and p.autor_id=users.id;";
 	$autor_id = autor_propuesta($ID_prop,$consulta_autor);
 	$usuario_id = userid();
-
+	
 	//Compruebo que el autor de la propuesta sea el usuario logueado (para enlace editar)
 		if ($autor_id==$usuario_id){
 			$autor=array('autor_id'=>$autor_id);
@@ -40,9 +42,40 @@ if(isset ($_GET['id'])){
 		}else{
 			$usuario=array('usuario_id'=>$usuario_id);
 			$autor=array();
-		}	
+		}
+	$id_tag = listarpreparada($buscaID,'SELECT p.sector
+		FROM prog_propuestas AS p
+		WHERE p.id =:id');
+
+	$tag=$id_tag[0]['sector'];
+	$consulta = 
+	'SELECT u.nombre, u.apellidos, p.id, p.titulo, p.comentarios, p.sum_likes, p.positivos, p.negativos, u.id_rol
+	FROM users AS u, prog_propuestas AS p
+	WHERE  `autor_id` = u.id and p.sector ="'.$tag.'"
+	ORDER BY p.sum_likes DESC; ';
+
+	$debatidas = 
+	'SELECT u.nombre, u.apellidos, p.id, p.titulo, p.comentarios, p.sum_likes, p.positivos, p.negativos, u.id_rol
+	FROM users AS u, prog_propuestas AS p
+	WHERE  `autor_id` = u.id and p.sector ="'.$tag.'"
+	ORDER BY p.comentarios DESC; ';
+
+	$recientes = 
+	'SELECT u.nombre, u.apellidos, p.id, p.titulo, p.comentarios, p.sum_likes, p.positivos, p.negativos, u.id_rol
+	FROM users AS u, prog_propuestas AS p
+	WHERE  `autor_id` = u.id and p.sector ="'.$tag.'"
+	ORDER BY p.id DESC; ';
+
+	$consensuadas = 
+	'SELECT u.nombre, u.apellidos, u.id_rol, p.id, p.titulo, p.comentarios, p.sum_likes, p.positivos, p.negativos, (LOG(p.positivos+p.negativos)* ((p.positivos-p.negativos) /(p.positivos+p.negativos))) log, (p.positivos /(p.positivos+p.negativos)) porcentaje
+	FROM users AS u, prog_propuestas AS p
+	WHERE  `autor_id` = u.id and p.sector ="'.$tag.'"
+	ORDER BY log DESC; ';	
+
 }
-$datos = array('autor'=>$autor,'id'=>$buscaID,'user'=>autentificado(),'propuesta' => preparada($buscaID,$propuesta), 'enmiendas'=>listarpreparada($buscaID,$enmiendas), 'comentarios'=>listarpreparada($id_enmiendas, $comentarios));
+
+
+$datos = array('autor'=>$autor,'id'=>$buscaID,'user'=>autentificado(),'propuesta' => preparada($buscaID,$propuesta), 'enmiendas'=>listarpreparada($buscaID,$enmiendas), 'comentarios'=>listarpreparada($id_enmiendas, $comentarios),'propuestas'=>listar($consulta), 'debatidas'=>listar($debatidas), 'recientes'=>listar($recientes), 'consensuadas'=>listar($consensuadas));
 
 echo $template->render($datos);
 ?>
