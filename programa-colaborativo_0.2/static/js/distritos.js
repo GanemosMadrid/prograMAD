@@ -81,6 +81,6 @@ distritos={
     villaverde: 'Villaverde',
     villa_de_vallecas: 'Villa de Vallecas',
     vicalvaro: 'Vicálvaro',
-    san_blas_canillejas: 'San Blas Canillejas',
+    san_blas_canillejas: 'San Blas-Canillejas',
 }
 });

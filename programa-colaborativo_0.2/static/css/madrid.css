@@ -44,6 +44,12 @@ header.app-header-ahora nav ul a {
   font-family: ubuntu, sans;
   color: #444;
 }
+@media (min-width: 768px) and (max-width: 992px) {
+  header.app-header-ahora nav ul a {
+    padding: 0.8em 0.4em;
+    font-size: 0.9em;
+  }
+}
 header.app-header-ahora nav ul a:hover {
   background-color: transparent;
   color: white;
@@ -104,6 +110,16 @@ header.app-header-ahora nav ul a:active {
   display: inline-block;
   font-family: 'ubuntu';
   text-transform: uppercase;
+}
+@media (min-width: 768px) {
+  #programa div.titulo-apuesta h3 {
+    font-size: 1.2em;
+  }
+}
+@media (min-width: 992px) {
+  #programa div.titulo-apuesta h3 {
+    font-size: 1.5em;
+  }
 }
 #programa div.titulo-apuesta h3 a {
   color: #444;
@@ -403,6 +419,20 @@ div.votos {
   font-family: 'all_things_pinkmedium', sans-serif;
   font-size: 1.6em;
 }
+.form-footer {
+  text-align: center;
+}
 .form-footer a {
   color: white;
+  font-size: 1.1em;
+  background-color: #5CB85C;
+  padding: 0px 0.5em;
+}
+.form-footer a:hover {
+  text-decoration: underline;
+  background-color: #5C985C;
+}
+.form-footer i.fa {
+  margin-bottom: 3px;
+  background-color: #5CB85C;
 }

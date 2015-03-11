@@ -42,6 +42,7 @@ header.app-header-ahora{
 		display: block;
 		text-align: right;
 		margin-right: 2em;
+
 		a{
 			display: inline-block;;
 			margin: 0 0em;
@@ -56,6 +57,10 @@ header.app-header-ahora{
 		a{
 			font-family: ubuntu, sans;
 			color:#444;
+			@media (min-width: 768px)  and (max-width:992px) { 
+			padding: 0.8em 0.4em;	
+			font-size:0.9em;
+			 }
 		}
 		a:hover{
 			background-color: transparent;
@@ -64,6 +69,12 @@ header.app-header-ahora{
 		a:active{
 			background-color: #333;
 			color: white;
+		}
+		li.hide-tablet{
+			@media (min-width: 768px)  and (max-width:992px) { 
+				
+			 }
+			
 		}
 	}
 
@@ -126,7 +137,14 @@ margin-left: 0px;
 		padding: 2em 1.5em;
 
 		h3{
-			font-size: 1.5em;
+			
+			@media (min-width: 768px) { 
+				font-size: 1.2em;
+			 }
+			@media (min-width: 992px) { 
+				font-size: 1.5em;
+			 }
+			font-size: 1.5em; 
 			text-align: center;
 			vertical-align: middle;
 			display: inline-block;
@@ -498,7 +516,22 @@ font-size: 1.6em;
 	}
 
 }
-
+.form-footer{
+	text-align: center;
+}
 .form-footer a{
 	color:white;
+	font-size: 1.1em;
+	background-color: #5CB85C;
+	padding:0px 0.5em;
+
+}
+.form-footer a:hover{
+	text-decoration: underline;
+	background-color: #5C985C;
+
+}
+.form-footer i.fa {
+margin-bottom: 3px;
+background-color: #5CB85C;
 }

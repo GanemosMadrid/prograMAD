@@ -16,12 +16,18 @@ $(document).ready(function() {
 		$(this).html('<strong>'+sector+'</strong>');
 	});*/
 
-	obj="{{tag}}"
-	infoObjetivo=getObjetivo(obj);
+	area="{{tag}}"
+	infoObjetivo=apuestas[area];
 	if(infoObjetivo!=null){
 		$('.objetivo-descripcion').empty().html(infoObjetivo.descripcion)
 		$('.objetivo-titulo').empty().html(infoObjetivo.titulo)
 	}
+
+	$.each(listobjetivos.objetivos, function(index,jsonObject){	   
+			if(jsonObject.apuesta==area) 
+	        $('#objetivos-area-'+area).append('<div class="col-xs-6"><a href="sector.php?sector='+jsonObject.id+'"><div class="objetivo "> ' +jsonObject.titulo+'</div></a></div>');	   
+	});
+
 	
 });
 
@@ -30,20 +36,31 @@ $(document).ready(function() {
 {% block content %}
 	<div class="row">
 		<div class="col-xs-12">
-			<h2 > <small><i>objetivo:</i></small> <br/><span class="objetivo-titulo"> </span></h2>
+			<h2 > <small><i>Area:</i></small> <br/><span class="objetivo-titulo"> </span></h2>
 			<p class="objetivo-descripcion"> </p>
 
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-xs-12">
+		Esta área se compone de los siguientes objetivos que puedes explorar:
+		</div>		
+	</div>
+	<div class="row" id="programa" >
+		<div class="objetivos-container" id="col-{{tag}}">
+			<div id="objetivos-area-{{tag}}"> 
+			</div>
+		</div>		
+	</div>
 	
-	{% include 'listados.html' %}
+	
 	
 
 	{% if user %}
 	<div class="row">
 		<div class="col-xs-12">
-			<h4 class="text-center"> ¿Echas en falta alguna medida en este objetivo? </h4>
-			<a class="btn btn-success btn-lg btn-block" href="nueva-propuesta.php?objetivo={{tag}}">SUBIR UNA NUEVA MEDIDA</a>
+			<h4 class="text-center"> ¿Te gustaría proponer algo para Madrid? </h4>
+			<a class="btn btn-success btn-lg btn-block" href="nueva-propuesta.php">SUBIR UNA NUEVA MEDIDA</a>
 		</div>
 	</div>	
 	{% else %}
