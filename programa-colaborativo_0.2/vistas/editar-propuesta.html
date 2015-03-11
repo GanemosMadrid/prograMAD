@@ -9,6 +9,9 @@ bkLib.onDomLoaded(function() {
 	new nicEditor({buttonList : ['bold','italic','underline','left','center','right','justify','ol','ul','link']}).panelInstance('propuesta');
 });
 </script>
+<script src="static/js/raphael.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/scale.raphael.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/distritos.js"></script>
 <script>
 $(document).ready(function() {
 
@@ -24,14 +27,45 @@ $(document).ready(function() {
 	    messages:{
 	      titulo: {
 			required: "Tiene que poner un título",
-	      },
+	      }/*,
 	      sector: {
 	      	required: "Tiene que elegir un sector",
-	    }
+	    }*/
 	}
 	});
-	$('#{{propuesta.sector}}').prop("checked", "checked");
-	$('#{{propuesta.barrio}}').attr("selected", "selected");
+//	$('#{{propuesta.sector}}').prop("checked", "checked");
+//	$('#{{propuesta.barrio}}').attr("selected", "selected");
+
+	$.each(listobjetivos.objetivos, function(index,jsonObject){
+	        $('#lista-objetivos-'+jsonObject.apuesta).append('<label class="objetivo"><input type="radio" name="sector" class="'+
+			'apuesta-' + jsonObject.apuesta +' " id="' + jsonObject.id+'" value="'+jsonObject.id+'"> ' + jsonObject.titulo+ ' </label>');   
+	});
+
+	$("#lista-objetivos input:radio").change(function () {
+			$('#form-seleccion-objetivos').find('label').removeClass('active');				
+			/*$('.nicEdit-panelContain').parent().width('100%');
+			$('.nicEdit-panelContain').parent().next().width('98%');
+			$('.nicEdit-main').width('100%');
+
+			$('.nicEdit-main').css('min-height','10em');*/
+			if($(this).is(':checked')){
+				$(this).parent().addClass('active');
+			}		
+		});
+	if (typeof distritos != 'undefined') {
+		$.each(distritos, function(index,jsonObject){	    
+		        $('#distritoSelect').append('<option value="'+index+'">'+ jsonObject+ '</option>');	   
+		});
+	}
+	sector="{{propuesta.sector}}";
+	if(sector!=""){
+		$('input#{{propuesta.sector}}').prop('checked', true); 	
+		$('input#{{propuesta.sector}}').trigger('change');
+	}
+	distrito="{{propuesta.barrio}}";
+	$("#distritoSelect").val(distrito);
+    $("#distritoSelect").trigger('change');
+	
 
 });
 </script>
@@ -55,49 +89,43 @@ $(document).ready(function() {
 		</div>
 
 		<div class="col-xs-10 col-md-offset-1">
-		  <div class="form-group">
-		    <label for="sector">Selecciona un sector *</label>
-		    <div style="clear:both"></div>		    
-  			<label class="radio-inline col-xs-3">
-			    <input type="radio" name="sector" id="urbanismo-y-vivienda" value="urbanismo-y-vivienda">
-			    Urbanismo y vivienda</label>
-		  	<label class="radio-inline col-xs-3">
-			    <input type="radio" name="sector" id="ecología-y-medio-ambiente" value="ecología-y-medio-ambiente">
-			    Ecología y medio ambiente</label>
-		  	<label class="radio-inline col-xs-3">
-			    <input type="radio" name="sector" id="movilidad" value="movilidad">
-			    Movilidad</label>
-			 <div style="clear:both"></div>
-		  	<label class="radio-inline col-xs-3">
-			    <input type="radio" name="sector" id="trabajo-y-empleo" value="trabajo-y-empleo">
-			    Trabajo y empleo</label>
-		  	<label class="radio-inline col-xs-3">
-			    <input type="radio" name="sector" id="economía-municipal" value="economía-municipal">
-			    Economía municipal</label>
-		  	<label class="radio-inline col-xs-3">
-			    <input type="radio" name="sector" id="cultura" value="cultura">
-			    Cultura</label>
-			 <div style="clear:both"></div>
-		  	<label class="radio-inline col-xs-3">
-			    <input type="radio" name="sector" id="servicios-sociales" value="servicios-sociales">
-			    Servicios sociales</label>
-		  	<label class="radio-inline col-xs-3">
-			    <input type="radio" name="sector" id="servicios-públicos" value="servicios-públicos">
-			    Servicios públicos</label>
-		  	<label class="radio-inline col-xs-3">
-			    <input type="radio" name="sector" id="participación-ciudadana" value="participación-ciudadana">
-			    Participación ciudadana</label>
-		  	<div style="clear:both"></div>
-		  	<label class="radio-inline col-xs-3">
-			    <input type="radio" name="sector" id="educación" value="educación">
-			    Educación</label>
-			<label class="radio-inline col-xs-3">
-			    <input type="radio" name="sector" id="TIC" value="TIC">
-			    TIC</label>
-		  	<label class="radio-inline col-xs-3">
-			    <input type="radio" name="sector" id="deportes" value="deportes">
-			    Deportes</label>
+		  <div class="form-group" id="form-seleccion-objetivos">
+		    
 			<div style="clear:both"></div>
+			Selecciona un objetivo (opcional)
+			<div id="#lista-objetivos">
+				
+					<input type="radio" name="sector" class=" " id="empty_radio" value="" checked style="display:none">
+					<div class="row"> 		    		
+						<div class="col-md-6" >
+							<div class="apuesta" id="lista-objetivos-derechos-equidad">
+								<h3> Derechos sociales y Equidad</h3>
+							</div>
+						</div>
+						<div class="col-md-6" >
+							<div class="apuesta" id="lista-objetivos-ciudad-sostenible">
+								<h3> Ciudad sostenible, cohesionada y cercana </h3>
+							</div>
+						</div>
+					</div>
+					<div class="row"> 		
+						<div class="col-md-6" >
+							<div class="apuesta" id="lista-objetivos-gobierno-democratico">
+								<h3> Gobierno Democrático, transparente y eficaz</h3>
+							</div>
+						</div>
+						<div class="col-md-6" >
+							<div class="apuesta" id="lista-objetivos-economia-empleo">
+								<h3> Economía sostenible y empleo de calidad</h3>
+							</div>
+							<div class="apuesta">
+								<label class="objetivo" style="color:red; margin-top:2em;">
+									<input type="radio" name="sector" class="'+
+			'apuesta" id="" value="" > No colocar bajo ningun objetivo: medida sólo de barrio </label>'
+							</div>
+						</div>
+					</div>
+			</div>
 		  	
 		</div>
 
@@ -105,38 +133,18 @@ $(document).ready(function() {
 
 		<div class="col-xs-10 col-md-offset-1">
 		  <div class="form-group">
-		    <label for="desarrollo">Selecciona un barrio (opcional)</label>
+		    <label for="desarrollo">Selecciona un distrito (opcional)</label>
 
-		    <select class="form-control" name="barrio">
-			  <option value="">Selecciona un barrio</option>
-			  <option id="Actur-Rey-Fernando" value="Actur-Rey-Fernando">Actur-Rey Fernando</option>
-			  <option id="Alfocea" value="Alfocea">Alfocea</option>
-			  <option id="Almozara" value="Almozara">Almozara</option>
-			  <option id="Casablanca" value="Casablanca">Casablanca</option>
-			  <option id="Casetas" value="Casetas">Casetas</option>
-			  <option id="Casco-Histórico" value="Casco-Histórico">Casco Histórico</option>
-			  <option id="Cartuja-Baja" value="Cartuja-Baja">Cartuja Baja</option>
-			  <option id="Centro" value="Centro">Centro</option>
-			  <option id="Delicias" value="Delicias">Delicias</option>
-			  <option id="El-Rabal" value="El-Rabal">El Rabal</option>
-			  <option id="Garrapinillos" value="Garrapinillos">Garrapinillos</option>
-			  <option id="Juslibol" value="Juslibol">Juslibol</option>
-			  <option id="Miralbueno" value="Miralbueno">Miralbueno</option>
-			  <option id="Montanana" value="Montanana">Montañana</option>
-			  <option id="Monzalbarba" value="Monzalbarba">Monzalbarba</option>
-			  <option id="Movera" value="Movera">Movera</option>
-			  <option id="Oliver-Valdefierro" value="Oliver-Valdefierro">Oliver-Valdefierro</option>
-			  <option id="San-Gregorio" value="San-Gregorio">San Gregorio</option>
-			  <option id="San-José" value="San-José">San José</option>
-			  <option id="San-Juan-de-Mozarrifar" value="San-Juan-de-Mozarrifar">San Juan de Mozarrifar</option>
-			  <option id="Santa-Isabel" value="Santa-Isabel">Santa Isabel</option>
-			  <option id="Torrero" value="Torrero">Torrero</option>
-			  <option id="Universidad" value="Universidad">Universidad</option>
-			  <option id="Venta-del-Olivar" value="Venta-del-Olivar">Venta del Olivar</option>
+		    <select class="form-control" name="barrio" id="distritoSelect">
+			  <option value="">Selecciona un Distrito</option>
+			  
 			</select>
 		    
 		  </div>
 		</div>
+		<div id="canvas" style="display:none">
+						<div id="paper"></div>
+					</div>
 		<input type="hidden" name="id" value="{{propuesta.id}}">
 		<div class="col-xs-10 col-md-offset-1">
 		  <button type="submit" id="enviar" class="btn-lg btn-block btn btn-success">Enviar</button>
