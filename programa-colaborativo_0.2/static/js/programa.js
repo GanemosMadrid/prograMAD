@@ -89,7 +89,10 @@ var listobjetivos={
      "titulo":"Cambio de modelo económico",
      "apuesta":"economia-empleo",
      "descripcion":" Descripcion del objetivo. Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, <p>cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas , las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</p>"},
-
+    {"id":"sin-categoria",   
+     "titulo":"Propuestas sin clasificar",
+     "apuesta":"",
+     "descripcion":"En esta categoría agrupamos las medidas que los usuarios han enviado pero que no han sabido donde clasificar"}
 //
 
 ]}

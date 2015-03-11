@@ -304,6 +304,16 @@ div.votos {
   background: #00a48c;
   color: white;
 }
+#nota-programa {
+  display: none;
+}
+.propuesta-individual.tipoautor-3 #nota-programa,
+.propuesta-individual.tipoautor-2 #nota-programa {
+  display: block;
+  width: 20em;
+  font-size: 0.8em;
+  font-weight: bold;
+}
 #distritos {
   background-color: #555;
   padding: 4em 0;
@@ -452,4 +462,7 @@ label#titulo-error {
   color: red;
   font-size: 1.4em;
   font-weight: bold;
+}
+.propuesta-contenido-wrapper {
+  margin-right: 4em;
 }

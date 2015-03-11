@@ -366,6 +366,7 @@ $(document).ready(function() {
 						{% if propuesta.id_rol == 2 %}<strong>{% endif %}
 						Presentada por {{ propuesta.nombre}} {{ propuesta.apellidos}}
 						{% if propuesta.id_rol == 2 %}</strong>{% endif %}
+						<div id="nota-programa">  (medida proveniente del trabajo previo del "grupo de programa") </div>
 					{% endif %}
 					{% if user and user.idRol == 2 %}
 						<a href="borrar-propuesta.php?id={{ propuesta.id }}&propuestaId={{propuesta.id}}">BORRAR</a>
@@ -376,7 +377,9 @@ $(document).ready(function() {
 
 		<div class="row">
 			<h4>Propuesta: </h4> 
+			<p class="propuesta-contenido-wrapper">
 			{{ propuesta.propuesta|raw }}
+			</p>
 		</div>
 	</div>
 	

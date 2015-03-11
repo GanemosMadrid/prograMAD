@@ -21,8 +21,10 @@ $(document).ready(function() {
 	R.scaleAll(0.7);
 	obj="{{tag}}"
 	infoObjetivo=distritos[obj];
+	descripcionObjetivo=descripcion_distritos[obj];
+	
 	if(infoObjetivo!=null){
-		$('.objetivo-descripcion').empty().html(infoObjetivo.descripcion)
+		$('.objetivo-descripcion').empty().html(descripcionObjetivo)
 		$('.objetivo-titulo').empty().html(infoObjetivo)
 	}
 

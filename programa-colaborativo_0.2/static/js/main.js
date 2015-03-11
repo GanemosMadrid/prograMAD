@@ -1,7 +1,5 @@
 //document.ready
 $(function(){
-
-
 	/*$.each(listobjetivos.objetivos, function(index,jsonObject){	    
 	        $('#objetivos-'+jsonObject.apuesta).append('<a href="sector.php?sector='+jsonObject.id+'"><div class="objetivo"> ' +jsonObject.titulo+'</div></a>');	   
 	});*/
@@ -16,13 +14,18 @@ $(function(){
 	                	</div>\
 	            	</div>\
 	            </div>	');
+	        	counter=counter+1;
 	        	//<a href="sector.php?sector='+jsonObject.id+'"><div class="objetivo"> ' +jsonObject.titulo+'</div></a>');	   
-	        counter++;
+	        
 	});
+	
+
 //genera objetivos bajo cada apuestas
     $.each(listobjetivos.objetivos, function(index,jsonObject){	    
 	        $('#objetivos-'+jsonObject.apuesta).append('<a href="sector.php?sector='+jsonObject.id+'"><div class="objetivo"> ' +jsonObject.titulo+'</div></a>');	   
 	});
+	$('#objetivos-economia-empleo').append('<a href="sector.php?sector=sin-categoria">\
+	        	<div class="objetivo" style="margin-top:4em; text-shadow:none; border:none; background-color:#444; color:white"> Propuestas de usuarios enviadas sin categorizar</div></a>')
 
 
 	/* sidebar
