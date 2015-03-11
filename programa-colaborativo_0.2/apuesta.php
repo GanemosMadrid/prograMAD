@@ -6,8 +6,9 @@ if(isset ($_GET['apuesta'])){
 $tag= $_GET['apuesta'];
 $etiqueta = str_replace ( '-' ,'-', $tag);
 
-$template = $twig->loadTemplate('propuestas.html');
+$template = $twig->loadTemplate('apuesta.html');
 
+/*
 $consulta = 
 'SELECT u.nombre, u.apellidos, p.id, p.titulo, p.comentarios, p.sum_likes, p.positivos, p.negativos
 FROM users AS u, prog_propuestas AS p
@@ -31,9 +32,9 @@ $consensuadas =
 FROM users AS u, prog_propuestas AS p
 WHERE  `autor_id` = u.id and p.sector ="'.$tag.'"
 ORDER BY log DESC; ';
+*/
 
-
-
-$datos = array('tag'=>$etiqueta,'user'=>autentificado(),'propuestas'=>listar($consulta), 'debatidas'=>listar($debatidas), 'recientes'=>listar($recientes), 'consensuadas'=>listar($consensuadas));
+//'propuestas'=>listar($consulta), 'debatidas'=>listar($debatidas), 'recientes'=>listar($recientes), 'consensuadas'=>listar($consensuadas)
+$datos = array('tag'=>$etiqueta,'user'=>autentificado());
 echo $template->render($datos);
 }
