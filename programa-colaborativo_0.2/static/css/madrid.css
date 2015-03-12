@@ -70,9 +70,10 @@ header.app-header-ahora nav ul a:active {
   font-family: all_things_pinkmedium;
   font-size: 1.2em;
 }
-.carousel-control.left,
-.carousel-control.right {
+a.carousel-control.left,
+a.carousel-control.right {
   background: transparent;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
   opacity: 0.8;
   color: #888;
 }
