@@ -20,6 +20,7 @@ function getUrlVars() {
 }
 $(document).ready(function() {
 $('#footer').hide();
+R.scaleAll(0.6);
 	optionIsSelected=false;
 
 
@@ -53,22 +54,52 @@ $('#footer').hide();
 			'apuesta-' + jsonObject.apuesta +' " id="' + jsonObject.id+'" value="'+jsonObject.id+'"> ' + jsonObject.titulo+ ' </label>');
    
 	});
-		
-	$('a#continue1').on('click',function(event){	//first time scroll to the form element		
-		event.preventDefault()
 
+
+	//distrito
+	$('a#continue2').on('click',function(event){	 //viene de barrio
+		event.preventDefault();
+		
 		if( $("#nuevapropuesta").valid()==true){
+			$('#step-elige').hide();
+			$('.apuesta input').prop('checked', false);
+			$('#form-seleccion-objetivos').find('label').removeClass('active');	
+			
 			if( typeof distrito != 'undefined'){ // vienen de una página de distrito a añadir algo
 				$('#step-distritos').show();
-				$('#step-elige-previous').show();
+				//$('#step-elige-previous').show();
 				$('#step-distritos h3.titulo1').empty().text('Vas a añadir tu propuesta a este distrito:')
-				$("#distritoSelect").val(distrito);
-                $("#distritoSelect").trigger('change');
-				if(!optionIsSelected)	
+				
+
+                $('#step-envia').show();
+				if(!optionIsSelected)	{
 					$("html, body").animate({ scrollTop: $('#step-distritos').offset().top-100},1000);
 					optionIsSelected=true;
+				}
+				optionIsSelected=true;
+				$("#distritoSelect").val(distrito);
+                $("#distritoSelect").trigger('change');
+
 			}
-			else if(typeof objetivo != 'undefined'){
+			else{
+				$('#step-distritos').fadeIn("fast", function(){ 
+					$("html, body").animate({ scrollTop: $('#step-distritos').offset().top-100},1000);
+				}); 
+			}
+			$('#footer').show();
+		}
+
+	})
+
+		
+	$('a#continue1').on('click',function(event){	//viene de sector
+		event.preventDefault()
+		
+
+		if( $("#nuevapropuesta").valid()==true){
+			$('#step-distritos').hide();
+			$("#distritoSelect").val(distrito);
+			if(typeof objetivo != 'undefined'){
 				$('input#'+objetivo).prop('checked', true); 
 				optionIsSelected=true;
 				$('input#'+objetivo).trigger('change');
@@ -76,6 +107,7 @@ $('#footer').hide();
 				$('#step-elige').fadeIn("fast", function(){ 
 					$("html, body").animate({ scrollTop: $('#step-elige').offset().top-100},1000);
 				}); 
+				$('#step-envia').show();
 				
 			}
 			else{
@@ -96,7 +128,7 @@ $('#footer').hide();
 	
 	$("#lista-objetivos input:radio").change(function () {
 			$('#form-seleccion-objetivos').find('label').removeClass('active');	
-			$('#step-distritos').show();
+			//$('#step-distritos').show();
 			/*$('.nicEdit-panelContain').parent().width('100%');
 			$('.nicEdit-panelContain').parent().next().width('98%');
 			$('.nicEdit-main').width('100%');
@@ -105,8 +137,11 @@ $('#footer').hide();
 			if($(this).is(':checked')){
 				$(this).parent().addClass('active');
 			}
-			if(!optionIsSelected)	//first time scroll to the form element		 
-				$("html, body").animate({ scrollTop: $('#step-distritos').offset().top-100},1000);
+			if(!optionIsSelected){	//first time scroll to the send element		 
+				$('#step-envia').show();
+				$("html, body").animate({ scrollTop: $('#step-envia').offset().top-100},1000);
+			}
+
 			optionIsSelected=true;
 
 			
@@ -117,8 +152,16 @@ $('#footer').hide();
 	$( "#step-distritos" ).on('change','select',function() {
 	  if($(this).val()!=""){
 	  	$('div#canvas').fadeIn();
+	  	if(!optionIsSelected){	//first time scroll to the send element		 
+				$('#step-envia').show();
+				$("html, body").animate({ scrollTop: $('#step-envia').offset().top-100},1000);
+		}else{
+			$('#step-envia').show();
+		}
+		optionIsSelected=true;	
 	  }else{
 	  	$('div#canvas').fadeOut();
+	  	$('#step-envia').hide();
 	  }
 	});
 
@@ -149,7 +192,13 @@ $('#footer').hide();
 					    <label for="propuesta">Escribe la propuesta *</label>
 					    <textarea class="form-control" name="propuesta" id="propuesta" rows="10"></textarea> 
 					  </div>
-					  <a href="#" id="continue1" class="btn-lg btn-block btn btn-success"> continuemos...</a>
+					  <div> <h4> Puedes clasificar la propuesta como asociada a un distrito de Madrid o en general para toda la ciudad pero asociada a un objetivo </h4> </div>
+					  <div class="col-sm-5" style="margin-top:5px">
+					  	<a href="#" id="continue1" class="btn-lg btn-block btn btn-success"> Para toda la ciudad</a> 
+					  </div>
+					  <div class="col-sm-5" style="margin-top:5px">
+					  	<a href="#" id="continue2" class="btn-lg btn-block btn btn-success"> Asociada a un distrito</a>
+					  </div>
 					</div>
 				</div>			
 			</div>
@@ -207,14 +256,14 @@ $('#footer').hide();
 			</div>
 		</div>
 		<div id="step-distritos">
-			<h3 class="titulo1"> 3. ¿Tu medida está centrada en un distrito? </h3>
+			<h3 class="titulo1"> 3. Tu medida está centrada en un distrito: </h3>
 			<div class="row" id="distritos-inner">				
 				<div class="col-md-6">
 					<div id="info-distrito">
 						<div id="nombre-distrito">
 							<div class="form-group">
 								<select value="" id="distritoSelect" name="barrio" class="form-control">
-									<option value="">No, mi medida es para toda la ciudad </option>
+									<option value="">Elige distrito </option>
 								</select>
 							</div> 
 						</div> 
@@ -222,22 +271,22 @@ $('#footer').hide();
 					</div>
 					
 					<div class="info-ayuda">
-						¿Está conectada tu propuesta a un distrito en concreto? Márcalo.
-					</div>
-
-					<div id="envio">
-						<h3>4. ¡Ya has terminado! Ahora pulsa enviar para mandarnos tu propuesta.</h3>
 						
-						<button type="submit" id="enviar" class="btn-lg btn-block btn btn-success">Enviar</button>
-						<span class="mini-texto-ayuda"> *Nota: una vez pulses enviar no podrás volver a editar tu propuesta</span>
-					</div>
-					
+					</div>										
 				</div>
 				<div class="col-md-6 hidden-sm hidden-xs">
 					<div id="canvas">
 						<div id="paper"></div>
 					</div>
 				</div>
+			</div>
+		</div>
+		<div id="step-envia">
+			<div class="row">
+						<h3>4. ¡Ya has terminado! Ahora pulsa enviar para mandarnos tu propuesta.</h3>
+						
+						<button type="submit" id="enviar" class="btn-lg btn-block btn btn-success">Enviar</button>
+						<span class="mini-texto-ayuda"> *Nota: una vez pulses enviar no podrás volver a editar tu propuesta</span>
 			</div>
 		</div>
 				

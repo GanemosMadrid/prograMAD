@@ -21,7 +21,9 @@
 				<div class="metadata">autor: <strong>{{ propuesta.nombre}} {{ propuesta.apellidos}} </strong> | <strong>{{ propuesta.comentarios}}</strong> comentarios | {% set suma = (propuesta.positivos / (propuesta.negativos + propuesta.positivos))*100 %} <strong>{{ suma | number_format(2) }} %</strong> de votos positivos de un total de {{ propuesta.negativos + propuesta.positivos }} votos.
 				</div>
 				<div class="metadata">
+				{% if propuesta.sector%}
 				sector: <a href="sector.php?sector={{propuesta.sector}}"><span class="sector"><strong>{{propuesta.sector}}</strong></span></a>
+				{% endif %}
 				{% if propuesta.barrio%}
 					| Barrio: <a href="barrio.php?barrio={{propuesta.barrio}}">
 					<span class="barrio"><strong>{{ propuesta.barrio }}</strong></span> </a>
@@ -49,7 +51,9 @@
 				<div class="titulo"><a href="propuesta.php?id={{debatida.id}}">{{ debatida.titulo}}</a></div>
 				<div class="metadata">autor: <strong>{{ debatida.nombre}} {{ debatida.apellidos}}</strong> | <strong>{{ debatida.comentarios}}</strong> comentarios | {% set suma = (debatida.positivos / (debatida.negativos + debatida.positivos))*100 %} <strong>{{ suma | number_format(2) }} % </strong>de votos positivos de un total de {{ debatida.negativos + debatida.positivos }} votos. </div>
 				<div class="metadata">
+				{% if debatida.sector%}
 				sector: <a href="sector.php?sector={{debatida.sector}}"><span class="sector"><strong>{{debatida.sector}}</strong></span></a>
+				{% endif %}
 				{% if debatida.barrio%}
 					| Barrio: <a href="barrio.php?barrio={{debatida.barrio}}"><span class="barrio"><strong>{{ debatida.barrio }}</strong></span></a>
 				{% endif %}
@@ -76,7 +80,9 @@
 				<div class="titulo"><a href="propuesta.php?id={{reciente.id}}">{{ reciente.titulo}}</a></div>
 				<div class="metadata">autor: <strong>{{ reciente.nombre}} {{ reciente.apellidos}} </strong>| <strong>{{ reciente.comentarios}}</strong> comentarios | {% set suma = (reciente.positivos / (reciente.negativos + reciente.positivos))*100 %} <strong>{{ suma | number_format(2) }} % </strong>de votos positivos de un total de {{ reciente.negativos + reciente.positivos }} votos. </div>
 				<div class="metadata">
+				{% if reciente.sector%}
 				sector: <a href="sector.php?sector={{reciente.sector}}"><span class="sector"><strong>{{reciente.sector}}</strong></span></a>
+				{% endif %}
 				{% if reciente.barrio%}
 					| Barrio: <a href="barrio.php?barrio={{reciente.barrio}}"><span class="barrio"><strong>{{ reciente.barrio }}</strong></span></a>
 				{% endif %}
@@ -104,7 +110,9 @@
 				<div class="titulo"><a href="propuesta.php?id={{consenso.id}}">{{ consenso.titulo}}</a></div>
 				<div class="metadata">autor: <strong>{{ consenso.nombre}} {{ consenso.apellidos}} </strong>| <strong>{{ consenso.comentarios}}</strong> comentarios | {% set suma = (consenso.positivos / (consenso.negativos + consenso.positivos))*100 %} <strong>{{ suma | number_format(2) }} % </strong>de votos positivos de un total de {{ consenso.negativos + consenso.positivos }} votos. </div>
 				<div class="metadata">
+				{% if consenso.sector%}	
 				sector: <a href="sector.php?sector={{consenso.sector}}"><span class="sector"><strong>{{consenso.sector}}</strong></span></a>
+				{% endif %}	
 				{% if consenso.barrio%}
 					| Barrio: <a href="barrio.php?barrio={{consenso.barrio}}"><span class="barrio"><strong>{{ consenso.barrio }}</strong></span></a>
 				{% endif %}
