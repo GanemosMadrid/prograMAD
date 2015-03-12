@@ -46,31 +46,75 @@ if(isset ($_GET['id'])){
 	$id_tag = listarpreparada($buscaID,'SELECT p.sector
 		FROM prog_propuestas AS p
 		WHERE p.id =:id');
+	
+	$tag="";
+	$consulta="";
+	$debatidas="";
+	$recientes=""; 
+	$consenduadas =""; 
+	if(empty($id_tag[0]['sector'])){
+		$id_tag = listarpreparada($buscaID,'SELECT p.barrio
+		FROM prog_propuestas AS p
+		WHERE p.id =:id');
+	//	var_dump($id_tag);
+		$tag=$id_tag[0]['barrio'];
+	//	var_dump($tag);
 
-	$tag=$id_tag[0]['sector'];
-	$consulta = 
-	'SELECT u.nombre, u.apellidos, p.id, p.titulo, p.comentarios, p.sum_likes, p.positivos, p.negativos, u.id_rol
-	FROM users AS u, prog_propuestas AS p
-	WHERE  `autor_id` = u.id and p.sector ="'.$tag.'"
-	ORDER BY p.sum_likes DESC; ';
+		$consulta = 
+		'SELECT u.nombre, u.apellidos, p.id, p.titulo, p.comentarios, p.sum_likes, p.positivos, p.negativos, u.id_rol
+		FROM users AS u, prog_propuestas AS p
+		WHERE  `autor_id` = u.id and p.barrio ="'.$tag.'"
+		ORDER BY p.sum_likes DESC; ';
 
-	$debatidas = 
-	'SELECT u.nombre, u.apellidos, p.id, p.titulo, p.comentarios, p.sum_likes, p.positivos, p.negativos, u.id_rol
-	FROM users AS u, prog_propuestas AS p
-	WHERE  `autor_id` = u.id and p.sector ="'.$tag.'"
-	ORDER BY p.comentarios DESC; ';
+		$debatidas = 
+		'SELECT u.nombre, u.apellidos, p.id, p.titulo, p.comentarios, p.sum_likes, p.positivos, p.negativos, u.id_rol
+		FROM users AS u, prog_propuestas AS p
+		WHERE  `autor_id` = u.id and p.barrio ="'.$tag.'"
+		ORDER BY p.comentarios DESC; ';
 
-	$recientes = 
-	'SELECT u.nombre, u.apellidos, p.id, p.titulo, p.comentarios, p.sum_likes, p.positivos, p.negativos, u.id_rol
-	FROM users AS u, prog_propuestas AS p
-	WHERE  `autor_id` = u.id and p.sector ="'.$tag.'"
-	ORDER BY p.id DESC; ';
+		$recientes = 
+		'SELECT u.nombre, u.apellidos, p.id, p.titulo, p.comentarios, p.sum_likes, p.positivos, p.negativos, u.id_rol
+		FROM users AS u, prog_propuestas AS p
+		WHERE  `autor_id` = u.id and p.barrio ="'.$tag.'"
+		ORDER BY p.id DESC; ';
 
-	$consensuadas = 
-	'SELECT u.nombre, u.apellidos, u.id_rol, p.id, p.titulo, p.comentarios, p.sum_likes, p.positivos, p.negativos, (LOG(p.positivos+p.negativos)* ((p.positivos-p.negativos) /(p.positivos+p.negativos))) log, (p.positivos /(p.positivos+p.negativos)) porcentaje
-	FROM users AS u, prog_propuestas AS p
-	WHERE  `autor_id` = u.id and p.sector ="'.$tag.'"
-	ORDER BY log DESC; ';	
+		$consensuadas = 
+		'SELECT u.nombre, u.apellidos, u.id_rol, p.id, p.titulo, p.comentarios, p.sum_likes, p.positivos, p.negativos, (LOG(p.positivos+p.negativos)* ((p.positivos-p.negativos) /(p.positivos+p.negativos))) log, (p.positivos /(p.positivos+p.negativos)) porcentaje
+		FROM users AS u, prog_propuestas AS p
+		WHERE  `autor_id` = u.id and p.barrio ="'.$tag.'"
+		ORDER BY log DESC; ';
+
+	}else{
+//		var_dump($id_tag);
+		$tag=$id_tag[0]['sector'];
+		$consulta = 
+		'SELECT u.nombre, u.apellidos, p.id, p.titulo, p.comentarios, p.sum_likes, p.positivos, p.negativos, u.id_rol
+		FROM users AS u, prog_propuestas AS p
+		WHERE  `autor_id` = u.id and p.sector ="'.$tag.'"
+		ORDER BY p.sum_likes DESC; ';
+
+		$debatidas = 
+		'SELECT u.nombre, u.apellidos, p.id, p.titulo, p.comentarios, p.sum_likes, p.positivos, p.negativos, u.id_rol
+		FROM users AS u, prog_propuestas AS p
+		WHERE  `autor_id` = u.id and p.sector ="'.$tag.'"
+		ORDER BY p.comentarios DESC; ';
+
+		$recientes = 
+		'SELECT u.nombre, u.apellidos, p.id, p.titulo, p.comentarios, p.sum_likes, p.positivos, p.negativos, u.id_rol
+		FROM users AS u, prog_propuestas AS p
+		WHERE  `autor_id` = u.id and p.sector ="'.$tag.'"
+		ORDER BY p.id DESC; ';
+
+		$consensuadas = 
+		'SELECT u.nombre, u.apellidos, u.id_rol, p.id, p.titulo, p.comentarios, p.sum_likes, p.positivos, p.negativos, (LOG(p.positivos+p.negativos)* ((p.positivos-p.negativos) /(p.positivos+p.negativos))) log, (p.positivos /(p.positivos+p.negativos)) porcentaje
+		FROM users AS u, prog_propuestas AS p
+		WHERE  `autor_id` = u.id and p.sector ="'.$tag.'"
+		ORDER BY log DESC; ';
+	}
+	
+
+	
+		
 
 }
 
