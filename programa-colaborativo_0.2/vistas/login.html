@@ -58,6 +58,9 @@ $(document).ready(function() {
             $('#signup').show();
             $('.signup-error').show();
     }
+    if(getUrlVars()['page']=='registered'){            
+            $('#login-intro-msg').empty().html('<span style="color:#00a48c; font-size:1.5em">¡Registro completado con éxito! Entra ahora y estrena tu nombre de usuario y contraseña</span>');
+    }
 
 });
     function getUrlVars() {
@@ -79,7 +82,7 @@ $(document).ready(function() {
                 <div class="form-header">
                     <i class="fa fa-user"></i>
                     <h2>Entrar</h2>
-                    <h5 style="color:#555; padding: 0em 1em;"> Para comentar o enviar medidas es necesario estar registrado en la plataforma. <br/>Pero no te cortes, registrar un nuevo usuario es muy simple</h5>
+                    <h5 style="color:#555; padding: 0em 1em;"id="login-intro-msg" > Para comentar o enviar medidas es necesario estar registrado en la plataforma. <br/>Pero no te cortes, registrar un nuevo usuario es muy simple</h5>
                     {% if error %}
                     <p class="no_login">Usuario o contraseña incorrecta. Inténtalo otra vez.</p>
                     {% endif%}
@@ -95,13 +98,12 @@ $(document).ready(function() {
                 </div>
                 <div class="form-footer">
                     <div class="row">
-                        <div class="col-xs-7">
-                            <i class="fa fa-unlock-alt"></i><br/>
-                            <a href="" id="forgot_from_1">Recordar contraseña</a>
+                        <div class="col-xs-7">                            
+                            <a href="" id="forgot_from_1"><i class="fa fa-unlock-alt"></i><br/>Recordar contraseña</a>
                         </div>
                         <div class="col-xs-5">
-                            <i class="fa fa-check"></i><br/>
-                            <a href="" id="signup_from_1">Regístrate</a>
+                            
+                            <a href="" id="signup_from_1"><i class="fa fa-check"></i><br/>Regístrate</a>
                         </div>
                     </div>
                 </div>      
