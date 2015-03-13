@@ -95,7 +95,7 @@ $hash = $hasher->HashPassword($password);
 
 	$para      = $email;
 	$titulo    = 'nueva contraseña';
-	$mensaje   = 'Hola:'. "\r\n" .'Recibes este email porque has solicitado una nueva contraseña. 
+	$mensaje   = 'Hola:'. "\r\n" .'Recibes este email porque has solicitado una nueva contraseña en programa.ahoramadrid.org. 
 	Si no es así, ponte en contacto con nosotros en este mismo correo'. "\r\n" .'Nueva contraseña: '.$password. "\r\n" . 'Un saludo';
 	$cabeceras = 'From: Ahora Madrid' . "\r\n" .
     'Reply-To: hola@ahoramadrid.org' . "\r\n" .
