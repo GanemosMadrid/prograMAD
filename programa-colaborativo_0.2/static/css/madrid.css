@@ -311,7 +311,7 @@ div.votos {
 .propuesta-individual.tipoautor-3 #nota-programa,
 .propuesta-individual.tipoautor-2 #nota-programa {
   display: block;
-  width: 20em;
+  width: 25em;
   font-size: 0.8em;
   font-weight: bold;
 }
@@ -466,6 +466,10 @@ label#titulo-error {
   color: red;
   font-size: 1.4em;
   font-weight: bold;
+}
+.signup-error {
+  display: none;
+  color: red;
 }
 .propuesta-contenido-wrapper {
   margin-right: 4em;

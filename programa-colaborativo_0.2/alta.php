@@ -20,7 +20,20 @@ if (isset($_POST["email_signup"])&& isset($_POST["pass_signup"])){
 		} else {
     		$ip=$_SERVER['REMOTE_ADDR'];
 		}
-
-		alta ($nombre, $apellidos, $email, $password, $ip);
+		
+		if(isset($_POST['g-recaptcha-response'])){
+          $captcha=$_POST['g-recaptcha-response'];
+        }
+		if(!$captcha){
+          header('Location: login.php?page=error-captcha');
+		  exit;
+        }
+        $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LerPwMTAAAAAJVePZthqzb4kc2fQZefhdQeDEyL&response=".$captcha."&remoteip=". $ip);
+        if($response.success==false){
+          header('Location: login.php?page=error-captcha');
+		  exit;
+        } else{
+          alta ($nombre, $apellidos, $email, $password, $ip);
+        }
 
 }

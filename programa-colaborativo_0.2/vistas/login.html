@@ -50,8 +50,26 @@ $(document).ready(function() {
           }
         },
     });
+
+
+    if(getUrlVars()['page']=='error-captcha'){
+            $('#login').hide();
+            $('#forgot').hide();
+            $('#signup').show();
+            $('.signup-error').show();
+    }
+
 });
+    function getUrlVars() {
+        mstring = String( document.location.href ).replace( "#", "" );
+    var vars = {};
+    var parts = mstring.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+    }
 </script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 {% endblock %}
 
 {% block content %}    
@@ -93,6 +111,7 @@ $(document).ready(function() {
                 <div class="form-header">
                     <i class="fa fa-user"></i>
                     <h2>Alta</h2>
+                    <h5 class="signup-error"> Captcha incorrecto, prueba a registrarte de nuevo </h5>
                 </div>
                 <form id="signup_form" method="post" action="alta.php">
                 <div class="form-main">
@@ -102,15 +121,16 @@ $(document).ready(function() {
                         <input type="text" name="email_signup" id="email_signup" class="form-control" placeholder="Email">
                         <input type="password" name="pass_signup" id="pass_signup" class="form-control" placeholder="Contraseña">
                     </div>
+					<div class="g-recaptcha" data-sitekey="6LerPwMTAAAAAFjtwKyWAlNhLjAZ8-6yS9U1C3hl"></div>
                     <button id="button_signup" type="submit" class="btn btn-block signin">Registrarse</button>
                 </form>
                 </div>
                 <div class="form-footer">
                     <p>De conformidad con lo dispuesto en la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal, te informamos de que los datos personales que nos proporciones así como aquellos que nos facilites en un futuro serán incorporados a un fichero automatizado de datos de carácter personal responsabilidad de "Ahora Madrid", con la finalidad de gestionar las comunicaciones que podamos realizar contigo.
+                        </p>
+                    <p>Para ejercitar los derechos de acceso, rectificación, oposición y cancelación reconocidos por la legislación vigente, el interesado deberá realizar una comunicación a hola@ahoramadrid.org, indicando como asunto “Protección de datos”.</p>
 
-                    <p>Para ejercitar los derechos de acceso, rectificación, oposición y cancelación reconocidos por la legislación vigente, el interesado deberá realizar una comunicación a info@ganemoszaragoza.com, indicando como asunto “Protección de datos”.
-
-                    <p>Asumimos que al registrarte estás conforme con estas advertencias legales.
+                    <p>Asumimos que al registrarte estás conforme con estas advertencias legales.</p>
                 </div>      
             </div>
 
