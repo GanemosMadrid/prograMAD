@@ -61,6 +61,9 @@ $(document).ready(function() {
     if(getUrlVars()['page']=='registered'){            
             $('#login-intro-msg').empty().html('<span style="color:#00a48c; font-size:1.5em">¡Registro completado con éxito! Entra ahora y estrena tu nombre de usuario y contraseña</span>');
     }
+    if(getUrlVars()['page']=='email'){            
+            $('#login-intro-msg').empty().html('<span style="color:#00a48c; font-size:1.1em">¡Te hemos enviado el email con la nueva clave. Mira en la carpeta de spam si no lo encuentras!</span>');
+    }
 
 });
     function getUrlVars() {
