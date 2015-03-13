@@ -43,6 +43,12 @@
 				$('a#ir_propuestas_barrios').addClass('disabled')
 			}
 	});
+	if(Math.random()>0.5){
+		$('#tabsIndex a[href="#recientes"]').tab('show')
+	}
+	else{
+		$('#tabsIndex a[href="#debatidas"]').tab('show')	
+	}
 });
 
 </script>
@@ -126,6 +132,11 @@
 	
 	{% include 'listados.html' %}
 	<!--</div>  bug en listados parece que falta este div? -->
+	<div class="row">
+	 	<div class="col-xs-12"  > 
+	 		<h4>Estas son sólo algunas de las propuestas: <a href="#programa"> Explora el programa por objetivos</a>, busca propuestas para <a href="#distritos"> distritos </a> o <a href="todas.php"> míralas todas aquí</a> </h4>
+	 	</div>
+	</div>
 	
 	<div id="programa">
 		<div class ="row">

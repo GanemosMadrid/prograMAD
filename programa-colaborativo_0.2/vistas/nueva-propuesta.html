@@ -65,7 +65,7 @@ R.scaleAll(0.6);
 			$('.apuesta input').prop('checked', false);
 			$('#form-seleccion-objetivos').find('label').removeClass('active');	
 			
-			if( typeof distrito != 'undefined'){ // vienen de una página de distrito a añadir algo
+			if( typeof distrito != 'undefined' && (distrito.length >5)){ // vienen de una página de distrito a añadir algo
 				$('#step-distritos').show();
 				//$('#step-elige-previous').show();
 				$('#step-distritos h3.titulo1').empty().text('Vas a añadir tu propuesta a este distrito:')
@@ -99,7 +99,7 @@ R.scaleAll(0.6);
 		if( $("#nuevapropuesta").valid()==true){
 			$('#step-distritos').hide();
 			$("#distritoSelect").val(distrito);
-			if(typeof objetivo != 'undefined'){
+			if(typeof objetivo != 'undefined' && (objetivo.length >5) ){
 				$('input#'+objetivo).prop('checked', true); 
 				optionIsSelected=true;
 				$('input#'+objetivo).trigger('change');

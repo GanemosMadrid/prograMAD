@@ -100,7 +100,10 @@ descripcion_distritos ={
     centro: '<p>Distrito constituido por 6 barrios: Palacio, Embajadores, Cortes, Justicia, Universidad y Sol.</p>\
 <p>Población: 134 mil habitantes. Edad promedio: 43,60 años. Tasa de desempleo: 12,57%  (MM 13,91%)</p>\
 <p>Los principales problemas que se identifican son: la mercantilización del espacio público que, unida a la desaparición del pequeño comercio, da como resultado un "distrito temático" de compras, la concentración de tráfico con altos niveles de contaminación y el creciente número de personas sin hogar que hay en el distrito. </p>',
-    latina: 'Latina',
+    latina: '<p>Distrito constituido por 7 barrios: Los Carmenes, Puerta del Ángel, Lucero, Aluche, Campamento, Cuatro Vientos, Las Aguilas.</p>\
+<p>Población: 237 mil habitantes. Edad promedio: 45,72 años. Tasa de desempleo: 15,65% (MM 13,91%) </p>\
+<p>Los principales problemas identificados por sus habitantes son el deterioro de los espacios públicos y las infraestructuras,la mala calidad del servicio de recogida de basuras y la baja actividad económica del distrito</p>',
+    
     arganzuela: '<p>Distrito Constituido por siete barrios: Imperial, Acacias, Chopera, Legazpi, Delicias, Palos de Moguer y Atocha.</p>\
 <p>Población: 151 mil personas. Edad promedio: 43,55 años.  Tasa de desempleo: 11,67%.</p>\
 <p>Los problemas que se identifican son: la especulación urbanística, la contaminación acústica y atmósferica, inseguridad vial en determinados accesos, y la carencia de servicios públicos y espacios de participación ciudadana.</p>',
@@ -109,8 +112,8 @@ descripcion_distritos ={
 <p>Población: 143 mil habitantes. Edad promedio: 46,18 años. Tasa de desempleo: 8,73% (MM 13,91%)</p>\
 <p>Uno de los principales poblemas identificado por sus habitantes es el número de personas mayores de 65 años que viven solas. Es un barrio con población muy sobre-envejecida con rentas bajas, dependientes y en riesgo de pobreza. Se identifican también falta de zonas verdes y falta de equipamientos para jovenes en el distrito.</p>',
 
-    tetuan: '<p>Distrito constituido por 6 barrios: Bellas Vistas, Cuatro Caminos, Castillejos, Almenara, Valdeacederas y Berruguete. </p>\
-<p>Población: 152 mil habitantes. Edad promedio: Tasa de desempleo 13,59% (MM 13,91%)</p>\
+    tetuan: '<p>Distrito constituido por 6 barrios: Bellas Vistas, Cuatro Caminos, Castillejos, Almenara, Valdeacederas y Berruguete.</p>\
+<p>Población: 152 mil habitantes. Edad promedio: 44,05 Tasa de desempleo 13,59% (MM 13,91%) </p>\
 <p>Los principales problemas identficados por sus habitantes son: la disminución de la red de pequeños comercios, el alto número de deshaucios y las altas cifras de exclusión social, así como la falta de participación ciudadana en los asuntos del distrito.</p>',
 
     chamartin: '<p>Distrito constituido por 6 barrios: El Viso, Prosperidad, Ciudad Jardín, Hispanoamerica, Nueva España y Castilla.</p>\
@@ -126,8 +129,8 @@ descripcion_distritos ={
 <p>Los principales problemas identificados por sus habitantes son un elevado porcentaje de paro, superior a la media madrileña, junto a la falta y deterioro de los servicios públicos y los problemas de movilidad dentro del distrito.</p>',
 
     usera: 'Distrito constituido por 7 barrios: Orcasitas, Orcasur, San Fermín, Almendrales, Moscardó, Zofio y Pradalongo.<br/>\
-Población: 134 mil habitantes. Edad promedio: 41,93 años. Tasa de desempleo: 19,05% (MM 13,91%)<br/>\
-Los principales problemas identificados por sus habitantes son: la precariedad creciente del transporte público, no se ha cumplido el actual Plan de Inversión para el distrito ni la Agenda 21 Usera, la nefasta y desaprovechada inversión de la Caja Mágica y la finalización de Madrid Rio donde empiezan los distritos del Sur de Madrid.',
+<p>Población: 134 mil habitantes. Edad promedio: 41,93 años. Tasa de desempleo: 19,05% (MM 13,91%)</p>\
+<p>Los principales problemas identificados por sus habitantes son: la precariedad creciente del transporte público, el incumplimiento del actual Plan de Inversión para el distrito y de la la Agenda 21 Usera, la nefasta y desaprovechada inversión de la Caja Mágica y la finalización de Madrid Rio.</p>',
     puente_de_vallecas: '',
 
     moratalaz: '<p>Distrito constituido por 6 barrios: Pavones, Horcajo, Marroquina, Media Legua, Fontarrón y Vinateros.</p>\
@@ -137,16 +140,16 @@ Los principales problemas identificados por sus habitantes son: la precariedad c
     ciudad_lineal: '<p>Distrito constituido por 9 barrios: Ventas, Pueblo Nuevo, Quintana, Concepción, San Pascual, San Juan Bautista, Colina, Atalaya y Costillares</p>\
 <p>Población: 214 mil habitantes. Edad promedio: 45,17 años. Tasa de desempleo: 13,86% (MM 13,91%)</p>\
 <p>Los principales problemas identificados por sus habitantes son: un elevado indice de desempleo, la perdida de pequeño comercio y cierre de los mercados municipales en favor de las Grandes Superficies, asi como la falta de espacios verdes.</p>',
-    villaverde: 'Distrito constituido por 5 barrios: San Andrés, San Cristobal, Butarque, Los Rosales y Los Ángeles.<br/>\
+    villaverde: '<p>Distrito constituido por 5 barrios: San Andrés, San Cristobal, Butarque, Los Rosales y Los Ángeles.<br/>\
 Población: 124 mil habitantes. Edad promedio: 41,42 años. Tasa de desempleo: 20,41% (MM 13,91%) <br/>\
-Los principales problemas identificados por sus habitantes es que tiene una de las más altas tasas de desempleo de la ciudad de Madrid, que genera una situación de grave desigualdad social y un elevado número de población en riesgo de exclusión.',
+El principal problema del distrito es que tiene una de las más altas tasas de desempleo de la ciudad de Madrid, lo que genera una situación de grave desigualdad social y un elevado número de población en riesgo de exclusión.</p>',
 
     villa_de_vallecas: 'Distrito constituidos por 2 barrios: Casco histórico de Vallecas y Santa Eugenia.<br/>\
 Población: 99 mil habitantes. Edad promedio: 37,68 años. Tasa de desempleo: 17,30% (MM 13,91%)<br/>\
 Los principales problemas identificados por sus habitantes son: la contaminación producida por el parque tecnológico de Valdemingomez, la carencia de infraestructuras por el incumplimiento del "Plan Especial de Inversiones y Actuaciones" y la venta de 1.800 viviendas de la EMV a fondos buitres.\
 ',
 
-    vicalvaro: 'Distrito constituidos por dos barrios, Casco viejo de Vicalvaro y Ambroz.<br/>\
+    vicalvaro: 'Distrito constituido por tres barrios: Vicálvaro, Valdebernardo y Valderrivas.<br/>\
 Población: 69 mil habitantes. Tasa de desempleo: 16,25% (MM 13,91) <br/>\
 Los principales problemas identificados por los habitantes son el acceso a la vivienda, la alta tasa de desempleo y la falta de espacios donde juntarse y organizarse para desarrollar iniciativas vecinales.',
 

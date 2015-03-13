@@ -280,6 +280,11 @@ div.votos {
   color: #222;
   text-align: left;
 }
+@media (max-width: 992px) {
+  .listado .votos {
+    font-size: 14px;
+  }
+}
 .listado .titulo a {
   font-family: ubuntu;
 }
