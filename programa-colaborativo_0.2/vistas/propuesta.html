@@ -3,7 +3,11 @@
 {% block title %} {{ propuesta.titulo }} {% endblock %}
 {% block tituloCompartir %} {{ propuesta.titulo }} {% endblock %}
 {% block scripts %}
-
+<style type="text/css">
+    div.votos{
+    	font-size:18px;
+    }
+    </style>
 <script>
 $(document).ready(function() {
 	$('.textarea_comentarios').hide();
@@ -359,6 +363,17 @@ $(document).ready(function() {
 <script type="text/javascript">stLight.options({publisher: "762f510f-a434-4168-9521-7e6bf67c856a", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 {% endblock %}
 {% block content %}
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		
+		<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 	<div class="propuesta-individual tipoautor-{{  propuesta.id_rol }}">
 		<div class="row encabezado">
 				<div class="col-xs-1 votos" id="votos">
@@ -424,11 +439,14 @@ $(document).ready(function() {
 	</div>
 	{% endif %}
 	<div class="row">
-		<h5><strong>¿Te gusta esta medida para Madrid? ¡Compartela!</strong> </h5>
-		<span class='st_facebook_large' displayText='Facebook' st_image="images/ahoramadridshare.jpg"></span>
-		<span class='st_twitter_large' displayText='Tweet' ></span>
-		<span class='st_googleplus_large' displayText='Google +' st_image="images/ahoramadridshare.jpg" ></span>
-		<span class='st_email_large' displayText='Email'></span>
+		<h5><strong>¿Te gusta esta medida para Madrid? ¡Compártela!</strong> </h5>
+		<a href="https://twitter.com/share" class="twitter-share-button" data-via="ahoramadrid" data-lang="es" data-count="none" data-hashtags="ahoraPrograma" >Twittear</a>
+		
+		<div class="fb-share-button" data-layout="button"></div>
+
+		<!--<span class='st_facebook_large' displayText='Facebook' st_image="images/ahoramadridshare.jpg"></span>-->
+		<span class='st_googleplus' displayText='Google +' st_image="images/ahoramadridshare.jpg" ></span>
+		<span class='st_email' displayText='Email'></span>
 	</div>
 
 	<hr class="hr">

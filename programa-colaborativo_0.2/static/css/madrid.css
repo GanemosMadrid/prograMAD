@@ -280,7 +280,12 @@ div.votos {
   color: #222;
   text-align: left;
 }
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
+  .listado .votos {
+    font-size: 20px;
+  }
+}
+@media (max-width: 768px) {
   .listado .votos {
     font-size: 14px;
   }
@@ -291,13 +296,13 @@ div.votos {
 .listado span.sector {
   color: #00a48c;
 }
-.tipoautor-3 {
+.tipoautor-3 .encabezado {
   background-image: url('../images/mini-logo-ahora.png');
   background-size: 30px 30px;
   background-repeat: no-repeat;
-  background-position: right bottom;
-  background-position-x: 99%;
-  background-position-y: 90%;
+  background-position: left bottom;
+  background-position-x: 1%;
+  background-position-y: 95%;
 }
 .tipoautor-3 .titulo a {
   color: #00a48c;
@@ -306,6 +311,14 @@ div.votos {
 .tipoautor-3 .votos {
   background: #00a48c;
   color: white;
+}
+.tipoautor-3.listado {
+  background-image: url('../images/mini-logo-ahora.png');
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-position-x: 100%;
+  background-position-y: 95%;
 }
 #nota-programa {
   display: none;
