@@ -291,7 +291,6 @@ div.votos {
 .listado span.sector {
   color: #00a48c;
 }
-.tipoautor-2,
 .tipoautor-3 {
   background-image: url('../images/mini-logo-ahora.png');
   background-size: 30px 30px;
@@ -300,12 +299,10 @@ div.votos {
   background-position-x: 99%;
   background-position-y: 90%;
 }
-.tipoautor-2 .titulo a,
 .tipoautor-3 .titulo a {
   color: #00a48c;
   font-family: ubuntu;
 }
-.tipoautor-2 .votos,
 .tipoautor-3 .votos {
   background: #00a48c;
   color: white;
@@ -313,8 +310,7 @@ div.votos {
 #nota-programa {
   display: none;
 }
-.propuesta-individual.tipoautor-3 #nota-programa,
-.propuesta-individual.tipoautor-2 #nota-programa {
+.propuesta-individual.tipoautor-3 #nota-programa {
   display: block;
   width: 25em;
   font-size: 0.8em;
