@@ -8,7 +8,7 @@ $template = $twig->loadTemplate('propuestas.html');
 	//Se establece la página (basado en <_GET>)
     $page = isset($_GET['page']) ? ((int) $_GET['page']) : 1;
 	
-	$resultadosPorPagina = 5;
+	$resultadosPorPagina = 20;
 	$empezarPor = ($page - 1) * $resultadosPorPagina;
 
 $total = 'SELECT count(id) AS total FROM prog_propuestas';
