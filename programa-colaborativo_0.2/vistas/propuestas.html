@@ -45,6 +45,7 @@ $(document).ready(function() {
 	
 	{% include 'listados.html' %}
 	
+	{% autoescape false %}{{ paginado }}{% endautoescape %}
 
 	{% if user %}
 	<div class="row">
