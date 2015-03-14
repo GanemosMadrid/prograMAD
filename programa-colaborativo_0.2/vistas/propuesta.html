@@ -376,10 +376,10 @@ $(document).ready(function() {
 
 	<div class="propuesta-individual tipoautor-{{  propuesta.id_rol }}">
 		<div class="row encabezado">
-				<div class="col-xs-1 votos" id="votos">
+				<div class="col-xs-2 col-sm-1 votos" id="votos">
 					{{ propuesta.sum_likes}}
 				</div>
-				<div class="col-xs-11">
+				<div class="col-xs-10 col-sm-11">
 					<div class="titulo"><a href="propuesta.php?id={{propuesta.id}}">{{ propuesta.titulo}}</a></div>
 					{% if propuesta.grupo > 0 %}
 					<div class="autor"><img src="static/images/grupo{{ propuesta.grupo}}.png" alt="Grupo {{ propuesta.apellidos}}" title="Grupo {{ propuesta.apellidos}}"> Propuesta del Grupo {{ propuesta.apellidos}}
