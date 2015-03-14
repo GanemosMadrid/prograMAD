@@ -9,6 +9,14 @@
 	{% endblock %} 
 {% block scripts %}
 <script>
+function getUrlVars() {
+		mstring = String( document.location.href ).replace( "#", "" );
+	var vars = {};
+	var parts = mstring.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+	    vars[key] = value;
+	});
+	return vars;
+}
 $(document).ready(function() {
 	/*$(".sector").each(function() {
 		var sector = $(this).text();
@@ -23,11 +31,26 @@ $(document).ready(function() {
 		$('.objetivo-titulo').empty().html(infoObjetivo.titulo)
 	}
 
-	if(Math.random()>0.5){
-		$('#tabsIndex a[href="#recientes"]').tab('show')
-	}
-	else{
-		$('#tabsIndex a[href="#debatidas"]').tab('show')	
+	
+
+	$('.pagination a').click(function(){
+		$.cookie('defaultTab', $('#tabsIndex li.active a').attr('href') );
+	});
+
+	if(getUrlVars()['page'] != 'undefined' ){
+		if($.cookie('defaultTab') != 'undefined'){
+			$('#tabsIndex a[href="'+$.cookie('defaultTab')+'"]').tab('show')
+			console.log($.cookie('defaultTab'));	
+		}
+	}else{
+		if(Math.random()>0.5){
+			$('#tabsIndex a[href="#recientes"]').tab('show')
+			console.log("recientes");
+		}
+		else{
+			$('#tabsIndex a[href="#debatidas"]').tab('show')	
+			console.log("debatidas");
+		}
 	}
 	
 });
