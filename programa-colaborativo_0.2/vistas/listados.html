@@ -13,10 +13,10 @@
 		{% for propuesta in propuestas %}
 
 		<div class="row listado tipoautor-{{  propuesta.id_rol }}">
-			<div class="col-xs-1 votos">
+			<div class="col-sm-1 col-xs-2 votos">
 				{{ propuesta.sum_likes}}
 			</div>
-			<div class="col-xs-11">				
+			<div class="col-xs-10 col-sm-11">				
 				<div class="titulo"><a href="propuesta.php?id={{propuesta.id}}">{{ propuesta.titulo}}</a></div>
 				<div class="metadata">autor: <strong>{{ propuesta.nombre}} {{ propuesta.apellidos}} </strong> | <strong>{{ propuesta.comentarios}}</strong> comentarios | {% set suma = (propuesta.positivos / (propuesta.negativos + propuesta.positivos))*100 %} <strong>{{ suma | number_format(2) }} %</strong> de votos positivos de un total de {{ propuesta.negativos + propuesta.positivos }} votos.
 				</div>
@@ -44,10 +44,10 @@
 		{% for debatida in debatidas %}
 
 		<div class="row listado tipoautor-{{  debatida.id_rol }}">
-			<div class="col-xs-1 votos">
+			<div class="col-sm-1 col-xs-2 votos">
 				{{ debatida.sum_likes}}
 			</div>
-			<div class="col-xs-11">
+			<div class="col-xs-10 col-sm-11">
 				<div class="titulo"><a href="propuesta.php?id={{debatida.id}}">{{ debatida.titulo}}</a></div>
 				<div class="metadata">autor: <strong>{{ debatida.nombre}} {{ debatida.apellidos}}</strong> | <strong>{{ debatida.comentarios}}</strong> comentarios | {% set suma = (debatida.positivos / (debatida.negativos + debatida.positivos))*100 %} <strong>{{ suma | number_format(2) }} % </strong>de votos positivos de un total de {{ debatida.negativos + debatida.positivos }} votos. </div>
 				<div class="metadata">
@@ -73,10 +73,10 @@
 		{% for reciente in recientes %}
 
 		<div class="row listado tipoautor-{{  reciente.id_rol }}">
-			<div class="col-xs-1 votos">
+			<div class="col-sm-1 col-xs-2 votos">
 				{{ reciente.sum_likes}}
 			</div>
-			<div class="col-xs-11">
+			<div class="col-xs-10 col-sm-11">
 				<div class="titulo"><a href="propuesta.php?id={{reciente.id}}">{{ reciente.titulo}}</a></div>
 				<div class="metadata">autor: <strong>{{ reciente.nombre}} {{ reciente.apellidos}} </strong>| <strong>{{ reciente.comentarios}}</strong> comentarios | {% set suma = (reciente.positivos / (reciente.negativos + reciente.positivos))*100 %} <strong>{{ suma | number_format(2) }} % </strong>de votos positivos de un total de {{ reciente.negativos + reciente.positivos }} votos. </div>
 				<div class="metadata">
@@ -102,10 +102,10 @@
 		{% for consenso in consensuadas %}
 
 		<div class="row listado tipoautor-{{  consenso.id_rol }}">
-			<div class="col-xs-1 votos">
+			<div class="col-sm-1 col-xs-2 votos">
 				{{ consenso.sum_likes}}
 			</div>
-			<div class="col-xs-11">
+			<div class="col-xs-10 col-sm-11">
 
 				<div class="titulo"><a href="propuesta.php?id={{consenso.id}}">{{ consenso.titulo}}</a></div>
 				<div class="metadata">autor: <strong>{{ consenso.nombre}} {{ consenso.apellidos}} </strong>| <strong>{{ consenso.comentarios}}</strong> comentarios | {% set suma = (consenso.positivos / (consenso.negativos + consenso.positivos))*100 %} <strong>{{ suma | number_format(2) }} % </strong>de votos positivos de un total de {{ consenso.negativos + consenso.positivos }} votos. </div>
