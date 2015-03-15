@@ -347,7 +347,37 @@ $(document).ready(function() {
 				}
 		});
     }
-});
+
+	$( "a.borrar-comentario" ).click(function( event ) {
+	  event.preventDefault();
+	  var r = confirm("Vas a borrar un comentario. Asegurate de que en este codigo ponga borrar-enmienda o borrar-comentario:\n " +$(this).attr('href') + "\n texto: \n" + 
+	  	$(this).parent().parent().find('.enm_texto').html() + " "+
+		$(this).parent().parent().find('.com_texto').html()
+	  	);
+		if (r == true) {
+			//console.log($(this).parent().find('.enm_texto').html());
+		    console.log("ok: "+ $(this).attr('href'));
+		    window.location.href = "/"+ $(this).attr('href') ;
+		} else {
+		    console.log(" has pulsado no borrar")
+		}
+	});
+
+	$( "a.borrar-propuesta" ).click(function( event ) {
+	  event.preventDefault();
+	  var r = confirm("Vas a borrar una propuesta. Asegurate de que en este codigo ponga borrar-propuesta:\n " +$(this).attr('href') + "\n TITULO: \n" + 
+	  	$(this).parent().parent().find('.titulo a').html() 
+	  	);
+		if (r == true) {
+			//console.log($(this).parent().find('.enm_texto').html());
+		    console.log("ok: "+ $(this).attr('href'));
+		    window.location.href = "/"+ $(this).attr('href') ;
+		} else {
+		    console.log(" has pulsado no borrar")
+		}
+	});
+
+}); //on load
 
 	if(Math.random()>0.5){
 		$('#tabsIndex a[href="#recientes"]').tab('show')
@@ -391,7 +421,7 @@ $(document).ready(function() {
 						<div id="nota-programa">  (Medida proveniente del grupo de trabajo de programa sectorial o territorial correspondiente) </div>
 					{% endif %}
 					{% if user and user.idRol == 2 %}
-						<a href="borrar-propuesta.php?id={{ propuesta.id }}&propuestaId={{propuesta.id}}">BORRAR</a>
+						<a class="borrar-propuesta" href="borrar-propuesta.php?id={{ propuesta.id }}&propuestaId={{propuesta.id}}">BORRAR</a>
 					{% endif %}
 					</div>
 				</div>
@@ -478,7 +508,7 @@ $(document).ready(function() {
 						Comentario de {{ enmienda.nombre}} {{ enmienda.apellidos}} 
 						{% endif %}
 						{% if user and user.idRol == 2 %}
-							<a href="borrar-enmienda.php?id={{ enmienda.id }}&propuestaId={{propuesta.id}}">BORRAR</a>
+							<a class="borrar-comentario" href="borrar-enmienda.php?id={{ enmienda.id }}&propuestaId={{propuesta.id}}">BORRAR</a>
 						{% endif %}
 					{% endif %}
 					</div>
@@ -528,7 +558,7 @@ $(document).ready(function() {
 								Respuesta de {{ comentario.nombre}} {{ comentario.apellidos}}
 								{% endif %}
 								{% if user and user.idRol == 2 %}
-									<a href="borrar-comentario.php?id={{ comentario.id }}&propuestaId={{propuesta.id}}">BORRAR</a>
+									<a class="borrar-comentario "href="borrar-comentario.php?id={{ comentario.id }}&propuestaId={{propuesta.id}}">BORRAR</a>
 								{% endif %}
 							{% endif %}
 							</div>
