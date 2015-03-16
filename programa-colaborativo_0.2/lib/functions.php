@@ -97,8 +97,8 @@ $hash = $hasher->HashPassword($password);
 	$titulo    = 'nueva contraseña';
 	$mensaje   = 'Hola:'. "\r\n" .'Recibes este email porque has solicitado una nueva contraseña en programa.ahoramadrid.org. 
 	Si no es así, ponte en contacto con nosotros en este mismo correo'. "\r\n" .'Nueva contraseña: '.$password. "\r\n" . 'Un saludo';
-	$cabeceras = 'From: Ahora Madrid' . "\r\n" .
-    'Reply-To: hola@ahoramadrid.org' . "\r\n" .
+	$cabeceras = 'From: Ahora Madrid <no-reply@ahoramadrid.org>' . "\r\n" .
+    'Reply-To: no-reply@ahoramadrid.org' . "\r\n" .
     'Content-type: text/html; charset=utf-8' . "\r\n".
     'X-Mailer: PHP/' . phpversion();
 
