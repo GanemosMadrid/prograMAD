@@ -320,6 +320,22 @@ div.votos {
   background-position-x: 100%;
   background-position-y: 95%;
 }
+.enmienda-rol-2 {
+  background-color: #f9f9f9;
+}
+.enmienda-rol-2 span.moderador {
+  float: right;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+.fondo_comentarios.comentario-rol-2 {
+  background-color: #f9f9f9;
+}
+.fondo_comentarios.comentario-rol-2 span.moderador {
+  float: right;
+  font-size: 0.9em;
+  font-weight: bold;
+}
 #nota-programa {
   display: none;
 }

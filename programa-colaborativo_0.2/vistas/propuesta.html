@@ -379,7 +379,7 @@ $(document).ready(function() {
 
 }); //on load
 
-	if(Math.random()>0.5){
+	if(Math.random()>0.4){
 		$('#tabsIndex a[href="#recientes"]').tab('show')
 	}
 	else{
@@ -391,6 +391,8 @@ $(document).ready(function() {
 <script type="text/javascript">var switchTo5x=true;</script>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 <script type="text/javascript">stLight.options({publisher: "762f510f-a434-4168-9521-7e6bf67c856a", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+<script type="text/javascript">stLight.options({publisher: "INSERTYOURPUBKEY", doNotHash:true, 
+doNotCopy:true,hashAddressBar:false});</script>
 {% endblock %}
 {% block content %}
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
@@ -494,21 +496,24 @@ $(document).ready(function() {
 				<div class="enm_favor"><i id="enm-fav-{{ enmienda.id }}" class="fa fa-angle-up fa-lg inactivo"></i></div>
 				<div class="enm_contra"><i id="enm-con-{{ enmienda.id }}"class="fa fa-angle-down fa-lg inactivo"></i></div>
 			</div>
-			<div class="col-xs-10">
+			<div class="col-xs-10 enmienda-rol-{{ enmienda.id_rol}}">
 			{% else %}
-			<div class="col-xs-11">
+			<div class="col-xs-11 enmienda-rol-{{ enmienda.id_rol}}">
 			{% endif%}
 					<div class="enm_autor">
 					{% if enmienda.grupo > 0 %}
-					<img src="static/images/grupo{{ enmienda.grupo}}.png" alt="Grupo {{ enmienda.apellidos}}" title="Grupo {{ enmienda.apellidos}}"> comentario del Grupo {{ enmienda.apellidos}}
+					<img src="static/images/grupo{{ enmienda.grupo}}.png" alt="Grupo {{ enmienda.apellidos}}" title="Grupo {{ enmienda.apellidos}}"/> comentario del Grupo {{ enmienda.apellidos}}
 					{% else %}
 						{% if propuesta.autor_id == enmienda.autor_id %}
-						<img src="static/images/insignia.png"> Comentario de {{ enmienda.nombre}} {{ enmienda.apellidos}}
+						<img src="static/images/insignia.png" alt="el autor del comentario es el mismo que envió la medida" /> Comentario de {{ enmienda.nombre}} {{ enmienda.apellidos}}
 						{% else %}
 						Comentario de {{ enmienda.nombre}} {{ enmienda.apellidos}} 
 						{% endif %}
 						{% if user and user.idRol == 2 %}
 							<a class="borrar-comentario" href="borrar-enmienda.php?id={{ enmienda.id }}&propuestaId={{propuesta.id}}">BORRAR</a>
+						{% endif %}
+						{% if enmienda.id_rol == 2 %}
+							<span class="moderador"> (facilitador de debate de AhoraMadrid)</span>
 						{% endif %}
 					{% endif %}
 					</div>
@@ -544,21 +549,24 @@ $(document).ready(function() {
 						<div class="com_favor"><i id="com-fav-{{ comentario.id }}" class="fa fa-angle-up fa-lg inactivo"></i></div>
 						<div class="com_contra"><i id="com-con-{{ comentario.id }}"class="fa fa-angle-down fa-lg inactivo"></i></div>
 					</div>
-					<div class="col-xs-9 fondo_comentarios">
+					<div class="col-xs-9 fondo_comentarios comentario-rol-{{ enmienda.id_rol}}">
 					{% else %}
-					<div class="col-xs-10 fondo_comentarios">
+					<div class="col-xs-10 fondo_comentarios comentario-rol-{{ enmienda.id_rol}}">
 					{% endif %}
 							<div class="com_autor">
 							{% if enmienda.grupo > 0 %}
 							<img src="static/images/grupo{{ enmienda.grupo}}.png" alt="Grupo {{ enmienda.apellidos}}" title="Grupo {{ enmienda.apellidos}}"> Respuesta del Grupo {{ enmienda.apellidos}}
 							{% else %}
 								{% if propuesta.autor_id == comentario.autor_id %}
-								<img src="static/images/insignia.png"> Respuesta {{ comentario.nombre}} {{ comentario.apellidos}}
+								<img src="static/images/insignia.png" alt="el autor del comentario es el mismo que envió la medida"> Respuesta {{ comentario.nombre}} {{ comentario.apellidos}}
 								{% else %}
 								Respuesta de {{ comentario.nombre}} {{ comentario.apellidos}}
 								{% endif %}
 								{% if user and user.idRol == 2 %}
 									<a class="borrar-comentario "href="borrar-comentario.php?id={{ comentario.id }}&propuestaId={{propuesta.id}}">BORRAR</a>
+								{% endif %}
+								{% if enmienda.id_rol == 2 %}
+									<span class="moderador"> (facilitador de debate de AhoraMadrid)</span>
 								{% endif %}
 							{% endif %}
 							</div>
