@@ -13,7 +13,7 @@ if(isset($_POST['buscar'])){
 	if(!empty($_POST['buscar'])){
 		$busqueda = $_POST['buscar'];
 		//var_dump($page);
-		var_dump($busqueda);
+		//var_dump($busqueda);
 		//Se recorren las palabras que forman la cadena de búsqueda
 		$arrayBusqueda = explode(" ", $busqueda);
 		foreach($arrayBusqueda as $clave => $palabra){
@@ -43,7 +43,7 @@ if(isset($_POST['buscar'])){
 		//Consultas y paginación
 		$numeroPropuestas = listar($total);
 		$propuestas = listar($consulta);
-		var_dump($numeroPropuestas);
+		//var_dump($numeroPropuestas);
 		$pagination = (new Pagination());
 		$pagination->setCurrent($page);
 		$pagination->setRPP($resultadosPorPagina);
