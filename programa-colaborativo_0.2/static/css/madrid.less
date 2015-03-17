@@ -57,9 +57,13 @@ header.app-header-ahora{
 		a{
 			font-family: ubuntu, sans;
 			color:#444;
+			@media (min-width: 992px) { 
+				padding: 0.3em 0.4em;	
+				font-size:0.9em;
+			}
 			@media (min-width: 768px)  and (max-width:992px) { 
-			padding: 0.8em 0.4em;	
-			font-size:0.9em;
+			padding: 0.4em 0.4em;	
+			font-size:0.8em;
 			 }
 		}
 		a:hover{
@@ -561,6 +565,8 @@ font-size: 1.6em;
 	}
 
 }
+/* a partir de aqui todo son niapillas */ 
+
 .form-footer{
 	text-align: center;
 }
@@ -601,4 +607,7 @@ font-size: 1.4em;
 }
 .propuesta-contenido-wrapper{
 	margin-right: 4em;
+}
+div.form-group input#buscar{
+	border: 1px solid #999;
 }
