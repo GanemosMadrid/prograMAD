@@ -589,7 +589,14 @@ doNotCopy:true,hashAddressBar:false});</script>
 	<div class="col-md-6 col-xs-12" style="margin-top:4em;">
 		
 			<h4> Consulta otras medidas en la misma categoría: <strong>{{ propuesta.sector }}  {{ propuesta.barrio }} </strong></h4>
-		
+		<div class="row">
+		<ul class="nav nav-tabs" role="tablist" id="tabsIndex">
+  			<li class="active"><a href="#valoradas" role="tab" data-toggle="tab">Más valoradas</a></li>
+  			<li><a href="#consensuadas" role="tab" data-toggle="tab">Más consenso</a></li>
+  			<li><a href="#debatidas" role="tab" data-toggle="tab">Más debatidas</a></li>
+  			<li><a href="#recientes" role="tab" data-toggle="tab">Más recientes</a></li>  
+		</ul>
+	</div>
 		{% include 'listados.html' %}
 		
 	</div>
