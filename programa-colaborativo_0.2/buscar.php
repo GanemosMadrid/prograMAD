@@ -53,7 +53,7 @@ if(isset($_POST['buscar'])){
 	}
 	
 }
-echo($cadenaBusqueda);
+//echo($cadenaBusqueda);
 
 $datos = array('user'=>autentificado(), 'buscar'=>$busqueda, 'page'=>$page, 'propuestas'=>$propuestas, 'paginado'=>$paginado);
 
