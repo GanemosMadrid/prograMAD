@@ -29,27 +29,30 @@ $(document).ready(function() {
 	if(infoObjetivo!=null){
 		$('.objetivo-descripcion').empty().html(infoObjetivo.descripcion)
 		$('.objetivo-titulo').empty().html(infoObjetivo.titulo)
-	}
-
-	
+	}	
 
 	$('.pagination a').click(function(){
 		$.cookie('defaultTab', $('#tabsIndex li.active a').attr('href') );
 	});
 
-	if(getUrlVars()['page'] != 'undefined' ){
-		if($.cookie('defaultTab') != 'undefined'){
+	if(getUrlVars()['page'] != undefined ){
+		//console.log("entrando 1")
+		if($.cookie('defaultTab') != undefined){
 			$('#tabsIndex a[href="'+$.cookie('defaultTab')+'"]').tab('show')
-			console.log($.cookie('defaultTab'));	
+		//	console.log($.cookie('defaultTab'));	
 		}
 	}else{
+		console.log("entrando")
 		if(Math.random()>0.5){
 			$('#tabsIndex a[href="#recientes"]').tab('show')
-			console.log("recientes");
+		//	console.log("recientes");
 		}
 		else{
-			$('#tabsIndex a[href="#debatidas"]').tab('show')	
-			console.log("debatidas");
+			{% if tag %} // este bloque es el de listado de sector
+				$('#tabsIndex a[href="#debatidas"]').tab('show')
+			{% else %}
+				$('#tabsIndex a[href="#consensuadas"]').tab('show')
+			{% endif %}
 		}
 	}
 	
@@ -58,6 +61,8 @@ $(document).ready(function() {
 </script>
 {% endblock %}
 {% block content %}
+
+	{% if tag %}
 	<div class="row">
 		<div class="col-xs-12">
 			<h2 > <small><i>objetivo:</i></small> <br/><span class="objetivo-titulo"> </span></h2>
@@ -65,7 +70,38 @@ $(document).ready(function() {
 
 		</div>
 	</div>
-	
+	{% endif %}
+
+	{% if totalPropuestas %}
+	<div class="row">
+		<div class="col-xs-12">
+			<h2 > <small>Hay {{totalPropuestas}} propuestas en total en nuestra base de datos</small> </h2>
+			
+
+		</div>
+	</div>
+	{% endif %}
+
+	{% if tag %} <!-- este bloque es el de listado de sector -->
+	<div class="row">
+		<ul class="nav nav-tabs" role="tablist" id="tabsIndex">
+  			<li class="active"><a href="#valoradas" role="tab" data-toggle="tab">Más valoradas</a></li>
+  			<li><a href="#consensuadas" role="tab" data-toggle="tab">Más consenso</a></li>
+  			<li><a href="#debatidas" role="tab" data-toggle="tab">Más debatidas</a></li>
+  			<li><a href="#recientes" role="tab" data-toggle="tab">Más recientes</a></li>  
+		</ul>
+	</div>
+	{% else %} <!-- este bloque es el de listado de todas.php -->
+	<div class="row">
+		<ul class="nav nav-tabs" role="tablist" id="tabsIndex">
+  			<li class="active"><a href="#valoradas" role="tab" data-toggle="tab">Más valoradas</a></li>
+  			<li><a href="#consensuadas" role="tab" data-toggle="tab">Germinando(8-20 votos)</a></li>
+  			<li><a href="#debatidas" role="tab" data-toggle="tab">Más debatidas</a></li>
+  			<li><a href="#recientes" role="tab" data-toggle="tab">Más recientes</a></li>  
+		</ul>
+	</div>
+	{% endif %}
+
 	{% include 'listados.html' %}
 	
 	{% autoescape false %}{{ paginado }}{% endautoescape %}

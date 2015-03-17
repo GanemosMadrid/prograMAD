@@ -126,15 +126,23 @@
 	</div>	
 	
 
-		<h2 class="madrid" style="font-size:1.8em; text-align:left">Se está debatiendo:</h2>
+		<h2 class="madrid" style="font-size:1.8em; text-align:left">Ya hemos recibido <strong>{{ totalPropuestas }} propuestas.</strong> Algunas son: </h2>
 
 
-	
+	<div class="row">
+		<ul class="nav nav-tabs" role="tablist" id="tabsIndex">
+  			<li class="active"><a href="#valoradas" role="tab" data-toggle="tab">Más valoradas</a></li>
+  			<li><a href="#consensuadas" role="tab" data-toggle="tab">Germinando(8-20 votos)</a></li>
+  			<li><a href="#debatidas" role="tab" data-toggle="tab">Más debatidas</a></li>
+  			<li><a href="#recientes" role="tab" data-toggle="tab">Más recientes</a></li>  
+		</ul>
+	</div>
 	{% include 'listados.html' %}
 	<!--</div>  bug en listados parece que falta este div? -->
 	<div class="row">
 	 	<div class="col-xs-12"  > 
-	 		<h4>Estas son sólo algunas de las propuestas: <a href="#programa"> Explora el programa por objetivos</a>, busca propuestas para <a href="#distritos"> distritos </a> o <a href="todas.php"> míralas todas aquí</a> </h4>
+	 		<h3>Estas son sólo algunas de las propuestas: <a href="todas.php"> míralas todas aquí</a> </h3>
+	 		<h4><a href="#programa"> También puedes explorar el programa por objetivos</a>, o por <a href="#distritos"> distritos de madrid</a> </h4>
 	 	</div>
 	</div>
 	
