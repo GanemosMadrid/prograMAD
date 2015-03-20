@@ -234,6 +234,9 @@ a.carousel-control.right {
   display: none;
   margin-top: 2em;
 }
+#nuevapropuesta {
+  display: none;
+}
 #nuevapropuesta h2,
 #nuevapropuesta h3 {
   /*background-color: gold;*/
