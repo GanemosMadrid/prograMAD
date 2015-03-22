@@ -1,6 +1,7 @@
 <?php
 include_once "lib/functions.php";
-
+echo json_encode(array());
+return;
 if (isset($_POST["propuesta_id"])&& isset($_POST["usuario_id"])){
 		
 	    $propuesta_id=$_POST["propuesta_id"];

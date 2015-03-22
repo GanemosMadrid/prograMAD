@@ -122,20 +122,7 @@ $(document).ready(function() {
 	
 	{% autoescape false %}{{ paginado }}{% endautoescape %}
 
-	{% if user %}
-	<div class="row">
-		<div class="col-xs-12">
-			<h4 class="text-center"> ¿Echas en falta alguna medida en este objetivo? </h4>
-			<a class="btn btn-success btn-lg btn-block" href="nueva-propuesta.php?objetivo={{tag}}">SUBIR UNA NUEVA MEDIDA</a>
-		</div>
-	</div>	
-	{% else %}
-	<div class="row">
-		<div class="col-xs-12">
-			<a href="login.php"> Tienes que estar identificado para hacer una propuesta. ¡Registrate y participa!</a>
-		</div>
-	</div>
-	{% endif %}
+	
 
 	
 

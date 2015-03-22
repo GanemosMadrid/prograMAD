@@ -1,7 +1,7 @@
 <?php
 include_once "lib/functions.php";
 
-$template = $twig->loadTemplate('login.html');
+$template = $twig->loadTemplate('index.html');
 
 //Compruebo si hay sesión de error (creada al fallar la contraseña)
 if (isset($_SESSION["error"])){
@@ -14,5 +14,5 @@ if (isset($_SESSION["error"])){
 	
 }
 
-echo $template->render($datos);
+echo $template->render(array());
 

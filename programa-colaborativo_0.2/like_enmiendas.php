@@ -1,6 +1,7 @@
 <?php
 include_once "lib/functions.php";
-
+echo json_encode(array());
+return;
 
 if(isset ($_POST['cuenta'])){
 

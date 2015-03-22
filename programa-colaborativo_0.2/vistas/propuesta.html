@@ -442,34 +442,7 @@ doNotCopy:true,hashAddressBar:false});</script>
 	<hr class="hr">
 	
 	{% endif %}
-	{% if user %}
-		{% if user.id != autor.autor_id%}
-	<div class="row" id="votar_propuesta">
-		<div class="col-xs-1"></div>
-		<div class="col-xs-4" id="prop_favor"><a class="btn btn-success btn-lg btn-block inactivo">A FAVOR</a></div>
-		<div class="col-xs-1"></div>
-		<div class="col-xs-4" id="prop_contra"><a class="btn btn-danger btn-lg btn-block inactivo">EN CONTRA</a></div>
-		<div class="col-xs-1"></div>
-	</div>
-	<hr class="hr">
-		{% endif %}
-	<form id="comentar">
-		<div class="row"><strong>¿Qué te ha parecido?</strong></div>
-		<div class="row">
-			<input type="hidden" name="user" value="{{ user.id }}">
-			<input type="hidden" name="propuesta" value="{{ propuesta.id }}">
-			<textarea id="texto_enmienda" name="texto_enmienda" class="form-control" rows="3"></textarea>
-		</div>
-		<div class="row"><a id="boton_enmienda" class="btn btn-success">Comentar</a></div>
 
-	</form>
-
-	{% else %}
-	<div class="row">
-		<h5><strong>Identifícate</strong> </h5>
-		<a href="login.php">Tienes que estar identificado para poder votar y valorar la propuesta.</a>
-	</div>
-	{% endif %}
 	<div class="row">
 		<h5><strong>¿Te gusta esta medida para Madrid? ¡Compártela!</strong> </h5>
 		<a href="https://twitter.com/share" class="twitter-share-button" data-via="ahoramadrid" data-lang="es" data-count="none" data-hashtags="ahoraPrograma" >Twittear</a>
@@ -491,15 +464,9 @@ doNotCopy:true,hashAddressBar:false});</script>
 			<div id ="enm-votos-{{ enmienda.id }}"class="col-xs-1 votos">
 					{{ enmienda.sum_likes}}
 			</div>
-			{% if user %}
-			<div class="col-xs-1">
-				<div class="enm_favor"><i id="enm-fav-{{ enmienda.id }}" class="fa fa-angle-up fa-lg inactivo"></i></div>
-				<div class="enm_contra"><i id="enm-con-{{ enmienda.id }}"class="fa fa-angle-down fa-lg inactivo"></i></div>
-			</div>
-			<div class="col-xs-10 enmienda-rol-{{ enmienda.id_rol}}">
-			{% else %}
+			
 			<div class="col-xs-11 enmienda-rol-{{ enmienda.id_rol}}">
-			{% endif%}
+
 					<div class="enm_autor">
 					{% if enmienda.grupo > 0 %}
 					<img src="static/images/grupo{{ enmienda.grupo}}.png" alt="Grupo {{ enmienda.apellidos}}" title="Grupo {{ enmienda.apellidos}}"/> comentario del Grupo {{ enmienda.apellidos}}
@@ -521,16 +488,7 @@ doNotCopy:true,hashAddressBar:false});</script>
 					<div class="enm_texto">{{ enmienda.enmienda|nl2br}}</div>
 					
 					
-					{% if user %}
-					<div class="comentarios-enmiendas">
-						<div class="enlace_comentar"><a href="#" >Responder</a></div>
-						<form class="row textarea_comentarios">
-							<input type="hidden" class="enmienda_id" name="enmienda" value="{{ enmienda.id }}">
-							<textarea id="texto_comentario" name="texto_comentario" class="form-control" rows="2"></textarea>
-						<a class="btn btn-success boton_comentario">Responder</a>
-						</form>
-					</div>
-					{% endif %}
+					
 			</div>
 		</div>
 				
@@ -544,15 +502,8 @@ doNotCopy:true,hashAddressBar:false});</script>
 					<div id ="com-votos-{{ comentario.id }}"class="col-xs-1 circular">
 						<span class="centrado">{{ comentario.sum_likes}}</span>
 					</div>
-					{% if user %}
-					<div class="col-xs-1">
-						<div class="com_favor"><i id="com-fav-{{ comentario.id }}" class="fa fa-angle-up fa-lg inactivo"></i></div>
-						<div class="com_contra"><i id="com-con-{{ comentario.id }}"class="fa fa-angle-down fa-lg inactivo"></i></div>
-					</div>
-					<div class="col-xs-9 fondo_comentarios comentario-rol-{{ enmienda.id_rol}}">
-					{% else %}
+					
 					<div class="col-xs-10 fondo_comentarios comentario-rol-{{ enmienda.id_rol}}">
-					{% endif %}
 							<div class="com_autor">
 							{% if enmienda.grupo > 0 %}
 							<img src="static/images/grupo{{ enmienda.grupo}}.png" alt="Grupo {{ enmienda.apellidos}}" title="Grupo {{ enmienda.apellidos}}"> Respuesta del Grupo {{ enmienda.apellidos}}
@@ -586,7 +537,7 @@ doNotCopy:true,hashAddressBar:false});</script>
 	
 	
 	
-	<div class="col-md-6 col-xs-12" style="margin-top:4em;">
+	<div class="col-md-12 col-xs-12" style="margin-top:4em;">
 		
 			<h4> Consulta otras medidas en la misma categoría: <strong>{{ propuesta.sector }}  {{ propuesta.barrio }} </strong></h4>
 		<div class="row">
@@ -601,8 +552,5 @@ doNotCopy:true,hashAddressBar:false});</script>
 		
 	</div>
 
-	<div class="col-md-4 col-md-offset-2 col-xs-12" style="margin-top:10em;">
-		<h4 class="text-center"> ¿Echas en falta alguna medida en el programa? </h4>
-		<a class="btn btn-success btn-lg btn-block" href="nueva-propuesta.php">SUBIR UNA NUEVA MEDIDA</a>
-	</div>
+	
 {% endblock%}
