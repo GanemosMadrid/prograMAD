@@ -379,12 +379,9 @@ $(document).ready(function() {
 
 }); //on load
 
-	if(Math.random()>0.4){
-		$('#tabsIndex a[href="#recientes"]').tab('show')
-	}
-	else{
-		$('#tabsIndex a[href="#debatidas"]').tab('show')	
-	}
+	
+		$('#tabsIndex a[href="#consensuadas"]').tab('show')	
+	
 
 
 </script>
@@ -466,7 +463,6 @@ doNotCopy:true,hashAddressBar:false});</script>
 			</div>
 			
 			<div class="col-xs-11 enmienda-rol-{{ enmienda.id_rol}}">
-
 					<div class="enm_autor">
 					{% if enmienda.grupo > 0 %}
 					<img src="static/images/grupo{{ enmienda.grupo}}.png" alt="Grupo {{ enmienda.apellidos}}" title="Grupo {{ enmienda.apellidos}}"/> comentario del Grupo {{ enmienda.apellidos}}
@@ -545,7 +541,7 @@ doNotCopy:true,hashAddressBar:false});</script>
   			<li class="active"><a href="#valoradas" role="tab" data-toggle="tab">Más valoradas</a></li>
   			<li><a href="#consensuadas" role="tab" data-toggle="tab">Más consenso</a></li>
   			<li><a href="#debatidas" role="tab" data-toggle="tab">Más debatidas</a></li>
-  			<li><a href="#recientes" role="tab" data-toggle="tab">Más recientes</a></li>  
+  			
 		</ul>
 	</div>
 		{% include 'listados.html' %}

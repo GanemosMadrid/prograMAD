@@ -31,16 +31,16 @@ FROM users AS u, prog_propuestas AS p
 WHERE  `autor_id` = u.id
 ORDER BY p.id DESC LIMIT '. $empezarPor .', '. $resultadosPorPagina .'; ';
 
-/*$consensuadas = 
+$consensuadas = 
 'SELECT u.nombre, u.apellidos, p.id, p.titulo, p.comentarios, p.sum_likes, p.sector, p.barrio, p.positivos, p.negativos, u.id_rol, (LOG(p.positivos+p.negativos)* ((p.positivos-p.negativos) /(p.positivos+p.negativos))) log, (p.positivos /(p.positivos+p.negativos)) porcentaje
 FROM users AS u, prog_propuestas AS p
 WHERE  `autor_id` = u.id
-ORDER BY log DESC LIMIT '. $empezarPor .', '. $resultadosPorPagina .'; ';*/
+ORDER BY log DESC LIMIT '. $empezarPor .', '. $resultadosPorPagina .'; ';
 
-$consensuadas = 'SELECT u.nombre, u.apellidos, u.id_rol, p.id, p.titulo, p.comentarios, p.sum_likes, p.positivos, p.negativos, p.sector, p.barrio
+/*$consensuadas = 'SELECT u.nombre, u.apellidos, u.id_rol, p.id, p.titulo, p.comentarios, p.sum_likes, p.positivos, p.negativos, p.sector, p.barrio
 FROM users AS u, prog_propuestas AS p
 WHERE  `autor_id` = u.id AND p.sum_likes BETWEEN 8 AND 20
-ORDER BY p.id DESC LIMIT '. $empezarPor .', '. $resultadosPorPagina .'; ';
+ORDER BY p.id DESC LIMIT '. $empezarPor .', '. $resultadosPorPagina .'; ';*/
 	
 	//Paginación
 	$numeroPropuestas = listar($total);

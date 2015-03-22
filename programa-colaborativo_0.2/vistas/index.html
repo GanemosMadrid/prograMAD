@@ -43,12 +43,9 @@
 				$('a#ir_propuestas_barrios').addClass('disabled')
 			}
 	});
-	if(Math.random()>0.5){
-		$('#tabsIndex a[href="#recientes"]').tab('show')
-	}
-	else{
+	
 		$('#tabsIndex a[href="#consensuadas"]').tab('show')	
-	}
+	
 });
 
 </script>
@@ -138,9 +135,8 @@
 	<div class="row">
 		<ul class="nav nav-tabs" role="tablist" id="tabsIndex">
   			<li class="active"><a href="#valoradas" role="tab" data-toggle="tab">Más valoradas</a></li>
-  			<li><a href="#consensuadas" role="tab" data-toggle="tab">Germinando(8-20 votos)</a></li>
+  			<li><a href="#consensuadas" role="tab" data-toggle="tab">Más Consenso</a></li>
   			<li><a href="#debatidas" role="tab" data-toggle="tab">Más debatidas</a></li>
-  			<li><a href="#recientes" role="tab" data-toggle="tab">Más recientes</a></li>  
 		</ul>
 	</div>
 	{% include 'listados.html' %}

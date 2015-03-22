@@ -42,18 +42,10 @@ $(document).ready(function() {
 		//	console.log($.cookie('defaultTab'));	
 		}
 	}else{
-		console.log("entrando")
-		if(Math.random()>0.5){
-			$('#tabsIndex a[href="#recientes"]').tab('show')
+			$('#tabsIndex a[href="#consensuadas"]').tab('show')
 		//	console.log("recientes");
-		}
-		else{
-			{% if tag %} // este bloque es el de listado de sector
-				$('#tabsIndex a[href="#debatidas"]').tab('show')
-			{% else %}
-				$('#tabsIndex a[href="#consensuadas"]').tab('show')
-			{% endif %}
-		}
+	
+
 	}
 	
 });
@@ -103,15 +95,14 @@ $(document).ready(function() {
 		<ul class="nav nav-tabs" role="tablist" id="tabsIndex">
   			<li class="active"><a href="#valoradas" role="tab" data-toggle="tab">Más valoradas</a></li>
   			<li><a href="#consensuadas" role="tab" data-toggle="tab">Más consenso</a></li>
-  			<li><a href="#debatidas" role="tab" data-toggle="tab">Más debatidas</a></li>
-  			<li><a href="#recientes" role="tab" data-toggle="tab">Más recientes</a></li>  
+  			<li><a href="#debatidas" role="tab" data-toggle="tab">Más debatidas</a></li>  			
 		</ul>
 	</div>
 	{% else %} <!-- este bloque es el de listado de todas.php -->
 	<div class="row">
 		<ul class="nav nav-tabs" role="tablist" id="tabsIndex">
   			<li class="active"><a href="#valoradas" role="tab" data-toggle="tab">Más valoradas</a></li>
-  			<li><a href="#consensuadas" role="tab" data-toggle="tab">Germinando(8-20 votos)</a></li>
+  			<li><a href="#consensuadas" role="tab" data-toggle="tab">Más consenso</a></li>
   			<li><a href="#debatidas" role="tab" data-toggle="tab">Más debatidas</a></li>
   			<li><a href="#recientes" role="tab" data-toggle="tab">Más recientes</a></li>  
 		</ul>
