@@ -12,7 +12,7 @@
 $(document).ready(function() {
 	$('.textarea_comentarios').hide();
 	var propuesta_id = {{ id.id|e('js') }};
-	var usuario_id = {{ user.id|e('js') }};
+	var usuario_id = {{ user.id|e('js') }}
 
 	bloquear_votos();
 	bloquear_enmiendas();
@@ -55,9 +55,7 @@ $(document).ready(function() {
 		$('#prop_contra a').addClass("active");
 		$('#prop_contra a').removeClass("inactivo");
 		$('#prop_favor a').addClass("inactivo");
-		$('#prop_favor a').removeClass("active");
-
-		
+		$('#prop_favor a').removeClass("active");		
 		$.ajax({
                 url: 'like_propuestas.php',
                 data: {propuesta:propuesta_id, usuario_id:usuario_id, cuenta:-1},
@@ -427,6 +425,8 @@ doNotCopy:true,hashAddressBar:false});</script>
 		</div>
 
 		<div class="row">
+			<p style="border-radius: 8px; background-color: #f2dede; padding:1em; margin-top:1 em; margin:1em; margin-left:2em; color:#333;"> <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> ¡Nota importante! Esta es la web que se usó para recoger propuestas para el programa participativo de Ahora Madrid. Aquí se recogen todas las propuestas que distintas personas enviaron, no hay filtro, sólo orden por votos. Obviamente no todo lo que se envió está en el programa final así <strong> la propuesta que estás leyendo no es necesariamente parte del programa de Ahora Madrid </strong>. <a href="http://programa.ahoramadrid.org"> <br/>Descarga el programa final en pdf desde nuestra página principal:  </a> 
+			</p>
 			<h4>Propuesta: </h4> 
 			<p class="propuesta-contenido-wrapper">
 			{{ propuesta.propuesta|raw }}
@@ -439,7 +439,35 @@ doNotCopy:true,hashAddressBar:false});</script>
 	<hr class="hr">
 	
 	{% endif %}
+	{% if user.idRol == 2 %}
+	
+	<h4>Sólo ves este bloque si eres administrador de la plataforma. 
+	Aquí puedes escribir la respuesta "oficial" del grupo de programa de ahora Madrid. </h4>
+		<form role="form" id="search-form" action="responder-propuesta.php" method="post"  style="margin-top:1em;">
+				<div class="form-group">
+			    <label for="respuesta">Escribe la respuesta al usuario con email: {{ propuesta.email }}</label>
+			    <textarea class="form-control" name="respuesta" id="respuesta" rows="10"></textarea> 
+			  </div>
+			  <input type="hidden" id="id" name="id" value="{{ propuesta.id }}">
+			  <input type="hidden" id="mail_autor" name="mail_autor" value="{{ propuesta.email }}">
+			  <button type="submit" id="enviar" class="btn-lg btn btn-success">Enviar respuesta oficial</button>
+						<span class="mini-texto-ayuda"> 
+							<br/>
+							*Nota: una vez pulses enviar se enviará un email al autor original de la propuesta con este comentario y aparecerá justo bajo la propuesta original
+						</span>
+		</form>
+	{% endif %}
 
+	{% if propuesta.respuesta %}
+		<div class="row">
+			<div class="col-sm-11 col-sm-offset-1">
+			<h4>Esta es la respuesta: </h4> 
+			<p class="propuesta-contenido-wrapper">
+			{{ propuesta.respuesta|raw }}
+			</p>
+			</div>
+		</div>
+	{% endif %}
 	<div class="row">
 		<h5><strong>¿Te gusta esta medida para Madrid? ¡Compártela!</strong> </h5>
 		<a href="https://twitter.com/share" class="twitter-share-button" data-via="ahoramadrid" data-lang="es" data-count="none" data-hashtags="ahoraPrograma" >Twittear</a>
